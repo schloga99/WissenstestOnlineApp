@@ -3,7 +3,6 @@
 import { NavController } from 'ionic-angular';
 
 @Component({
-    selector: 'page-home',
     templateUrl: 'AnmeldungBewerter.html'
 })
 export class AnmeldungBewerterPage {

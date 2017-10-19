@@ -2,13 +2,13 @@
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { HomePage } from '../pages/home/home';
+import { EingabeFFPage } from '../pages/BasicLayouts/EingabeFF/EingabeFF';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = HomePage;
+    rootPage = EingabeFFPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

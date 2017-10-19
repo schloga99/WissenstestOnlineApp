@@ -3,9 +3,9 @@
 import { NavController } from 'ionic-angular';
 
 @Component({
-    templateUrl: 'AuswahlStufe.html'
+    templateUrl: 'Übungsmodus.html'
 })
-export class AuswahlStufePage {
+export class ÜbungsmodusPage {
 
     constructor(public navCtrl: NavController) {
 
