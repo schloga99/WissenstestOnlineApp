@@ -3,6 +3,7 @@
 import { NavController } from 'ionic-angular';
 
 @Component({
+    selector: 'page-EingabeFF',
     templateUrl: 'EingabeFF.html'
 })
 export class EingabeFFPage {

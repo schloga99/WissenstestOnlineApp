@@ -3,6 +3,7 @@
 import { NavController } from 'ionic-angular';
 
 @Component({
+    selector: 'page-Übungsmodus',
     templateUrl: 'Übungsmodus.html'
 })
 export class ÜbungsmodusPage {

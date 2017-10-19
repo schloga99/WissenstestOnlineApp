@@ -3,6 +3,7 @@
 import { NavController } from 'ionic-angular';
 
 @Component({
+    selector: 'page-AuswahlStufe',
     templateUrl: 'AuswahlStufe.html'
 })
 export class AuswahlStufePage {
