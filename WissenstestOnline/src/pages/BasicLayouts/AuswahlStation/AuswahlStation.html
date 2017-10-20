@@ -1,5 +1,25 @@
-﻿<ion-header>
-  <ion-navbar>
-    <ion-title>AuswahlStation</ion-title>
-  </ion-navbar>
-</ion-header>
+﻿<ion-content class="content" padding>
+
+  <select multiple class="form-control" id="stations">
+    <option>01 Allgemeinwissen</option><!--von DB generieren lassen -->
+    <option>02</option>
+    <option>03</option>
+    <option>04</option>
+    <option>05</option>
+    <option>06</option>
+    <option>07</option>
+    <option>08</option>
+    <option>09</option>
+    <option>10</option>
+    <option>11</option>
+  </select>
+
+  <h4>Modus</h4>
+  <div id="modusbtns">
+    <input type="radio" name="mode" id="learn" value="learn" checked />Lernen<br />
+    <input type="radio" name="mode" id="practise" value="practise" />Üben<br />
+
+  </div>
+  <a class="btn btn-primary" role="button" aria-pressed="true" id="startModusbtn">Starte</a>
+
+</ion-content>

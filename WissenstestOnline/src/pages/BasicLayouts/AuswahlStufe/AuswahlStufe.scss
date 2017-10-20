@@ -1,107 +1,113 @@
-﻿.auswahlFF {
-  font-size: 20px;
-}
-
-.content {
-  background-color: black;
-  color: red;
-  font-size: 26px;
-  
-}
-#btnbronze{
-  margin-top:20px;
-}
-
-#aktFF {
-  font-size: 16px;
-  text-align: left;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin-bottom: 20px;
-  margin-left: 10px;
-}
-
-
-input[type=button] {
-  cursor: pointer;
-  margin-right: 10px;
-  margin-bottom:25px;
-  display: inline-block;
-  border:3px solid;
-  border-radius: 5px;
-  border-color: red;
-  color: white;
-  background-color:black;
-  width:100%
-}
-input[type="button"]:hover {
-  background-color: #DF3A01;
-  border-color: #DF3A01;
-}
-
-#back {
-  top: 0;
-  right: 0;
-  cursor: pointer;
-  display: inline-block;
-  height: 40px;
-  margin-right: 40px;
-  margin-top: 20px;
-  position: absolute;
-  line-height: 1.7em;
-  padding-left: 1em;
-  padding-right: 30px;
-  background: #DF3A01;
-  color: white;
-
-  &:after {
-    // triangle hover color
-    border-left: 20px solid #DF3A01;
+﻿page-AuswahlStufe {
+  .auswahlFF {
+    font-size: 24px;
   }
-}
 
-#back:after {
-  // the triangle
-  content: "";
-  position: absolute;
-  border-bottom: 20px solid transparent;
-  border-top: 20px solid transparent;
-  height: 0px;
-  width: 0px;
-  margin-right: -20px;
-  right: 0;
-}
-
-#weiter {
-  bottom: 0;
-  right: 0;
-  cursor: pointer;
-  display: inline-block;
-  height: 40px;
-  margin-right: 40px;
-  margin-bottom: 20px;
-  position: absolute;
-  line-height: 1.7em;
-  padding-left: 1em;
-  padding-right: 30px;
-  background: #DF3A01;
-  color: white;
-
-  &:after {
-    // triangle hover color
-    border-left: 20px solid #DF3A01;
+  .content {
+    background-color: white;
+    color: red;
+    font-size: 24px;
   }
-}
 
-#weiter:after {
-  // the triangle
-  content: "";
-  position: absolute;
-  border-bottom: 20px solid transparent;
-  border-top: 20px solid transparent;
-  height: 0px;
-  width: 0px;
-  margin-right: -20px;
-  right: 0;
+  #btnbronze {
+    margin-top: 20px;
+  }
+
+  #aktFF {
+    font-size: 16px;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 60px;
+    margin-left: 10px;
+  }
+
+
+  input[type=button] {
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+    border: 3px solid;
+    border-radius: 5px;
+    border-color: red;
+    color: black;
+    background-color: white;
+    width: 100%
+  }
+
+  input[type="button"]:hover {
+    background-color: #DF3A01;
+    border-color: #DF3A01;
+  }
+
+  #back {
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    position: absolute;
+    line-height: 1.7em;
+    padding-left: 35px;
+    padding-right: 1em;
+    background: #DF3A01;
+    color: white;
+    width:130px;
+
+    &:after {
+      // triangle hover color
+      border-left: 20px solid #DF3A01;
+    }
+  }
+
+  #back:after {
+    // the triangle
+    content: "";
+    position: absolute;
+    border-bottom: 20px solid transparent;
+    border-top: 20px solid transparent;
+    height: 0px;
+    width: 0px;
+    margin-left: -20px;
+    left: 0;
+    transform:rotate(180deg);
+  }
+
+  #weiter {
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    position: absolute;
+    line-height: 1.7em;
+    padding-left: 1em;
+    padding-right: 35px;
+    background: #DF3A01;
+    color: white;
+    width:130px;
+
+    &:after {
+      // triangle hover color
+      border-left: 20px solid #DF3A01;
+    }
+  }
+
+  #weiter:after {
+    // the triangle
+    content: "";
+    position: absolute;
+    border-bottom: 20px solid transparent;
+    border-top: 20px solid transparent;
+    height: 0px;
+    width: 0px;
+    margin-right: -20px;
+    right: 0;
+  }
 }
