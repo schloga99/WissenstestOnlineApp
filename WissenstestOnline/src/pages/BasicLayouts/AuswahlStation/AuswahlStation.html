@@ -1,4 +1,7 @@
 ﻿<ion-content class="content" padding>
+  <div class="auswahlStation">
+    Auswahl der Station
+  </div>
 
   <select multiple class="form-control" id="stations">
     <option>01 Allgemeinwissen</option><!--von DB generieren lassen -->
@@ -14,12 +17,14 @@
     <option>11</option>
   </select>
 
-  <h4>Modus</h4>
   <div id="modusbtns">
     <input type="radio" name="mode" id="learn" value="learn" checked />Lernen<br />
     <input type="radio" name="mode" id="practise" value="practise" />Üben<br />
 
   </div>
-  <a class="btn btn-primary" role="button" aria-pressed="true" id="startModusbtn">Starte</a>
+
+  <a role="button" id="weiter">Start</a>
+  <a role="button" id="back">back</a>
+  <label id="aktFF">aktuelle Feuerwehr, bronze</label><br />  
 
 </ion-content>

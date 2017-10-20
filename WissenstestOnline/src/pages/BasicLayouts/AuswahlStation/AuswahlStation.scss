@@ -1,22 +1,115 @@
 ﻿page-AuswahlStation {
   .content {
-    background-color: black;
+    background-color: white;
     color: red;
-    font-size: 26px;
+    font-size: 24px;
   }
 
   #stations {
+    color: black;
+    margin-bottom: 40px;
+    background-color: white;
+    border: 3px solid;
+    border-radius: 5px;
+    cursor: pointer;
   }
 
-  #modusbtns {
+  #stations option {
+    display: block;
+    width: 100%;
+    height: 40px;
+  }
+
+  #stations::-ms-expand {
+    display: none;
   }
 
   #learn {
+    margin-bottom: 20px;
   }
 
   #practice {
   }
 
   #startModusbtn {
+  }
+
+  #aktFF {
+    font-size: 16px;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0px;
+    margin-left: 10px;
+  }
+
+  #back {
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    position: absolute;
+    line-height: 1.7em;
+    padding-left: 35px;
+    padding-right: 1em;
+    background: #DF3A01;
+    color: white;
+    width: 130px;
+
+    &:after {
+      // triangle hover color
+      border-left: 20px solid #DF3A01;
+    }
+  }
+
+  #back:after {
+    // the triangle
+    content: "";
+    position: absolute;
+    border-bottom: 20px solid transparent;
+    border-top: 20px solid transparent;
+    height: 0px;
+    width: 0px;
+    margin-left: -20px;
+    left: 0;
+    transform: rotate(180deg);
+  }
+
+  #weiter {
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    position: absolute;
+    line-height: 1.7em;
+    padding-left: 1em;
+    padding-right: 35px;
+    background: #DF3A01;
+    color: white;
+    width: 130px;
+
+    &:after {
+      // triangle hover color
+      border-left: 20px solid #DF3A01;
+    }
+  }
+
+  #weiter:after {
+    // the triangle
+    content: "";
+    position: absolute;
+    border-bottom: 20px solid transparent;
+    border-top: 20px solid transparent;
+    height: 0px;
+    width: 0px;
+    margin-right: -20px;
+    right: 0;
   }
 }

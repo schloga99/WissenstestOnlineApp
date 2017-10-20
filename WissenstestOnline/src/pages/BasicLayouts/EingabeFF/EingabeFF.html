@@ -1,11 +1,16 @@
 ﻿<ion-content class="content" padding>
-
   <div class="auswahlFF">
     Auswahl deiner Feuerwehr
-  </div>
-  <br />
+  </div><br />
+
   Bezirk<br>
-  <input type="text" name="bezirk" style="color:black; margin-bottom:20px;"><br>
+  <input id="bezirkinput" type="text" name="bezirk" list="bezirkdatalist"><br>
+  <datalist id="bezirkdatalist">
+    <option *ngFor="let item of bezirke">
+      {{item}}
+    </option>
+  </datalist>
+
   Feuerwehr<br />
   <input type="text" name="feuerwehr" list="feuerwehrenOÖ" style="color:black" />
   <datalist id="feuerwehrenOÖ">
@@ -13,11 +18,11 @@
   </datalist>
   <br />
 
-  <a class="arrow">Start</a>
+  <a class="arrow">weiter</a>
 
   <div class="labels">
-    <label id="versionsnummer">1</label><br />
-    <label id="status">on</label><br />
+    <label id="versionsnummer">v. 1.0</label><br />
+    <label id="status">online</label><br />
     <label id="impressum">link</label><br />
   </div>
 

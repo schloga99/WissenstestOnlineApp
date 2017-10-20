@@ -15,7 +15,7 @@ import { ÜbungsmodusPage } from '../pages/ModusLayouts/Übungsmodus/Übungsmodu
   templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage = AuswahlStufePage;
+    rootPage = AuswahlStationPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
