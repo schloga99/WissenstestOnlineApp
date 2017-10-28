@@ -10,6 +10,7 @@ import { AnmeldungStationPage } from '../pages/PrüfungsLayouts/AnmeldungStation
 import { AuswahlPrüfStationPage } from '../pages/PrüfungsLayouts/AuswahlPrüfStation/AuswahlPrüfStation';
 import { LernmodusPage } from '../pages/ModusLayouts/Lernmodus/Lernmodus';
 import { ÜbungsmodusPage } from '../pages/ModusLayouts/Übungsmodus/Übungsmodus';
+import { GlobalVars } from '../providers/globals';
 
 @Component({
   templateUrl: 'app.html'

@@ -9,6 +9,7 @@ import { AnmeldungStationPage } from '../pages/PrüfungsLayouts/AnmeldungStation
 import { AuswahlPrüfStationPage } from '../pages/PrüfungsLayouts/AuswahlPrüfStation/AuswahlPrüfStation';
 import { LernmodusPage } from '../pages/ModusLayouts/Lernmodus/Lernmodus';
 import { ÜbungsmodusPage } from '../pages/ModusLayouts/Übungsmodus/Übungsmodus';
+import { GlobalVars } from '../providers/globals';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { ÜbungsmodusPage } from '../pages/ModusLayouts/Übungsmodus/Übungsmodu
         LernmodusPage,
         ÜbungsmodusPage
     ],
-    providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
+    providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, GlobalVars]
+    
 })
 export class AppModule { }

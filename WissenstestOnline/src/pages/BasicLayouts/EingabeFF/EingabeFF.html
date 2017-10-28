@@ -4,7 +4,7 @@
   </div><br />
 
   Bezirk<br>
-  <input id="bezirkinput" type="text" name="bezirk" list="bezirkdatalist"><br>
+  <input id="bezirkinput" type="text" [(ngModel)]="currbezirk" name="bezirk" list="bezirkdatalist"><br>
   <datalist id="bezirkdatalist">
     <option *ngFor="let item of bezirke">
       {{item}}
@@ -12,13 +12,13 @@
   </datalist>
 
   Feuerwehr<br />
-  <input type="text" name="feuerwehr" list="feuerwehrenOÖ" style="color:black" />
+  <input type="text" name="feuerwehr" [(ngModel)]="currfeuerwehr" list="feuerwehrenOÖ" style="color:black" />
   <datalist id="feuerwehrenOÖ">
     <option value="Eggerding"></option>
   </datalist>
   <br />
 
-  <a class="arrow">weiter</a>
+  <a class="arrow"  (tap)="weiterbtn()" >weiter</a>
 
   <div class="labels">
     <label id="versionsnummer">v. 1.0</label><br />
