@@ -4,9 +4,7 @@
 export class GlobalVars {
     aktlfeuerwehr: any;
     aktlbezirk: any;
-
-
-    myGlobalVar: any;
+  
     constructor() {
         this.aktlfeuerwehr = "";
         this.aktlbezirk = "";
@@ -19,14 +17,6 @@ export class GlobalVars {
 
     getfeuerwehr() {
         return this.aktlfeuerwehr;
-    }
-
-    setMyGlobalVar(value) {
-        this.myGlobalVar = value;
-    }
-
-    getMyGlobalVar() {
-        return this.myGlobalVar;
     }
 
 }
