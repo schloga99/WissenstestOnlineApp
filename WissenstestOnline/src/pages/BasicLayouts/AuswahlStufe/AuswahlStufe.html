@@ -5,13 +5,13 @@
   </div>
   <br />
   <div class="buttons">
-    <input id="btnbronze" type="button" value="Bronze" ><br>
-    <input type="button" value="Silber" ><br>
-    <input type="button" value="Gold"><br>
+    <input id="1" type="button" value="Bronze" (click)="replyClick(1)"><br>
+    <input id="2" type="button" value="Silber" (click)="replyClick(2)" ><br>
+    <input id="3" type="button" value="Gold" (click)="replyClick(3)"><br>
   </div>
 
-  <a role="button" id="weiter">weiter</a>
-  <a role="button" id="back">back</a>
-  <label id="aktFF">aktuelle Feuerwehr</label><br />   
+  <a role="button" (tap)="weiterbtn()" id="weiter">weiter</a>
+  <a role="button" (tap)="backbtn()" id="back">back</a>
+  <label id="aktFF" >{{aktFF}}</label><br />   
 
 </ion-content>

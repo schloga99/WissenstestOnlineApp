@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-
+import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
 
 @Component({
