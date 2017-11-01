@@ -17,14 +17,24 @@
     <option>11</option>
   </select>
 
-  <div id="modusbtns">
-    <input type="radio" name="mode" id="learn" value="learn" checked />Lernen<br />
-    <input type="radio" name="mode" id="practise" value="practise" />Üben<br />
+  <!--<div id="modusbtns" radio-group [(ngModel)]="radiobuttons">
+    <input type="radio" (ionSelect)="mcqAnswer(1)" name="modus" id="learn" value="learn" checked />Lernen<br />
+    <input type="radio" (ionSelect)="mcqAnswer(1)" name="modus" id="practise" value="practice"/>Üben<br />
+  </div>-->
+  <ion-list radio-group>
+    <ion-item>
+      <ion-label>Lernmodus</ion-label>
+      <ion-radio item-left value="1" (ionSelect)="mcqAnswer(1)"></ion-radio> br/>
+    </ion-item>
+    <ion-item>
+      <ion-label>Übungsmodus</ion-label>
+      <ion-radio item-left value="2" (ionSelect)="mcqAnswer(2)"></ion-radio> br/>
+    </ion-item>
+  </ion-list>
+ 
 
-  </div>
-
-  <a role="button" id="weiter">Start</a>
-  <a role="button" id="back">back</a>
-  <label id="aktFF">aktuelle Feuerwehr, bronze</label><br />  
+  <a role="button" (tap)="startbtn()" id="weiter">Start</a>
+  <a role="button" (tap)="backbtn()" id="back">back</a>
+  <label id="aktFF">{{aktFF}}, {{stufeoutput}}</label><br />
 
 </ion-content>

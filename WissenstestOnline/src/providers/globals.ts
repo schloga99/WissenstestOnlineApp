@@ -5,11 +5,14 @@ export class GlobalVars {
     aktlfeuerwehr: any;
     aktlbezirk: any;
     aktlstufe: any;
+    ausgewaeltestationen: any;
+    modus: any;
 
     constructor() {
         this.aktlfeuerwehr = "";
         this.aktlbezirk = "";
         this.aktlstufe = -1;
+        this.modus = -1;
     }
 
     setfeuerwehrandbezirk(valuef,valueb) {
@@ -26,5 +29,17 @@ export class GlobalVars {
     getaktlstufe()
     {
         return this.aktlstufe;
+    }
+    setstationen() {
+
+    }
+    getstationen() {
+        return this.ausgewaeltestationen;
+    }
+    setmodus(value) { // 1 or 2
+        this.modus = value;
+    }
+    getmodus() {
+        return this.modus;
     }
 }

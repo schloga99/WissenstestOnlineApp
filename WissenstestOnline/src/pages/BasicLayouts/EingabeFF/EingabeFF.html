@@ -4,26 +4,36 @@
   </div><br />
 
   Bezirk<br>
-  <input id="bezirkinput" type="text" [(ngModel)]="currbezirk" name="bezirk" list="bezirkdatalist"><br>
+  <!--<input id="bezirkinput" type="text" [(ngModel)]="currbezirk" name="bezirk" list="bezirkdatalist" autocomplete="off"><br>
   <datalist id="bezirkdatalist">
     <option *ngFor="let item of bezirke">
       {{item}}
     </option>
-  </datalist>
+  </datalist>-->
+
+  <select  id="bezirkinput" [(ngModel)]="currbezirk" name="bezirk" onmousedown="if(this.options.length>5){this.size=5;}" onchange='this.size=0;' onblur="this.size=0;"> >
+    <option *ngFor="let item of bezirke">
+      {{item}}
+    </option>
+  </select>
 
   Feuerwehr<br />
-  <input type="text" name="feuerwehr" [(ngModel)]="currfeuerwehr" list="feuerwehrenOÖ" style="color:black" />
+  <!--<input type="text" name="feuerwehr" [(ngModel)]="currfeuerwehr" list="feuerwehrenOÖ" style="color:black" />
   <datalist id="feuerwehrenOÖ">
     <option value="Eggerding"></option>
-  </datalist>
+  </datalist>-->
+  <select name="feuerwehr" [(ngModel)]="currfeuerwehr" style="color:black" onmousedown="if(this.options.length>5){this.size=5;}" onchange='this.size=0;' onblur="this.size=0;">
+    <option value="Eggerding">Eggerding</option>
+  </select>
   <br />
 
   <a class="arrow"  (tap)="weiterbtn()" >weiter</a>
 
   <div class="labels">
     <label id="versionsnummer">v. 1.0</label><br />
-    <label id="status">online</label><br />
+    <label id="status">Status: on</label><br />
     <label id="impressum">link</label><br />
   </div>
+
 
 </ion-content>

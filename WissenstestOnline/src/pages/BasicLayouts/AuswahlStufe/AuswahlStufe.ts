@@ -16,10 +16,7 @@ export class AuswahlStufePage{
     constructor(public navCtrl: NavController, private globalvar: GlobalVars) {
         this.stufe = -1;
         
-    }
-    //ngOnInit(): void {
-    //    this.aktFF = this.globalvar.getfeuerwehr();
-    //}
+    }    
 
     ionViewWillLoad() {
         this.aktFF = this.globalvar.getfeuerwehr();

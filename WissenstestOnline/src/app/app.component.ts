@@ -16,7 +16,7 @@ import { GlobalVars } from '../providers/globals';
   templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage = EingabeFFPage;
+    rootPage = AuswahlStationPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

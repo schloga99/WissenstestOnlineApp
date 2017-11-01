@@ -70,6 +70,14 @@
 
   #bezirkinput {
     margin-bottom: 20px;
-    color:black;
+    color: black;
   }
+
+  select {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: black;
+  }
+
 }
