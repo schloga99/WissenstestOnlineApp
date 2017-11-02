@@ -5,42 +5,13 @@
     font-size: 24px;
   }
 
-  #stations {
-    color: black;
-    margin-bottom: 40px;
-    background-color: white;
-    border: 3px solid;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  #stations option {
-    display: block;
-    width: 100%;
-    height: 40px;
-  }
-
-  #stations::-ms-expand {
-    display: none;
-  }
-
-  #learn {
-    margin-bottom: 20px;
-  }
-
-  #practice {
-  }
-
-  #startModusbtn {
-  }
-
   #aktFF {
     font-size: 16px;
     text-align: left;
     position: absolute;
     bottom: 0;
     left: 0;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
     margin-left: 10px;
   }
 
@@ -51,7 +22,7 @@
     display: inline-block;
     height: 40px;
     margin-left: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     position: absolute;
     line-height: 1.7em;
     padding-left: 35px;
@@ -86,7 +57,7 @@
     display: inline-block;
     height: 40px;
     margin-right: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     position: absolute;
     line-height: 1.7em;
     padding-left: 1em;
@@ -111,5 +82,31 @@
     width: 0px;
     margin-right: -20px;
     right: 0;
+  }
+
+  .list .item-radio .item-content {
+    background-color: black;
+    color: white;
+  }
+
+  .list .item-radio .radio-icon {
+    background-color: black;
+    color: white;
+  }
+
+  .item-radio input:checked + .radio-content .item-content {
+    background: black
+  }
+
+  .alert-radio-label {
+    white-space: normal !important;
+  }
+
+  #stationsitem {
+    margin-bottom: 20px;
+  }
+
+  .auswahlStation{
+    margin-bottom:30px;
   }
 }

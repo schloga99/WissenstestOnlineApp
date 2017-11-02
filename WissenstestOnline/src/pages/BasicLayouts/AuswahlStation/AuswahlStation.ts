@@ -9,12 +9,13 @@ import { AuswahlStufePage } from "../AuswahlStufe/AuswahlStufe";
 })
 export class AuswahlStationPage {
     stations: any;
-    
+    ausgewähltestations: any;
     stufe: any;
     stufeoutput: any;
     aktFF: any;
-
     checkedradiobutton: any;
+    Stationen: any;
+
     constructor(public navCtrl: NavController, private globalvar: GlobalVars) {
         this.checkedradiobutton = "";
         this.stufeoutput = "";
@@ -30,6 +31,20 @@ export class AuswahlStationPage {
         if (this.stufe == 3) {
             this.stufeoutput = "Gold";
         }
+
+        this.stations = [
+            'Allgemeinwissen',
+            'Dienstgrade',
+            'Wasserführende Armaturen + technische Geräte',
+            'Vorbeugender Brandschutz',
+            'Seilknoten',
+            'Nachrichtenübermittlung',
+            'Verkehrserziehung und Absichern von Einsatzstellen',
+            'Erste Hilfe',
+            'Taktik',
+            'Gefährliche Stoffe',
+            'Atem- und Körperschutz',
+        ];
     }
 
     onLink(url: string) {

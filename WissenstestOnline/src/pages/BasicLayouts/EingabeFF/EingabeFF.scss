@@ -1,12 +1,13 @@
 ﻿page-EingabeFF {
   .auswahlFF {
+    background-color: white;
+    color: red;
     font-size: 24px;
   }
 
   .content {
     background-color: white;
     color: red;
-    font-weight: bold;
     font-size: 24px;
   }
 
@@ -16,6 +17,7 @@
     position: absolute;
     bottom: 0;
     margin-bottom: 10px;
+    font-weight: bold;
   }
 
   #start {
@@ -34,8 +36,7 @@
     color: black;
     background-color: #DF3A01;
   }
-
-  .arrow {
+  /*.arrow {
     bottom: 0;
     right: 0;
     cursor: pointer;
@@ -48,7 +49,52 @@
     padding-left: 1em;
     padding-right: 30px;
     background: #DF3A01;
+    color: white;
+
+    &:after {
+      // triangle hover color
+      border-left: 20px solid #DF3A01;
+    }
+  }
+
+  .arrow:after {
+    // the triangle
+    content: "";
+    position: absolute;
+    border-bottom: 20px solid transparent;
+    border-top: 20px solid transparent;
+    height: 0px;
+    width: 0px;
+    margin-right: -20px;
+    right: 0;
+  }*/
+  #bezirkinput {
+    margin-bottom: 20px;
     color: black;
+  }
+
+  select {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: black;
+  }
+
+  .arrow {
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    position: absolute;
+    line-height: 1.7em;
+    padding-left: 1em;
+    padding-right: 35px;
+    background: #DF3A01;
+    color: white;
+    width: 130px;
 
     &:after {
       // triangle hover color
@@ -67,17 +113,4 @@
     margin-right: -20px;
     right: 0;
   }
-
-  #bezirkinput {
-    margin-bottom: 20px;
-    color: black;
-  }
-
-  select {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    color: black;
-  }
-
 }
