@@ -75,9 +75,11 @@
 
   select {
     cursor: pointer;
-    display: inline-block;
-    position: relative;
     color: black;
+    overflow: hidden;
+    margin: auto;
+    width:100%;
+    border: 2px solid;
   }
 
   .arrow {

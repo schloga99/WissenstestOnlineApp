@@ -9,6 +9,7 @@ import { AnmeldungStationPage } from '../pages/PrüfungsLayouts/AnmeldungStation
 import { AuswahlPrüfStationPage } from '../pages/PrüfungsLayouts/AuswahlPrüfStation/AuswahlPrüfStation';
 import { LernmodusPage } from '../pages/ModusLayouts/Lernmodus/Lernmodus';
 import { ÜbungsmodusPage } from '../pages/ModusLayouts/Übungsmodus/Übungsmodus';
+import { StartLayoutPage } from '../pages/BasicLayouts/StartLayout/StartLayout';
 import { GlobalVars } from '../providers/globals';
 
 
@@ -22,7 +23,8 @@ import { GlobalVars } from '../providers/globals';
         AnmeldungStationPage,
         AuswahlPrüfStationPage,
         LernmodusPage,
-        ÜbungsmodusPage
+        ÜbungsmodusPage,
+        StartLayoutPage
     ],
     imports: [
         IonicModule.forRoot(MyApp)
@@ -37,7 +39,8 @@ import { GlobalVars } from '../providers/globals';
         AnmeldungStationPage,
         AuswahlPrüfStationPage,
         LernmodusPage,
-        ÜbungsmodusPage
+        ÜbungsmodusPage,
+        StartLayoutPage
     ],
     providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, GlobalVars]
     
