@@ -1,7 +1,10 @@
 ﻿page-AuswahlStation {
+
+  $redcolor: #AB2524;
+
   .content {
     background-color: white;
-    color: red;
+    color: $redcolor;
     font-size: 24px;
   }
 
@@ -27,13 +30,13 @@
     line-height: 1.7em;
     padding-left: 35px;
     padding-right: 1em;
-    background: #DF3A01;
+    background: $redcolor;
     color: white;
     width: 130px;
 
     &:after {
       // triangle hover color
-      border-left: 20px solid #DF3A01;
+      border-left: 20px solid $redcolor;
     }
   }
 
@@ -62,13 +65,13 @@
     line-height: 1.7em;
     padding-left: 1em;
     padding-right: 35px;
-    background: #DF3A01;
+    background: #AB2524;
     color: white;
     width: 130px;
 
     &:after {
       // triangle hover color
-      border-left: 20px solid #DF3A01;
+      border-left: 20px solid $redcolor;
     }
   }
 
@@ -106,7 +109,7 @@
     margin-bottom: 20px;
   }
 
-  .auswahlStation{
-    margin-bottom:30px;
+  .auswahlStation {
+    margin-bottom: 30px;
   }
 }

@@ -17,7 +17,7 @@ import { GlobalVars } from '../providers/globals';
   templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage = StartLayoutPage;
+    rootPage = AuswahlStufePage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

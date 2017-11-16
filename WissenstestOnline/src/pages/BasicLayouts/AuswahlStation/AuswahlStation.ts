@@ -51,7 +51,7 @@ export class AuswahlStationPage {
         window.open(url);
     }
 
-    mcqAnswer(value) {
+    modeAnswer(value) {
         if (value == 1)
         {
             this.checkedradiobutton = "learn";

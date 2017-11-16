@@ -1,13 +1,15 @@
 ﻿page-EingabeFF {
+  $redcolor: #AB2524;
+
   .auswahlFF {
     background-color: white;
-    color: red;
+    color: $redcolor;
     font-size: 24px;
   }
 
   .content {
     background-color: white;
-    color: red;
+    color: $redcolor;
     font-size: 24px;
   }
 
@@ -34,7 +36,7 @@
     text-align: center;
     width: 90px;
     color: black;
-    background-color: #DF3A01;
+    background-color: $redcolor;
   }
   /*.arrow {
     bottom: 0;
@@ -78,7 +80,7 @@
     color: black;
     overflow: hidden;
     margin: auto;
-    width:100%;
+    width: 100%;
     border: 2px solid;
   }
 
@@ -94,13 +96,13 @@
     line-height: 1.7em;
     padding-left: 1em;
     padding-right: 35px;
-    background: #DF3A01;
+    background: $redcolor;
     color: white;
     width: 130px;
 
     &:after {
       // triangle hover color
-      border-left: 20px solid #DF3A01;
+      border-left: 20px solid $redcolor;
     }
   }
 

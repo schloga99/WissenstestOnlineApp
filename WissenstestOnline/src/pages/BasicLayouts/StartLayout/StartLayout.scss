@@ -1,1 +1,11 @@
-﻿
+﻿page-StartLayout {
+
+  $redcolor: #AB2524;
+
+  .content {
+  }
+
+  #toolbarbutton{
+    background-color: $redcolor !important;
+  }
+}

@@ -1,9 +1,13 @@
 ﻿page-AuswahlStufe {
+  $redcolor: #AB2524;
 
   .content {
     background-color: white;
-    color: red;
+    color: $redcolor;
     font-size: 24px;
+  }
+  .content:focus {
+
   }
 
   #1 {
@@ -28,15 +32,15 @@
     display: inline-block;
     border: 3px solid;
     border-radius: 5px;
-    border-color: red;
+    border-color: $redcolor;
     color: black;
     background-color: white;
     width: 100%
   }
 
   input[type="button"]:focus {
-    background-color: #DF3A01;
-    border-color: #DF3A01;
+    background-color: $redcolor;
+    border-color: $redcolor;
   }
 
   #back {
@@ -51,13 +55,13 @@
     line-height: 1.7em;
     padding-left: 35px;
     padding-right: 1em;
-    background: #DF3A01;
+    background: $redcolor;
     color: white;
     width: 130px;
 
     &:after {
       // triangle hover color
-      border-left: 20px solid #DF3A01;
+      border-left: 20px solid $redcolor;
     }
   }
 
@@ -86,13 +90,13 @@
     line-height: 1.7em;
     padding-left: 1em;
     padding-right: 35px;
-    background: #DF3A01;
+    background: $redcolor;
     color: white;
     width: 130px;
 
     &:after {
       // triangle hover color
-      border-left: 20px solid #DF3A01;
+      border-left: 20px solid $redcolor;
     }
   }
 
