@@ -5,9 +5,9 @@
   </div>
   <br />
   <div class="buttons">
-    <input id="1" type="button" value="Bronze"(click)="replyClick(1)"><br>
-    <input id="2" type="button" value="Silber" (click)="replyClick(2)" ><br>
-    <input id="3" type="button" value="Gold"(click)="replyClick(3)"><br>
+    <input id="1" type="button" value="Bronze"(tap)="replyClick(1)" [style.background-color]="id1Color"><br>
+    <input id="2" type="button" value="Silber" (tap)="replyClick(2)" [style.background-color]="id2Color"><br>
+    <input id="3" type="button" value="Gold"(tap)="replyClick(3)"[style.background-color]="id3Color"><br>
   </div>
 
   <a role="button" (tap)="weiterbtn()" id="weiter">weiter</a>

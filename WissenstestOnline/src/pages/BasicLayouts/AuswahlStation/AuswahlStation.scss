@@ -1,6 +1,6 @@
 ﻿page-AuswahlStation {
 
-  $redcolor: #AB2524;
+  $redcolor: #FC0A1C;
 
   .content {
     background-color: white;
@@ -65,7 +65,7 @@
     line-height: 1.7em;
     padding-left: 1em;
     padding-right: 35px;
-    background: #AB2524;
+    background: $redcolor;
     color: white;
     width: 130px;
 

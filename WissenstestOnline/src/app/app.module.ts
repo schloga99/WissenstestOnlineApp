@@ -4,24 +4,17 @@ import { MyApp } from './app.component';
 import { AuswahlStationPage } from '../pages/BasicLayouts/AuswahlStation/AuswahlStation';
 import { AuswahlStufePage } from '../pages/BasicLayouts/AuswahlStufe/AuswahlStufe';
 import { EingabeFFPage } from '../pages/BasicLayouts/EingabeFF/EingabeFF';
-import { AnmeldungBewerterPage } from '../pages/PrüfungsLayouts/AnmeldungBewerter/AnmeldungBewerter';
-import { AnmeldungStationPage } from '../pages/PrüfungsLayouts/AnmeldungStation/AnmeldungStation';
-import { AuswahlPrüfStationPage } from '../pages/PrüfungsLayouts/AuswahlPrüfStation/AuswahlPrüfStation';
 import { LernmodusPage } from '../pages/ModusLayouts/Lernmodus/Lernmodus';
 import { ÜbungsmodusPage } from '../pages/ModusLayouts/Übungsmodus/Übungsmodus';
 import { StartLayoutPage } from '../pages/BasicLayouts/StartLayout/StartLayout';
 import { GlobalVars } from '../providers/globals';
-
 
 @NgModule({
     declarations: [
         MyApp,
         AuswahlStationPage,
         AuswahlStufePage,
-        EingabeFFPage,
-        AnmeldungBewerterPage,
-        AnmeldungStationPage,
-        AuswahlPrüfStationPage,
+        EingabeFFPage,       
         LernmodusPage,
         ÜbungsmodusPage,
         StartLayoutPage
@@ -35,9 +28,6 @@ import { GlobalVars } from '../providers/globals';
         AuswahlStationPage,
         AuswahlStufePage,
         EingabeFFPage,
-        AnmeldungBewerterPage,
-        AnmeldungStationPage,
-        AuswahlPrüfStationPage,
         LernmodusPage,
         ÜbungsmodusPage,
         StartLayoutPage

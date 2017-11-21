@@ -1,11 +1,17 @@
 ﻿page-StartLayout {
 
-  $redcolor: #AB2524;
+  $redcolor: #FC0A1C;
 
   .content {
   }
 
-  #toolbarbutton{
+  #toolbarbutton {
     background-color: $redcolor !important;
+  }
+
+  #imglogo{
+    background-size:cover;
+    height:100%;
+    width:100%;
   }
 }

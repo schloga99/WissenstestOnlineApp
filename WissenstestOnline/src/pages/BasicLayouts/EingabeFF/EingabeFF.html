@@ -4,36 +4,22 @@
   </div><br />
 
   Bezirk<br>
-  <!--<div id="selectdiv">
-    <select id="bezirkinput" [(ngModel)]="currbezirk" name="bezirk" onmousedown="if(this.options.length>5){this.size=5;}" onchange='this.size=0;' onblur="this.size=0;">
-      <option *ngFor="let item of bezirke">
-        {{item}}
-      </option>
-    </select>
-  </div>-->
-
   <ion-item id="Bezirkitem">
     <ion-label>Bezirksauswahl</ion-label>
-    <ion-select [(ngModel)]="currbezirk">
-      <ion-option *ngFor="let item of bezirke"> {{item}}</ion-option>
-
+    <ion-select [(ngModel)]="currbezirk" (ngModelChange)="onchangeFF()">
+      <ng-container *ngFor="let item of bezirke">
+        <ion-option [value]="item">{{item}}</ion-option>
+      </ng-container>      
     </ion-select>
   </ion-item>
 
   Feuerwehr<br />
-  <!--<input type="text" name="feuerwehr" [(ngModel)]="currfeuerwehr" list="feuerwehrenOÖ" style="color:black" />
-  <datalist id="feuerwehrenOÖ">
-    <option value="Eggerding"></option>
-  </datalist>-->
-  <!--<select  name="feuerwehr" [(ngModel)]="currfeuerwehr" style="color:black" onmousedown="if(this.options.length>5){this.size=5;}" onchange='this.size=0;' onblur="this.size=0;">
-    <option value="Eggerding">Eggerding</option>
-  </select>
-  <br />-->
   <ion-item id="FFitem">
     <ion-label>Feuerwehrauswahl</ion-label>
     <ion-select [(ngModel)]="currfeuerwehr">
-      <ion-option>Eggerding</ion-option>
-      <ion-option>Natternbach</ion-option>
+      <ng-container *ngFor="let itemFF of FFbezirk">
+        <ion-option [value]="itemFF">{{itemFF}}</ion-option>
+      </ng-container>     
     </ion-select>
   </ion-item>
 
@@ -44,6 +30,5 @@
     <label id="status">Status: on</label><br />
     <label id="impressum">link</label><br />
   </div>
-
 
 </ion-content>

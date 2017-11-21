@@ -1,13 +1,10 @@
 ﻿page-AuswahlStufe {
-  $redcolor: #AB2524;
+  $redcolor: #FC0A1C;
 
   .content {
     background-color: white;
     color: $redcolor;
     font-size: 24px;
-  }
-  .content:focus {
-
   }
 
   #1 {
@@ -36,11 +33,6 @@
     color: black;
     background-color: white;
     width: 100%
-  }
-
-  input[type="button"]:focus {
-    background-color: $redcolor;
-    border-color: $redcolor;
   }
 
   #back {
