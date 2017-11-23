@@ -1,21 +1,15 @@
-﻿<ion-content class="content" >
+﻿<ion-content class="content" padding>
   <div text-center class="auswahlStation">
     Auswahl der Station
   </div>
 
   <ion-item id="stationsitem">
     <ion-label>Stationsauswahl</ion-label>
-    <ion-select [(ngModel)]="Stationen" multiple="true">
-      <ion-option *ngFor="let item of stations"> {{item}}</ion-option>
-      
+    <ion-select [(ngModel)]="Stationen" multiple="true" okText="Ok" cancelText="Abbrechen">
+      <ion-option *ngFor="let item of stations" [value]="item">{{item}}</ion-option>     
     </ion-select>
   </ion-item>
 
-
-  <!--<div id="modusbtns" radio-group [(ngModel)]="radiobuttons">
-    <input type="radio" (ionSelect)="mcqAnswer(1)" name="modus" id="learn" value="learn" checked />Lernen<br />
-    <input type="radio" (ionSelect)="mcqAnswer(1)" name="modus" id="practise" value="practice"/>Üben<br />
-  </div>-->
   <ion-list radio-group>
     <ion-item>
       <ion-label>Lernmodus</ion-label>
