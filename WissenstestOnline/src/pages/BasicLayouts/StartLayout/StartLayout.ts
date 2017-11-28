@@ -1,6 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { EingabeFFPage } from '../EingabeFF/EingabeFF';
 import { NavController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
     selector: 'page-StartLayout',
@@ -8,7 +9,7 @@ import { NavController } from 'ionic-angular';
 })
 export class StartLayoutPage {
 
-    constructor(public navCtrl: NavController) {
+    constructor(public navCtrl: NavController, public storage: Storage) {
 
     }
 

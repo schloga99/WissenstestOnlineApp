@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen, SQLite } from 'ionic-native';
-
+import { StatusBar, Splashscreen} from 'ionic-native';
+import { Storage } from '@ionic/storage';
 import { EingabeFFPage } from '../pages/BasicLayouts/EingabeFF/EingabeFF';
 import { AuswahlStationPage } from '../pages/BasicLayouts/AuswahlStation/AuswahlStation';
 import { AuswahlStufePage } from '../pages/BasicLayouts/AuswahlStufe/AuswahlStufe';
