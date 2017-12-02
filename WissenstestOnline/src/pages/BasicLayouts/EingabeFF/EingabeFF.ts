@@ -70,15 +70,22 @@ export class EingabeFFPage {
     }
 
     onchangeFF() {
-        console.log(this.currbezirk);
+        console.log(this.currbezirk +"= ausgewähter currbezirk");
         switch (this.currbezirk)
         {
             case this.bezirke[0]:
                 this.FFbezirk = ['Natternbach', 'Prambachkirchen',];
                 break;
             case this.bezirke[1]:
+                this.FFbezirk = [
+                    'Grieskirchen',                   
+                ];
                 break;
             case this.bezirke[2]:
+                this.FFbezirk = [
+                    'Grieskirchen',
+                    'Braunau am Inn',                   
+                ];
                 break;
             case this.bezirke[3]:
                 break;

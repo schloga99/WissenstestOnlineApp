@@ -9,6 +9,7 @@ import { LernmodusPage } from '../pages/ModusLayouts/Lernmodus/Lernmodus';
 import { ÜbungsmodusPage } from '../pages/ModusLayouts/Übungsmodus/Übungsmodus';
 import { StartLayoutPage } from '../pages/BasicLayouts/StartLayout/StartLayout';
 import { GlobalVars } from '../providers/globals';
+import { database } from '../providers/database';
 
 @Component({
     templateUrl: 'app.html',

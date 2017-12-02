@@ -22,8 +22,7 @@ import { Storage } from '@ionic/storage';
         StartLayoutPage
     ],
     imports: [
-        IonicModule.forRoot(MyApp)
-        
+        IonicModule.forRoot(MyApp)       
     ],
     bootstrap: [IonicApp],
     entryComponents: [

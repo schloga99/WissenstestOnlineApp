@@ -1,40 +1,33 @@
 ﻿import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class database {
 
-    constructor(public storage: Storage) { }
+    private IndxDb: IDBFactory;
+    public db: IDBDatabase;
+    dbName: "database";
+    constructor(public storage: Storage) {
+        this.IndxDb = window.indexedDB;
+        this.openDB();
 
-    //isFavorite(filmId) {
-    //    return this.getAllFavoriteFilms().then(result => {
-    //        return result && result.indexOf(filmId) !== -1;
-    //    });
-    //}
+    }
 
-    //favoriteFilm(filmId) {
-    //    return this.getAllFavoriteFilms().then(result => {
-    //        if (result) {
-    //            result.push(filmId);
-    //            return this.storage.set(STORAGE_KEY, result);
-    //        } else {
-    //            return this.storage.set(STORAGE_KEY, [filmId]);
-    //        }
-    //    });
-    //}
+    openDB() {
+        var req: IDBOpenDBRequest;
+        req = this.IndxDb.open(this.dbName, 1);
 
-    //unfavoriteFilm(filmId) {
-    //    return this.getAllFavoriteFilms().then(result => {
-    //        if (result) {
-    //            var index = result.indexOf(filmId);
-    //            result.splice(index, 1);
-    //            return this.storage.set(STORAGE_KEY, result);
-    //        }
-    //    });
-    //}
+        req.onupgradeneeded = function (e: any) {
 
-    //getAllFavoriteFilms() {
-    //    return this.storage.get(STORAGE_KEY);
-    //}
-
+            
+        }
+       
+    }
+ 
+    ResetDB() {
+        this.db.close();
+        this.IndxDb.deleteDatabase(this.dbName);
+        this.openDB();
+    }
 }

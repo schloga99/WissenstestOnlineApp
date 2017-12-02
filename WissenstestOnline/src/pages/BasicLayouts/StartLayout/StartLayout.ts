@@ -8,7 +8,7 @@ import { Storage } from '@ionic/storage';
     templateUrl: 'StartLayout.html'
 })
 export class StartLayoutPage {
-
+     
     constructor(public navCtrl: NavController, public storage: Storage) {
 
     }
