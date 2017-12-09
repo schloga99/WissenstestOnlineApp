@@ -8,9 +8,12 @@ import { LernmodusPage } from '../pages/ModusLayouts/Lernmodus/Lernmodus';
 import { ÜbungsmodusPage } from '../pages/ModusLayouts/Übungsmodus/Übungsmodus';
 import { StartLayoutPage } from '../pages/BasicLayouts/StartLayout/StartLayout';
 import { GlobalVars } from '../providers/globals';
-import { database } from '../providers/database';
 import { Storage } from '@ionic/storage';
+import { database } from '../providers/database';
 
+export function provideStorage() {
+    return new Storage(['sqlite', 'websql', 'indexeddb'], { name: 'database' });
+}
 @NgModule({
     declarations: [
         MyApp,
@@ -21,8 +24,8 @@ import { Storage } from '@ionic/storage';
         ÜbungsmodusPage,
         StartLayoutPage
     ],
-    imports: [
-        IonicModule.forRoot(MyApp)       
+    imports: [       
+        IonicModule.forRoot(MyApp)      
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -34,7 +37,11 @@ import { Storage } from '@ionic/storage';
         ÜbungsmodusPage,
         StartLayoutPage
     ],
-    providers: [Storage, { provide: ErrorHandler, useClass: IonicErrorHandler }, GlobalVars, database]
-    
+    providers: [
+        { provide: ErrorHandler, useClass: IonicErrorHandler }, GlobalVars, database,
+        { provide: Storage, useFactory: provideStorage }, Storage
+    ]
 })
 export class AppModule { }
+
+

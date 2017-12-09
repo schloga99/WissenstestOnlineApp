@@ -2,6 +2,7 @@
 import { NavController, ViewController } from 'ionic-angular';
 import { AuswahlStufePage } from "../AuswahlStufe/AuswahlStufe";
 import { GlobalVars } from "../../../providers/globals";
+import { Storage } from '@ionic/storage';
 
 @Component({
     selector: 'page-EingabeFF',
@@ -13,7 +14,7 @@ export class EingabeFFPage {
     bezirke: any;
     FFbezirk: any;
 
-    constructor(public navCtrl: NavController, private globalvar: GlobalVars) {
+    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage) {
         this.currfeuerwehr = "";
         this.currbezirk = "";
         this.bezirke = [
@@ -49,8 +50,7 @@ export class EingabeFFPage {
             'Urfahr-Umgebung',
             'Vöcklabruck',
             'Wels-Land',
-        ];
-       
+        ];       
     }
 
     onLink(url: string) {
@@ -65,7 +65,9 @@ export class EingabeFFPage {
             this.navCtrl.push(AuswahlStufePage);
 
         } else {
-
+            this.storage.get('key').then((val) => { // retrive
+                console.log('Your value is', val);
+            })
         }
     }
 

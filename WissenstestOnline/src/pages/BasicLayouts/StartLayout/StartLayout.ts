@@ -7,16 +7,19 @@ import { Storage } from '@ionic/storage';
     selector: 'page-StartLayout',
     templateUrl: 'StartLayout.html'
 })
-export class StartLayoutPage {
-     
-    constructor(public navCtrl: NavController, public storage: Storage) {
 
+
+export class StartLayoutPage {
+
+    constructor(public navCtrl: NavController) {             
+     //hier nichts mit storage machen (da es sonst vielleicht nicht geladen wird wegen der RootPage)
     }
 
     onLink(url: string) {
         window.open(url);
     }
-    loadEingabeFF() {
+
+    loadEingabeFF() {          
         this.navCtrl.push(EingabeFFPage);
     }
 }

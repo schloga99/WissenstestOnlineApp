@@ -16,15 +16,19 @@ import { database } from '../providers/database';
     
 })
 export class MyApp {
-    rootPage = StartLayoutPage;
+    rootPage = StartLayoutPage; 
 
-    constructor(platform: Platform) {
+    constructor(platform: Platform, public storage: Storage, public database: database) {        
         platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
+            // Here you can do any higher level native things you might need.                      
             StatusBar.styleDefault();
             Splashscreen.hide();
-            
+            this.initStorageData();
         });
+    }
+    initStorageData() { //Hier werden ALLE Daten für den Wissenstest geladen (in den Storage gespeichert)
+        //this.storage.set('key', 'value'); // store
+        this.database.setstorage();
     }
 }
