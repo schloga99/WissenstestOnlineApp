@@ -67,10 +67,11 @@ export class EingabeFFPage {
         } else {
             this.storage.get('key').then((val) => { // retrive
                 console.log('Your value is', val);
+                
             })
         }
     }
-
+    data = [];
     onchangeFF() {
         console.log(this.currbezirk +"= ausgewähter currbezirk");
         switch (this.currbezirk)
@@ -90,6 +91,14 @@ export class EingabeFFPage {
                 ];
                 break;
             case this.bezirke[3]:
+                
+                this.storage.get('key').then((val) => { // retrive
+                    console.log('Your value is', val);
+                    this.data = val || [];
+                    this.FFbezirk.splice(0, this.FFbezirk.length);
+                    this.FFbezirk[0] = this.data;
+                    
+                })
                 break;
             case this.bezirke[4]:
                 break;
