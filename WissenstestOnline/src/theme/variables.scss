@@ -1,4 +1,4 @@
-// Ionic Variables and Theming. For more info, please see:
+﻿// Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
 
@@ -13,7 +13,9 @@ $font-path: "../assets/fonts";
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
 
-
+.alert-checkbox-label {
+  white-space: normal !important;
+}
 
 // Named Color Variables
 // --------------------------------------------------
@@ -32,6 +34,7 @@ $colors: (
 );
 
 
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
@@ -43,13 +46,13 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+//$toolbar-background: map-get($colors, danger);
 
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
 
 
 

@@ -5,8 +5,10 @@
 
   <ion-item id="stationsitem">
     <ion-label>Stationsauswahl</ion-label>
-    <ion-select [(ngModel)]="Stationen" multiple="true" okText="Ok" cancelText="Abbrechen">
-      <ion-option *ngFor="let item of stations" [value]="item">{{item}}</ion-option>     
+    <ion-select class="selectstation"  [(ngModel)]="Stationen" multiple="true" okText="Ok" cancelText="Abbrechen">
+      <optgroup label="Group 1">
+        <ion-option *ngFor="let item of stations" [value]="item">{{item}}</ion-option>
+      </optgroup>
     </ion-select>
   </ion-item>
 

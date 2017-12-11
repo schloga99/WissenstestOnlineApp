@@ -17,23 +17,26 @@ export class EingabeFFPage {
     constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage) {
         this.currfeuerwehr = "";
         this.currbezirk = "";
-        this.bezirke = [
-            'Grieskirchen',
-            'Braunau am Inn',
-            'Eferding',
-            'Freistadt',
-            'Gmunden',
-            'Kirchdorf an der Krems',
-            'Linz-Land',
-            'Perg',
-            'Ried im Innkreis',
-            'Rohrbach',
-            'Schärding',
-            'Steyr-Land',
-            'Urfahr-Umgebung',
-            'Vöcklabruck',
-            'Wels-Land',
-        ];
+        //this.bezirke = [
+        //    'Grieskirchen',
+        //    'Braunau am Inn',
+        //    'Eferding',
+        //    'Freistadt',
+        //    'Gmunden',
+        //    'Kirchdorf an der Krems',
+        //    'Linz-Land',
+        //    'Perg',
+        //    'Ried im Innkreis',
+        //    'Rohrbach',
+        //    'Schärding',
+        //    'Steyr-Land',
+        //    'Urfahr-Umgebung',
+        //    'Vöcklabruck',
+        //    'Wels-Land',
+        //];
+        this.storage.get('Bezirk').then((val) => { // retrive           
+            this.bezirke = val;
+        })
         this.FFbezirk = [
             'Grieskirchen',
             'Braunau am Inn',

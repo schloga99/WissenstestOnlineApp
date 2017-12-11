@@ -16,7 +16,7 @@ import { database } from '../providers/database';
     
 })
 export class MyApp {
-    rootPage = StartLayoutPage; 
+    rootPage = AuswahlStationPage; 
 
     constructor(platform: Platform, public storage: Storage, public database: database) {        
         platform.ready().then(() => {
@@ -28,7 +28,12 @@ export class MyApp {
         });
     }
     initStorageData() { //Hier werden ALLE Daten für den Wissenstest geladen (in den Storage gespeichert)
-        //this.storage.set('key', 'value'); // store
-        this.database.setstorage();
+        this.storage.length().then((value) => {
+            console.log(value + " keys in storage");
+            if (value == null) {
+                this.database.setstorage();
+                console.log("storage was empty, set storage")
+            }
+        })   
     }
 }
