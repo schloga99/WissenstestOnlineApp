@@ -17,43 +17,10 @@ export class EingabeFFPage {
     constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage) {
         this.currfeuerwehr = "";
         this.currbezirk = "";
-        //this.bezirke = [
-        //    'Grieskirchen',
-        //    'Braunau am Inn',
-        //    'Eferding',
-        //    'Freistadt',
-        //    'Gmunden',
-        //    'Kirchdorf an der Krems',
-        //    'Linz-Land',
-        //    'Perg',
-        //    'Ried im Innkreis',
-        //    'Rohrbach',
-        //    'Schärding',
-        //    'Steyr-Land',
-        //    'Urfahr-Umgebung',
-        //    'Vöcklabruck',
-        //    'Wels-Land',
-        //];
+
         this.storage.get('Bezirk').then((val) => { // retrive           
             this.bezirke = val;
         })
-        this.FFbezirk = [
-            'Grieskirchen',
-            'Braunau am Inn',
-            'Eferding',
-            'Freistadt',
-            'Gmunden',
-            'Kirchdorf an der Krems',
-            'Linz-Land',
-            'Perg',
-            'Ried im Innkreis',
-            'Rohrbach',
-            'Schärding',
-            'Steyr-Land',
-            'Urfahr-Umgebung',
-            'Vöcklabruck',
-            'Wels-Land',
-        ];       
     }
 
     onLink(url: string) {
@@ -61,46 +28,45 @@ export class EingabeFFPage {
     }
     weiterbtn() {
         console.log(this.currfeuerwehr);
-        if (this.currfeuerwehr != "") //noch falsch, muss überprüft mit feuerwehr werden
+        if (this.currfeuerwehr != "")
         {
-            
             this.globalvar.setfeuerwehrandbezirk(this.currfeuerwehr, this.currbezirk);
             this.navCtrl.push(AuswahlStufePage);
 
         } else {
-            this.storage.get('key').then((val) => { // retrive
-                console.log('Your value is', val);
-                
-            })
+            console.log("hier muss noch Meldung sein (Sie müssen eine Feuerwehr angeben");
         }
     }
     data = [];
     onchangeFF() {
-        console.log(this.currbezirk +"= ausgewähter currbezirk");
-        switch (this.currbezirk)
-        {
+        console.log(this.currbezirk + " ist der ausgewählte currbezirk");
+        switch (this.currbezirk) {
             case this.bezirke[0]:
                 this.FFbezirk = ['Natternbach', 'Prambachkirchen',];
+                this.storage.get('Bezirk0FF').then((val) => { // retrive                              
+                    this.data = val || [];
+                    console.log(this.data);
+                    this.FFbezirk.splice(0, this.FFbezirk.length);
+                    this.FFbezirk = this.data;
+                })
                 break;
             case this.bezirke[1]:
                 this.FFbezirk = [
-                    'Grieskirchen',                   
+                    'Grieskirchen',
                 ];
                 break;
             case this.bezirke[2]:
                 this.FFbezirk = [
                     'Grieskirchen',
-                    'Braunau am Inn',                   
+                    'Braunau am Inn',
                 ];
                 break;
             case this.bezirke[3]:
-                
-                this.storage.get('key').then((val) => { // retrive
-                    console.log('Your value is', val);
+                this.storage.get('Bezirk').then((val) => { // retrive
+                    console.log('Your Bezirk is', val);
                     this.data = val || [];
                     this.FFbezirk.splice(0, this.FFbezirk.length);
-                    this.FFbezirk[0] = this.data;
-                    
+                    this.FFbezirk = this.data;
                 })
                 break;
             case this.bezirke[4]:
@@ -125,7 +91,7 @@ export class EingabeFFPage {
                 break;
             case this.bezirke[14]:
                 break;
-            
+
         }
     }
 }

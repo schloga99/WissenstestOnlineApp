@@ -2,27 +2,28 @@
 import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
 import { AuswahlStufePage } from "../AuswahlStufe/AuswahlStufe";
+import { LernmodusPage } from "../../ModusLayouts/Lernmodus/Lernmodus";
+import { ÜbungsmodusPage } from "../../ModusLayouts/Übungsmodus/Übungsmodus";
+import { Storage } from '@ionic/storage';
 
 @Component({
     selector: 'page-AuswahlStation',
     templateUrl: 'AuswahlStation.html'
 })
 export class AuswahlStationPage {
-    stations: any;
-    ausgewähltestations: any;
+    stations: any; //angezeigte Stationen
     stufe: any;
     stufeoutput: any;
     aktFF: any;
     checkedradiobutton: any;
-    Stationen: any;
+    ausgewaelteStationen: any; //ausgewähltestationen
 
-    constructor(public navCtrl: NavController, private globalvar: GlobalVars) {
+    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage) {
         this.checkedradiobutton = "";
         this.stufeoutput = "";
         this.aktFF = this.globalvar.getfeuerwehr();
         this.stufe = this.globalvar.getaktlstufe();
-        if (this.stufe == 1)
-        {
+        if (this.stufe == 1) {
             this.stufeoutput = "Bronze";
         }
         if (this.stufe == 2) {
@@ -31,20 +32,14 @@ export class AuswahlStationPage {
         if (this.stufe == 3) {
             this.stufeoutput = "Gold";
         }
-
-        this.stations = [
-            'Allgemeinwissen',
-            'Dienstgrade',
-            'Wasserführende Armaturen + technische Geräte',
-            'Vorbeugender Brandschutz',
-            'Seilknoten',
-            'Nachrichtenübermittlung',
-            'Verkehrserziehung und Absichern von Einsatzstellen',
-            'Erste Hilfe',
-            'Taktik',
-            'Gefährliche Stoffe',
-            'Atem- und Körperschutz',
-        ];
+        this.storage.ready().then(() => {
+            this.storage.get('Stations').then((val) => { // retrive           
+                this.stations = val;
+                console.log(this.stations);
+                console.log("alle Stationen gespeichert");
+            })
+        });
+        
     }
 
     onLink(url: string) {
@@ -52,8 +47,7 @@ export class AuswahlStationPage {
     }
 
     modeAnswer(value) {
-        if (value == 1)
-        {
+        if (value == 1) {
             this.checkedradiobutton = "learn";
         }
         if (value == 2) {
@@ -62,28 +56,19 @@ export class AuswahlStationPage {
     }
 
     startbtn() {
-        if (this.checkedradiobutton == "learn") {
+        console.log(this.ausgewaelteStationen);
+        if (this.checkedradiobutton == "learn" && this.ausgewaelteStationen != null) {
             console.log("lernmodus");
+            this.globalvar.setstationen(this.ausgewaelteStationen);
+            this.navCtrl.push(LernmodusPage);
         }
-        if (this.checkedradiobutton == "practise") {
+        if (this.checkedradiobutton == "practise" && this.ausgewaelteStationen != null) {
             console.log("Übungsmodus");
+            this.globalvar.setstationen(this.ausgewaelteStationen);
+            this.navCtrl.push(ÜbungsmodusPage);
         }
-
-
-        //if (this.stufe != -1) //noch falsch, muss überprüft mit feuerwehr werden
-        //{
-
-        //    this.globalvar.setstufe(this.stufe);
-        //    this.navCtrl.push(AuswahlStationPage);
-
-        //} else {
-
-        //}
     }
     backbtn() {
-
-        //this.globalvar.setstufe(-1);
-        //this.navCtrl.push(EingabeFFPage);
         this.navCtrl.push(AuswahlStufePage);
     }
 }

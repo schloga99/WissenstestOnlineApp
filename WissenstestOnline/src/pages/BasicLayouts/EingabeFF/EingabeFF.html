@@ -9,7 +9,7 @@
     <ion-select [(ngModel)]="currbezirk" (ngModelChange)="onchangeFF()">
       <ng-container *ngFor="let item of bezirke">
         <ion-option [value]="item">{{item}}</ion-option>
-      </ng-container>      
+      </ng-container>
     </ion-select>
   </ion-item>
 
@@ -19,15 +19,14 @@
     <ion-select [(ngModel)]="currfeuerwehr">
       <ng-container *ngFor="let itemFF of FFbezirk">
         <ion-option [value]="itemFF">{{itemFF}}</ion-option>
-      </ng-container>     
+      </ng-container>
     </ion-select>
   </ion-item>
 
-  <a class="arrow"  (tap)="weiterbtn()" >weiter</a>
+  <a class="arrow" (tap)="weiterbtn()">weiter</a>
 
   <div class="labels">
     <label id="versionsnummer">v. 1.0</label><br />
-    <label id="status">Status: on</label><br />
     <label id="impressum">link</label><br />
   </div>
 

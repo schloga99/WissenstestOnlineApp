@@ -13,6 +13,7 @@ export class GlobalVars {
         this.aktlbezirk = "";
         this.aktlstufe = -1;
         this.modus = -1;
+        this.ausgewaeltestationen = "";
     }
 
     setfeuerwehrandbezirk(valuef,valueb) {
@@ -30,8 +31,8 @@ export class GlobalVars {
     {
         return this.aktlstufe;
     }
-    setstationen() {
-
+    setstationen(value) {
+        this.ausgewaeltestationen = value;
     }
     getstationen() {
         return this.ausgewaeltestationen;

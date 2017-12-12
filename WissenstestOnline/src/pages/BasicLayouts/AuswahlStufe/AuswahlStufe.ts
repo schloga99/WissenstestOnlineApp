@@ -20,7 +20,7 @@ export class AuswahlStufePage{
 
     ionViewWillLoad() {
         this.aktFF = this.globalvar.getfeuerwehr();
-        console.log(this.aktFF);
+
     }
 
 
@@ -29,14 +29,12 @@ export class AuswahlStufePage{
     }
 
     weiterbtn() {
-        console.log(this.stufe);
-        if (this.stufe != -1) //noch falsch, muss überprüft mit feuerwehr werden
+        if (this.stufe != -1)
         {
-
             this.globalvar.setstufe(this.stufe);
             this.navCtrl.push(AuswahlStationPage);
 
-        } else {
+        } else { //Meldung erscheinen (Bitte eine Stufe auswählen)
 
         }
     }

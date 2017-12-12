@@ -1,6 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
+import { AuswahlStationPage } from '../../BasicLayouts/AuswahlStation/AuswahlStation'
 
 @Component({
     selector: 'page-Übungsmodus',
@@ -14,5 +15,9 @@ export class ÜbungsmodusPage {
 
     onLink(url: string) {
         window.open(url);
+    }
+
+    abbruchbtn() {
+        this.navCtrl.push(AuswahlStationPage);
     }
 }
