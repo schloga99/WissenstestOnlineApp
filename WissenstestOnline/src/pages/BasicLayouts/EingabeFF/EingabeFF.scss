@@ -13,13 +13,27 @@
     font-size: 24px;
   }
 
+
+  .buttonweiter {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    background-color: $redcolor;
+  }
+
   .labels {
     font-size: 16px;
     text-align: left;
-    position: absolute;
+    position: relative;
     bottom: 0;
-    margin-bottom: 10px;
+    margin-left: 10px;
     font-weight: bold;
+    color: $redcolor;
+  }
+
+  .ionicbtnweiter {
+    zoom: 1.5;
+    color: white;
   }
 
   #start {

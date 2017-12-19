@@ -3,6 +3,8 @@ import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
 import { AuswahlStationPage } from '../../BasicLayouts/AuswahlStation/AuswahlStation'
 import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
+
 @Component({
     selector: 'page-Lernmodus',
     templateUrl: 'Lernmodus.html'
@@ -16,13 +18,20 @@ export class LernmodusPage {
     aktFF: any;
     fragenr: number;
 
-    constructor(public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage) {
+    constructor(public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) {
         this.aktstation = "";       
         this.aktFF = this.globalvar.getfeuerwehr();
         this.storage.ready().then(() => {
             this.storage.get('Fragen').then((val) => { // retrive           
                 this.Frage = val;
                 console.log("erste Frage gesetzt");
+            })
+        });
+        this.storage.ready().then(() => {
+            this.storage.get('testinfo').then((val) => { // retrive                                           
+                console.log(val);
+                this.testinfo = val[0];
+                console.log(this.testinfo);
             })
         });
         
@@ -50,7 +59,15 @@ export class LernmodusPage {
 
         this.navCtrl.push(AuswahlStationPage);
     }
+    testinfo: any;
     zusatzinfobutton() {
+        
+        let alert = this.alertController.create({
+            title: "Zusatzinfo",
+            message: this.testinfo,
+            buttons: ['zurück']
+        });
+        alert.present();
 
     }
     nextbtn() {
@@ -78,6 +95,7 @@ export class LernmodusPage {
                     this.Antwort3 = val[0][3];
                     this.Antwort4 = val[0][4];
                     console.log("Antwort gesetzt");
+                    
                 }
             })
         });

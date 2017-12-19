@@ -3,6 +3,8 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class database {
+    // INFO
+    // Es gibt 11 Stationen
 
     constructor(public storage: Storage) {
 
@@ -60,10 +62,25 @@ export class database {
         ["1", 10, 20, 30, 40],
         ["2", "Herr...", "Herr....", "Vize...", "FeuerwehrtestDaten"]
     ];
+    FragenBronzeStation1 = [ 
+        ["0", "Nenne die Funktionen der Kommandomitglieder?"],
+        ["1", "Wie heißt dein Feuerwehrkommandant?"],
+        ["2", "Welche Mitglieder hat die Feuerwehr?"],
+        ["3", "Welche Feuerwehrfahrzeuge besitzt deine Feuerwehr?"]
+    ];
+    FragenSilberStation1 = [
+        ["0", "Wie heißt dein Landesfeuerwehrommandant?"],
+        ["1", "Welche Arten von Feuerwehren gibt es?"],
+        ["2", "Wo befinden sich das LFKDO und die LFS?"]
+    ];
+    FragenGoldStation1 = [
+        ["0", "Für wie viele Jahre wird das Feuerwehrkommando gewählt?"],
+        ["1", "Wie heißt die kleinste, taktisch selbständige, einsetzbare Feuerwehreinheit und aus wie vielen Personen besteht sie?"],
+        ["2", "Ab welchem Alter darf man aktiven Feuerwehrdienst leisten?"]
+    ];
     typendefinitionen = ["Fragetyp", "Antworttyp", "ZusätzlichTyp"];
-    fragetypen = ["Buttons mit Textantworten", "Slider", "Date Picker"];
-
-
+    fragetypen = ["Labels", "Slider", "Date Picker"];
+    testinfo = ["Labels", "Slider", "Date Picker"];
 
     setstorage() {       
         this.storage.set('Bezirk', this.bezirke);
@@ -72,5 +89,9 @@ export class database {
         this.storage.set('Fragen', this.Fragen);
         this.storage.set('Fragetypen', this.fragetypen);
         this.storage.set('Antworten', this.Antworten);
+        this.storage.set('FragenBronzeStation1', this.FragenBronzeStation1);
+        this.storage.set('FragenSilberStation1', this.FragenSilberStation1);
+        this.storage.set('FragenGoldStation1', this.FragenGoldStation1);
+        this.storage.set('testinfo', this.testinfo);
     }
 }

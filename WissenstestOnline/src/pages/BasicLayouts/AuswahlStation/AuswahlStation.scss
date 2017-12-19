@@ -8,6 +8,30 @@
     font-size: 24px;
   }
 
+  .ionicbtnweiter {
+    zoom: 1.5;
+    color: white;
+  }
+
+  .buttonweiter {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    background-color: $redcolor;
+  }
+
+  .ionicbtnzurück {
+    zoom: 1.5;
+    color: white;
+  }
+
+  .buttonzurück {
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    background-color: $redcolor;
+  }
+
   #aktFF {
     font-size: 16px;
     text-align: left;
@@ -110,5 +134,4 @@
   .auswahlStation {
     margin-bottom: 30px;
   }
-
 }

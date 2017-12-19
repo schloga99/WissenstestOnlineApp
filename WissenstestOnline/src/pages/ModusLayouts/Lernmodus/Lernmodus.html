@@ -31,23 +31,26 @@
     <ion-card-content>
       <ion-grid>
         <ion-row>
-          <ion-col id="col1" col-3>{{Antwort1}}</ion-col> 
-          <ion-col id="col1" col-3>{{Antwort2}}</ion-col> 
-          <ion-col id="col1" col-3>{{Antwort3}}</ion-col>    
-          <ion-col id="col1" col-3>{{Antwort4}}</ion-col> 
+          <ion-col style="border:1px solid;" id="col1"  col-3>{{Antwort1}}</ion-col> 
+          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort2}}</ion-col> 
+          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort3}}</ion-col>    
+          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort4}}</ion-col> 
         </ion-row>
+   
       </ion-grid>     
     </ion-card-content>
-  </ion-card>
 
-  <label style="color: #FC0A1C;" id="infos"> {{aktFF}}, {{stufeoutput}}, {{aktstation}}, Frage {{fragenr}}</label>
+  </ion-card>
+  <label style="color: #FC0A1C;" id="infos"> <!--{{aktFF}},--> {{stufeoutput}}, {{aktstation}}, Frage {{fragenr}}</label>
+
+  
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-row>
       <ion-col no-padding>
-        <button (tap)="nextbtn()" no-margin ion-button full large color="primary">Letzte Frage</button>
+        <button (tap)="nextbtn()"  no-margin ion-button full large color="primary">Letzte Frage</button>
       </ion-col>
       <ion-col no-padding>
         <button (tap)="lastbtn()" no-margin ion-button full large color="danger">Nächste Frage</button>

@@ -10,8 +10,29 @@
     <input id="3" type="button" value="Gold"(tap)="replyClick(3)"[style.background-color]="id3Color"><br>
   </div>
 
-  <a role="button" (tap)="weiterbtn()" id="weiter">weiter</a>
-  <a role="button" (tap)="backbtn()" id="back">back</a>
+  <!--<a role="button" (tap)="weiterbtn()" id="weiter">weiter</a>
+  <a role="button" (tap)="backbtn()" id="back">back</a>-->
   <label id="aktFF" >{{aktFF}}</label><br />   
-
+  <!--<button class="buttonweiter" large ion-button icon-only (tap)="weiterbtn()">
+    <ion-icon class="ionicbtnweiter" ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+  </button>
+  <button class="buttonzurück" large ion-button icon-only (tap)="backbtn()">
+    <ion-icon class="ionicbtnzurück" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+  </button>-->
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col no-padding>
+        <button class="buttonzurück" style="width:49.5%;"  no-margin large ion-button icon-only (tap)="backbtn()">
+          <ion-icon class="ionicbtnzurück" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col no-padding>
+        <button class="buttonweiter" style="width:49.5%;"  no-margin large ion-button icon-only (tap)="weiterbtn()">
+          <ion-icon class="ionicbtnweiter" ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
