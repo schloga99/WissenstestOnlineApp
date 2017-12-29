@@ -88,7 +88,7 @@ export class LernmodusPage {
 
                 if (aktfrageNr == val[0][0]) {
                     this.fragenr = 1;
-                    console.log("AktuelleFrageNRinStorage = "+ aktfrageNr);
+                    console.log("AktuelleFrageAntwortNummer = "+ aktfrageNr);
                     console.log("Frage: "+this.fragenr);
                     this.Antwort1 = val[0][1];
                     this.Antwort2 = val[0][2];

@@ -16,7 +16,7 @@ import { database } from '../providers/database';
     
 })
 export class MyApp {
-    rootPage = LernmodusPage; 
+    rootPage = EingabeFFPage; 
 
     constructor(platform: Platform, public storage: Storage, public database: database) {        
         platform.ready().then(() => {

@@ -1,18 +1,17 @@
 ﻿page-EingabeFF {
   $redcolor: #FC0A1C;
 
-  .auswahlFF {
-    background-color: white;
-    color: $redcolor;
-    font-size: 24px;
-  }
-
   .content {
     background-color: white;
     color: $redcolor;
     font-size: 24px;
   }
 
+  .auswahlFF {
+    background-color: white;
+    color: $redcolor;
+    font-size: 24px;
+  }
 
   .buttonweiter {
     bottom: 0;
@@ -36,59 +35,6 @@
     color: white;
   }
 
-  #start {
-    position: absolute;
-    cursor: pointer;
-    display: inline-block;
-    bottom: 0;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    right: 0;
-    height: 40px;
-    line-height: 2.5em;
-    vertical-align: middle;
-    text-align: center;
-    width: 90px;
-    color: black;
-    background-color: $redcolor;
-  }
-  /*.arrow {
-    bottom: 0;
-    right: 0;
-    cursor: pointer;
-    display: inline-block;
-    height: 40px;
-    margin-right: 40px;
-    margin-bottom: 20px;
-    position: absolute;
-    line-height: 1.7em;
-    padding-left: 1em;
-    padding-right: 30px;
-    background: #DF3A01;
-    color: white;
-
-    &:after {
-      // triangle hover color
-      border-left: 20px solid #DF3A01;
-    }
-  }
-
-  .arrow:after {
-    // the triangle
-    content: "";
-    position: absolute;
-    border-bottom: 20px solid transparent;
-    border-top: 20px solid transparent;
-    height: 0px;
-    width: 0px;
-    margin-right: -20px;
-    right: 0;
-  }*/
-  #bezirkinput {
-    margin-bottom: 20px;
-    color: black;
-  }
-
   select {
     cursor: pointer;
     color: black;
@@ -96,39 +42,5 @@
     margin: auto;
     width: 100%;
     border: 2px solid;
-  }
-
-  .arrow {
-    bottom: 0;
-    right: 0;
-    cursor: pointer;
-    display: inline-block;
-    height: 40px;
-    margin-right: 40px;
-    margin-bottom: 20px;
-    position: absolute;
-    line-height: 1.7em;
-    padding-left: 1em;
-    padding-right: 35px;
-    background: $redcolor;
-    color: white;
-    width: 130px;
-
-    &:after {
-      // triangle hover color
-      border-left: 20px solid $redcolor;
-    }
-  }
-
-  .arrow:after {
-    // the triangle
-    content: "";
-    position: absolute;
-    border-bottom: 20px solid transparent;
-    border-top: 20px solid transparent;
-    height: 0px;
-    width: 0px;
-    margin-right: -20px;
-    right: 0;
   }
 }

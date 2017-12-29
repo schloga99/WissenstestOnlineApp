@@ -26,10 +26,10 @@ export class EingabeFFPage {
     onLink(url: string) {
         window.open(url);
     }
+
     weiterbtn() {
-        console.log(this.currfeuerwehr);
-        if (this.currfeuerwehr != "")
-        {
+        console.log(this.currfeuerwehr + " = currentfeuerwehr");
+        if ((typeof this.currfeuerwehr != 'object') && (this.currfeuerwehr != "")) {        //if ( (this.currfeuerwehr != "") && (this.currfeuerwehr.length != 0) && (this.currfeuerwehr != null) && (typeof this.currfeuerwehr != 'object'))
             this.globalvar.setfeuerwehrandbezirk(this.currfeuerwehr, this.currbezirk);
             this.navCtrl.push(AuswahlStufePage);
 
@@ -40,13 +40,15 @@ export class EingabeFFPage {
     data = [];
     onchangeFF() {
         console.log(this.currbezirk + " ist der ausgewählte currbezirk");
+        this.currfeuerwehr = "";
         switch (this.currbezirk) {
-            case this.bezirke[0]:
-                this.FFbezirk = ['Natternbach', 'Prambachkirchen',];
+            case this.bezirke[0]:           
                 this.storage.get('Bezirk0FF').then((val) => { // retrive                              
                     this.data = val || [];
                     console.log(this.data);
-                    this.FFbezirk.splice(0, this.FFbezirk.length);
+                    if (this.FFbezirk != null) {
+                        this.FFbezirk.splice(0, this.FFbezirk.length);
+                    }    
                     this.FFbezirk = this.data;
                 })
                 break;
@@ -65,7 +67,10 @@ export class EingabeFFPage {
                 this.storage.get('Bezirk').then((val) => { // retrive
                     console.log('Your Bezirk is', val);
                     this.data = val || [];
-                    this.FFbezirk.splice(0, this.FFbezirk.length);
+                    if (this.FFbezirk != null)
+                    {
+                        this.FFbezirk.splice(0, this.FFbezirk.length);
+                    }                    
                     this.FFbezirk = this.data;
                 })
                 break;

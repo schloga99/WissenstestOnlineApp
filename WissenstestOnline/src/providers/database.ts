@@ -80,7 +80,7 @@ export class database {
     ];
     typendefinitionen = ["Fragetyp", "Antworttyp", "ZusätzlichTyp"];
     fragetypen = ["Labels", "Slider", "Date Picker"];
-    testinfo = ["Labels", "Slider", "Date Picker"];
+    testinfo = ["Hier wurden Labels verwendet ..... mehr Text", "Hier wurden Slider verwendet ..... mehr Text", "Hier wurden Date Picker verwendet ..... mehr Text"];
 
     setstorage() {       
         this.storage.set('Bezirk', this.bezirke);
