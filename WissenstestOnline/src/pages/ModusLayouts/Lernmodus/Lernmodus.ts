@@ -18,6 +18,13 @@ export class LernmodusPage {
     aktFF: any;
     fragenr: number;
 
+    hideantwort: any;
+    hideradio: any;
+    hidelabel: any;
+    hidedate: any;
+    hideslider: any;
+
+
     constructor(public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) {
         this.aktstation = "";       
         this.aktFF = this.globalvar.getfeuerwehr();

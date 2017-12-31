@@ -5,6 +5,7 @@ import { AuswahlStufePage } from "../AuswahlStufe/AuswahlStufe";
 import { LernmodusPage } from "../../ModusLayouts/Lernmodus/Lernmodus";
 import { ÜbungsmodusPage } from "../../ModusLayouts/Übungsmodus/Übungsmodus";
 import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
 
 @Component({
     selector: 'page-AuswahlStation',
@@ -18,7 +19,7 @@ export class AuswahlStationPage {
     checkedradiobutton: any;
     ausgewaelteStationen: any; //ausgewähltestationen
 
-    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage) {
+    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) {
         this.checkedradiobutton = "";
         this.stufeoutput = "";
         this.aktFF = this.globalvar.getfeuerwehr();
@@ -39,7 +40,7 @@ export class AuswahlStationPage {
                 console.log("alle Stationen gespeichert");
             })
         });
-        
+
     }
 
     onLink(url: string) {
@@ -62,10 +63,19 @@ export class AuswahlStationPage {
             this.globalvar.setstationen(this.ausgewaelteStationen);
             this.navCtrl.push(LernmodusPage);
         }
-        if (this.checkedradiobutton == "practise" && this.ausgewaelteStationen != null) {
+        else if (this.checkedradiobutton == "practise" && this.ausgewaelteStationen != null) {
             console.log("Übungsmodus");
             this.globalvar.setstationen(this.ausgewaelteStationen);
             this.navCtrl.push(ÜbungsmodusPage);
+        }
+        else {
+            let alert = this.alertController.create({
+
+                title: "Warnung",
+                message: "Sie müssen eine Station und einen Modus auswählen!",
+                buttons: ['zurück']
+            });
+            alert.present();
         }
     }
     backbtn() {

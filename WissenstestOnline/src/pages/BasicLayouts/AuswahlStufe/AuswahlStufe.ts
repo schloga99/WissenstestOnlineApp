@@ -3,6 +3,7 @@ import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
 import { EingabeFFPage } from "../EingabeFF/EingabeFF";
 import { AuswahlStationPage } from "../AuswahlStation/AuswahlStation";
+import { AlertController } from 'ionic-angular';
 
 @Component({
     selector: 'page-AuswahlStufe',
@@ -13,7 +14,7 @@ export class AuswahlStufePage{
     stufe: any;
     aktFF: any;
 
-    constructor(public navCtrl: NavController, private globalvar: GlobalVars) {
+    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public alertController: AlertController) {
         this.stufe = -1;
         
     }    
@@ -34,8 +35,13 @@ export class AuswahlStufePage{
             this.globalvar.setstufe(this.stufe);
             this.navCtrl.push(AuswahlStationPage);
 
-        } else { //Meldung erscheinen (Bitte eine Stufe auswählen)
-
+        } else { 
+            let alert = this.alertController.create({
+                title: "Warnung",
+                message: "Sie müssen eine Stufe auswählen!",
+                buttons: ['zurück']
+            });
+            alert.present();
         }
     }
 

@@ -12,7 +12,7 @@
     <ion-buttons right>
       <ion-row>
         <ion-col no-padding>
-          <button  (tap)="zusatzinfobutton()" no-margin ion-button color="danger">? - Info</button>
+          <button (tap)="zusatzinfobutton()" no-margin ion-button color="danger">? - Info</button>
         </ion-col>
         <ion-col end no-padding>
         </ion-col>
@@ -22,38 +22,60 @@
 </ion-header>
 
 <ion-content class="content" padding>
-  <ion-card class="ion-card1" >
+  <ion-card class="ion-cardFrage">
     <ion-card-content text-wrap>
       {{Frage}}
-</ion-card-content>
+    </ion-card-content>
   </ion-card>
-  <ion-card class="ion-card2">
+
+  <ion-card class="ion-cardAntwort" [hidden]="hideantwort" >
     <ion-card-content>
       <ion-grid>
         <ion-row>
-          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort1}}</ion-col> 
-          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort2}}</ion-col> 
-          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort3}}</ion-col>    
-          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort4}}</ion-col> 
+          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort1}}</ion-col>
+          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort2}}</ion-col>
+          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort3}}</ion-col>
+          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort4}}</ion-col>
         </ion-row>
-   
-      </ion-grid>     
+      </ion-grid>
     </ion-card-content>
-
   </ion-card>
-  <label style="color: #FC0A1C;" id="infos"> <!--{{aktFF}},--> {{stufeoutput}}, {{aktstation}}, Frage {{fragenr}}</label>
 
-  
+  <ion-card class="ion-cardSlider" [hidden]="!hideradio">
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-cardSlider" [hidden]="!hidelabel">
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-cardSlider" [hidden]="!hideslider">
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-cardSlider" [hidden]="!hidedate">
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+
+  <label style="color: #FC0A1C;" id="infos"> <!--{{aktFF}},--> {{stufeoutput}}, {{aktstation}}, Frage {{fragenr}}</label>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-row>
       <ion-col no-padding>
-        <button (tap)="nextbtn()" no-margin  ion-button full large color="primary"  style="font-size: 1.6rem"  >Letzte Frage</button>
+        <button (tap)="nextbtn()" no-margin ion-button full large color="primary" style="font-size: 1.6rem">Letzte Frage</button>
       </ion-col>
       <ion-col no-padding>
-        <button (tap)="lastbtn()" no-margin  ion-button full large color="ffred" style="font-size: 1.6rem"  > Nächste Frage</button>
+        <button (tap)="lastbtn()" no-margin ion-button full large color="ffred" style="font-size: 1.6rem"> Nächste Frage</button>
       </ion-col>
     </ion-row>
   </ion-toolbar>

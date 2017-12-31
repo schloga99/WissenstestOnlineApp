@@ -3,6 +3,7 @@ import { NavController, ViewController } from 'ionic-angular';
 import { AuswahlStufePage } from "../AuswahlStufe/AuswahlStufe";
 import { GlobalVars } from "../../../providers/globals";
 import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
 
 @Component({
     selector: 'page-EingabeFF',
@@ -14,7 +15,7 @@ export class EingabeFFPage {
     bezirke: any;
     FFbezirk: any;
 
-    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage) {
+    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) {
         this.currfeuerwehr = "";
         this.currbezirk = "";
 
@@ -33,8 +34,13 @@ export class EingabeFFPage {
             this.globalvar.setfeuerwehrandbezirk(this.currfeuerwehr, this.currbezirk);
             this.navCtrl.push(AuswahlStufePage);
 
-        } else {
-            console.log("hier muss noch Meldung sein (Sie müssen eine Feuerwehr angeben");
+        } else {           
+            let alert = this.alertController.create({
+                title: "Warnung",
+                message: "Sie müssen eine Feuerwehr auswählen!",
+                buttons: ['zurück']
+            });
+            alert.present();
         }
     }
     data = [];
