@@ -56,30 +56,50 @@ export class database {
         'Meggenhofen',
         'Michaelnbach',
     ];
-    Fragen = ['Wie lang ist ein Wasserdruckschlauch?'];
+
+    Fragen = ['Wie lang ist ein C-Druckschlauch?'];
     Antworten = [ //richtige Antwort vlt. durch Kennzeichnung 1,2,3,4 als letzten Parameter[5]
         ["0", "10 Meter", "20 Meter", "15 Meter", "30 Meter"],
-        ["1", 10, 20, 30, 40],
+        ["1", 10, 15, 30, 40],
         ["2", "Herr...", "Herr....", "Vize...", "FeuerwehrtestDaten"]
     ];
+    FrageArt = ["oöweit", "bezirksbezogen"]
+    //Allgemeinwissen
     FragenBronzeStation1 = [ 
-        ["0", "Nenne die Funktionen der Kommandomitglieder?"],
+        ["0", "Zu welchen Bezirk gehört deine Gemeinde?"],
         ["1", "Wie heißt dein Feuerwehrkommandant?"],
         ["2", "Welche Mitglieder hat die Feuerwehr?"],
         ["3", "Welche Feuerwehrfahrzeuge besitzt deine Feuerwehr?"]
     ];
+    AntwortenBronzeStation1 = [
+        ["0", "Schärding"],
+        ["1", "nächste Antwort"]
+    ];
     FragenSilberStation1 = [
-        ["0", "Wie heißt dein Landesfeuerwehrommandant?"],
+        ["0", "Wer ist der Schutzpatron der Feuerwehr?"],
         ["1", "Welche Arten von Feuerwehren gibt es?"],
         ["2", "Wo befinden sich das LFKDO und die LFS?"]
+    ];
+    AntwortenSilberStation1 = [
+        ["0", "Andreas", "Florian", "Maximilian", "Johannes"],
+        ["1", "nächste Antwort"]
     ];
     FragenGoldStation1 = [
         ["0", "Für wie viele Jahre wird das Feuerwehrkommando gewählt?"],
         ["1", "Wie heißt die kleinste, taktisch selbständige, einsetzbare Feuerwehreinheit und aus wie vielen Personen besteht sie?"],
         ["2", "Ab welchem Alter darf man aktiven Feuerwehrdienst leisten?"]
     ];
+    FragenSilberStation3 = [
+        ["0", "Wie lange ist ein C-Druckschlauch?"],
+        ["1", "Welche Arten von Feuerwehren gibt es?"],
+        ["2", "Wo befinden sich das LFKDO und die LFS?"]
+    ];
+    AntwortenSilberStation3 = [
+        ["0", "15 Meter"],
+        ["1", "nächste Antwort"]
+    ];
     typendefinitionen = ["Fragetyp", "Antworttyp", "ZusätzlichTyp"];
-    fragetypen = ["Labels", "Slider", "Date Picker"];
+    fragetypen = ["Label", "Slider", "Date Picker", "Inputtext", "Radio Button"];
     testinfo = ["Hier wurden Labels verwendet ..... mehr Text", "Hier wurden Slider verwendet ..... mehr Text", "Hier wurden Date Picker verwendet ..... mehr Text"];
 
     setstorage() {       
