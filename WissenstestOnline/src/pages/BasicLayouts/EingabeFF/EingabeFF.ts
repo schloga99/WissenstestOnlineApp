@@ -18,10 +18,11 @@ export class EingabeFFPage {
     constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) {
         this.currfeuerwehr = "";
         this.currbezirk = "";
-
-        this.storage.get('Bezirk').then((val) => { // retrive           
+        
+        this.storage.get('Bezirk').then((val) => { // retrive               
             this.bezirke = val;
-        })
+            console.log(this.bezirke);
+        });
     }
 
     onLink(url: string) {
@@ -50,7 +51,7 @@ export class EingabeFFPage {
         switch (this.currbezirk) {
             case this.bezirke[0]:           
                 this.storage.get('Bezirk0FF').then((val) => { // retrive                              
-                    this.data = val || [];
+                    this.data = val || [];                   
                     console.log(this.data);
                     if (this.FFbezirk != null) {
                         this.FFbezirk.splice(0, this.FFbezirk.length);

@@ -19,24 +19,28 @@ export class LernmodusPage {
     fragenr: number;
 
     hideantwort: any;
+    hidecheckbox: any;
     hideradio: any;
     hidelabel: any;
     hidedate: any;
     hideslider: any;
     slidervalue: number;
-
+    data = [];
     constructor(public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) {
         this.aktstation = "";
         this.slidervalue = 0;
         this.aktFF = this.globalvar.getfeuerwehr();
+
         this.storage.ready().then(() => {
             this.storage.get('Fragen').then((val) => { // retrive           
-                this.Frage = val;
+                
+                this.data = val || []; 
+                this.Frage = this.data[0][1];
                 console.log("erste Frage gesetzt");
             })
         });
         this.storage.ready().then(() => {
-            this.storage.get('testinfo').then((val) => { // retrive                                           
+            this.storage.get('Zusatzinfo').then((val) => { // retrive                                           
                 console.log(val);
                 this.testinfo = val[0];
                 console.log(this.testinfo);

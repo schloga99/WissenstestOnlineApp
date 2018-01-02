@@ -34,7 +34,7 @@ export class AuswahlStationPage {
             this.stufeoutput = "Gold";
         }
         this.storage.ready().then(() => {
-            this.storage.get('Stations').then((val) => { // retrive           
+            this.storage.get('Station').then((val) => { // retrive           
                 this.stations = val;
                 console.log(this.stations);
                 console.log("alle Stationen gespeichert");
