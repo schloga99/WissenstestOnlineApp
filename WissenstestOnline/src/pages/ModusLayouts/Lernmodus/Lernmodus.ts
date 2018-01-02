@@ -23,10 +23,11 @@ export class LernmodusPage {
     hidelabel: any;
     hidedate: any;
     hideslider: any;
-
+    slidervalue: number;
 
     constructor(public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) {
-        this.aktstation = "";       
+        this.aktstation = "";
+        this.slidervalue = 0;
         this.aktFF = this.globalvar.getfeuerwehr();
         this.storage.ready().then(() => {
             this.storage.get('Fragen').then((val) => { // retrive           
@@ -54,8 +55,11 @@ export class LernmodusPage {
         }
         this.ausgewähltestations = this.globalvar.getstationen();
         this.fragenr = 0;
-        this.setAntwort(this.fragenr);
+        this.setAntworttext(this.fragenr);
         this.aktstation = this.ausgewähltestations[0];
+
+
+        this.testeinstellungen();
     }
 
     onLink(url: string) {
@@ -88,7 +92,7 @@ export class LernmodusPage {
     Antwort2: any; 
     Antwort3: any; 
     Antwort4: any; 
-    setAntwort(aktfrageNr: number) {
+    setAntworttext(aktfrageNr: number) {
         this.storage.ready().then(() => {
             this.storage.get('Antworten').then((val) => { // retrive                                           
                 console.log(val);
@@ -98,9 +102,9 @@ export class LernmodusPage {
                     console.log("AktuelleFrageAntwortNummer = "+ aktfrageNr);
                     console.log("Frage: "+this.fragenr);
                     this.Antwort1 = val[0][1];
-                    this.Antwort2 = val[0][2];
-                    this.Antwort3 = val[0][3];
-                    this.Antwort4 = val[0][4];
+                    //this.Antwort2 = val[0][2];
+                    //this.Antwort3 = val[0][3];
+                    //this.Antwort4 = val[0][4];
                     console.log("Antwort gesetzt");
                     
                 }
@@ -108,4 +112,10 @@ export class LernmodusPage {
         });
     }
 
+
+    testeinstellungen() {
+        this.stufeoutput = "Bronze";
+        this.aktFF = "Eggerding";
+        this.aktstation = "Allgemeinwissen";
+    }
 }

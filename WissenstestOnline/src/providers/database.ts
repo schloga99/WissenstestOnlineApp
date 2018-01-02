@@ -25,7 +25,7 @@ export class database {
         'Urfahr-Umgebung',
         'Vöcklabruck',
         'Wels-Land',
-    ];
+    ]; // 15 Bezirke
     stations = [
         'Allgemeinwissen',
         'Dienstgrade',
@@ -38,7 +38,7 @@ export class database {
         'Taktik',
         'Gefährliche Stoffe',
         'Atem- und Körperschutz',
-    ];
+    ]; // bleiben gleich
     bezirk0FF = [
         'Aistersheim',
         'Bad Schallerbach',
@@ -55,15 +55,17 @@ export class database {
         'Kematen am Innbach',
         'Meggenhofen',
         'Michaelnbach',
-    ];
+    ]; // Für jeden Bezirk noch machen
 
     Fragen = ['Wie lang ist ein C-Druckschlauch?'];
     Antworten = [ //richtige Antwort vlt. durch Kennzeichnung 1,2,3,4 als letzten Parameter[5]
-        ["0", "10 Meter", "20 Meter", "15 Meter", "30 Meter"],
-        ["1", 10, 15, 30, 40],
-        ["2", "Herr...", "Herr....", "Vize...", "FeuerwehrtestDaten"]
+        ["0","15 Meter"],
+        ["1","15"],
+        ["2", "Herr..."]
     ];
+
     FrageArt = ["oöweit", "bezirksbezogen"]
+
     //Allgemeinwissen
     FragenBronzeStation1 = [ 
         ["0", "Zu welchen Bezirk gehört deine Gemeinde?"],
@@ -71,10 +73,13 @@ export class database {
         ["2", "Welche Mitglieder hat die Feuerwehr?"],
         ["3", "Welche Feuerwehrfahrzeuge besitzt deine Feuerwehr?"]
     ];
-    AntwortenBronzeStation1 = [
+
+    AntwortenBronzeStation1FF1 = [ //fehler
         ["0", "Schärding"],
         ["1", "nächste Antwort"]
     ];
+
+
     FragenSilberStation1 = [
         ["0", "Wer ist der Schutzpatron der Feuerwehr?"],
         ["1", "Welche Arten von Feuerwehren gibt es?"],
@@ -94,18 +99,24 @@ export class database {
         ["1", "Welche Arten von Feuerwehren gibt es?"],
         ["2", "Wo befinden sich das LFKDO und die LFS?"]
     ];
-    AntwortenSilberStation3 = [
+
+    AntwortenSilberStation3FF1 = [
         ["0", "15 Meter"],
         ["1", "nächste Antwort"]
     ];
+
+
     typendefinitionen = ["Fragetyp", "Antworttyp", "ZusätzlichTyp"];
     fragetypen = ["Label", "Slider", "Date Picker", "Inputtext", "Radio Button"];
     testinfo = ["Hier wurden Labels verwendet ..... mehr Text", "Hier wurden Slider verwendet ..... mehr Text", "Hier wurden Date Picker verwendet ..... mehr Text"];
+
 
     setstorage() {       
         this.storage.set('Bezirk', this.bezirke);
         this.storage.set('Stations', this.stations);
         this.storage.set('Bezirk0FF', this.bezirk0FF)
+
+
         this.storage.set('Fragen', this.Fragen);
         this.storage.set('Fragetypen', this.fragetypen);
         this.storage.set('Antworten', this.Antworten);
