@@ -11,15 +11,15 @@ import { Storage } from '@ionic/storage';
 
 export class StartLayoutPage {
 
-    constructor(public navCtrl: NavController) {             
+    constructor(public navCtrl: NavController, public storage: Storage) {             
      //hier nichts mit storage machen (da es sonst vielleicht nicht geladen wird wegen der RootPage)
     }
 
     onLink(url: string) {
         window.open(url);
     }
-
-    loadEingabeFF() {          
+    bezirke = [];
+    loadEingabeFF() {               
         this.navCtrl.push(EingabeFFPage);
     }
 }

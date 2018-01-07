@@ -10,30 +10,32 @@ import { ÜbungsmodusPage } from '../pages/ModusLayouts/Übungsmodus/Übungsmodu
 import { StartLayoutPage } from '../pages/BasicLayouts/StartLayout/StartLayout';
 import { GlobalVars } from '../providers/globals';
 import { database } from '../providers/database';
+import { storage } from '../providers/storage';
 
 @Component({
     templateUrl: 'app.html',
-    
+    providers: [database]
 })
 export class MyApp {
     rootPage = StartLayoutPage; 
 
-    constructor(platform: Platform, public storage: Storage, public database: database) {        
+    constructor(platform: Platform, public storage: Storage, public database: database, public ownstorage: storage) {        
         platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.                      
             StatusBar.styleDefault();
-            Splashscreen.hide();
-            this.initStorageData();
+            Splashscreen.hide();            
         });
+        this.database.setBezirk();
+        //this.initStorageData();
     }
     initStorageData() { //Hier werden ALLE Daten für den Wissenstest geladen (in den Storage gespeichert)
         this.storage.length().then((value) => {
             this.storage.clear();
-            this.database.setstorage();
+            this.ownstorage.setstorage();
             console.log(value + " keys in storage");
-            if (value == null) {
-                this.database.setstorage();
+            if (value == null) { // oder undefined
+                this.ownstorage.setstorage();
                 console.log("storage was empty, set storage")
             }
             

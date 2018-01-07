@@ -4,6 +4,7 @@ import { AuswahlStufePage } from "../AuswahlStufe/AuswahlStufe";
 import { GlobalVars } from "../../../providers/globals";
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
+import { database } from '../../../providers/database';
 
 @Component({
     selector: 'page-EingabeFF',
@@ -15,14 +16,17 @@ export class EingabeFFPage {
     bezirke: any;
     FFbezirk: any;
 
-    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) {
+    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController, public database: database) {
         this.currfeuerwehr = "";
         this.currbezirk = "";
         
-        this.storage.get('Bezirk').then((val) => { // retrive               
-            this.bezirke = val;
-            console.log(this.bezirke);
-        });
+        //this.storage.ready().then(() => {
+        //    this.storage.get('Bezirk').then((val) => { // retrive               
+        //        this.bezirke = val;
+        //        console.log(this.bezirke);
+        //    });
+        //});
+        this.bezirke = database.getBezirk();
     }
 
     onLink(url: string) {

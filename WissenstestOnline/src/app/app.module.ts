@@ -10,6 +10,8 @@ import { StartLayoutPage } from '../pages/BasicLayouts/StartLayout/StartLayout';
 import { GlobalVars } from '../providers/globals';
 import { Storage } from '@ionic/storage';
 import { database } from '../providers/database';
+import { HttpModule } from '@angular/http';
+import { storage } from '../providers/storage';
 
 export function provideStorage() {
     return new Storage(['sqlite', 'websql', 'indexeddb'], { name: 'database' });
@@ -24,7 +26,8 @@ export function provideStorage() {
         ÜbungsmodusPage,
         StartLayoutPage
     ],
-    imports: [       
+    imports: [  
+        HttpModule,
         IonicModule.forRoot(MyApp)      
     ],
     bootstrap: [IonicApp],
@@ -38,7 +41,7 @@ export function provideStorage() {
         StartLayoutPage
     ],
     providers: [
-        { provide: ErrorHandler, useClass: IonicErrorHandler }, GlobalVars, database,
+        { provide: ErrorHandler, useClass: IonicErrorHandler }, storage, GlobalVars, database,
         { provide: Storage, useFactory: provideStorage }, Storage
     ]
 })
