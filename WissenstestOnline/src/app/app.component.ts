@@ -27,6 +27,7 @@ export class MyApp {
             Splashscreen.hide();            
         });
         this.database.setBezirk();
+        this.database.setStandort();
         //this.initStorageData();
     }
     initStorageData() { //Hier werden ALLE Daten für den Wissenstest geladen (in den Storage gespeichert)

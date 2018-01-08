@@ -12,7 +12,20 @@ import { AlertController } from 'ionic-angular';
     templateUrl: 'AuswahlStation.html'
 })
 export class AuswahlStationPage {
-    stations: any; //angezeigte Stationen
+    stations = [
+        'Allgemeinwissen',
+        'Dienstgrade',
+        'Wasserführende Armaturen + technische Geräte',
+        'Vorbeugender Brandschutz',
+        'Seilknoten',
+        'Nachrichtenübermittlung',
+        'Verkehrserziehung und Absichern von Einsatzstellen',
+        'Erste Hilfe',
+        'Taktik',
+        'Gefährliche Stoffe',
+        'Atem- und Körperschutz',
+    ]; 
+
     stufe: any;
     stufeoutput: any;
     aktFF: any;
@@ -33,13 +46,13 @@ export class AuswahlStationPage {
         if (this.stufe == 3) {
             this.stufeoutput = "Gold";
         }
-        this.storage.ready().then(() => {
-            this.storage.get('Station').then((val) => { // retrive           
-                this.stations = val;
-                console.log(this.stations);
-                console.log("alle Stationen gespeichert");
-            })
-        });
+        //this.storage.ready().then(() => {
+        //    this.storage.get('Station').then((val) => { // retrive           
+        //        this.stations = val;
+        //        console.log(this.stations);
+        //        console.log("alle Stationen gespeichert");
+        //    })
+        //});
 
     }
 

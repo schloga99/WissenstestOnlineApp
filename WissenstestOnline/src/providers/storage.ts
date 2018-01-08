@@ -163,6 +163,7 @@ export class storage {
             this.storage.set('Checkbox', "value");
             this.storage.set('Antwort_RadioButtons', "value");
             this.storage.set('RadioButtons', "value");
+
             this.storage.set('Bezirk', this.bezirke);
             this.storage.set('Standort', "value");
         
