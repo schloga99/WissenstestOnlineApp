@@ -28,6 +28,25 @@ export class MyApp {
         });
         this.database.setBezirk();
         this.database.setStandort();
+        this.database.setStufe();
+        this.database.setStation();
+        this.database.setAntwort();
+        this.database.setAufgabe();
+        this.database.setInfoContent();
+        this.database.setFrage();
+        this.database.setZusatzinfo();
+        this.database.setTypendefinition();
+
+        //this.database.setAntwort_Checkbox();
+        //this.database.setAntwort_Datepicker();
+        //this.database.setAntwort_Radiobuttons();
+        //this.database.setAntwort_Slider();
+        //this.database.setAntwort_Text();
+        //this.database.setAntwort_Verbinden();
+        //this.database.setPaar();
+        //this.database.setCheckboxen();
+        //this.database.setRadioButtons();
+
         //this.initStorageData();
     }
     initStorageData() { //Hier werden ALLE Daten für den Wissenstest geladen (in den Storage gespeichert)
