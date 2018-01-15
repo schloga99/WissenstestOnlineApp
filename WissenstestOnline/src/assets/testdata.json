@@ -1,0 +1,158 @@
+{
+  "Frage": [
+    { "id": 1, "Typendefinition": 1, "Fragetext": "Wie lang ist ein C-Druckschlauch?", "Fragebild": "null", "Fragevideo": "null" },
+	{ "id": 2, "Typendefinition": 1, "Fragetext": "Wie heißt dein Bürgermeister", "Fragebild": "null", "Fragevideo": "null" },
+	{ "id": 3, "Typendefinition": 1, "Fragetext": "Welche Mitglieder hat die Feuerwehr?", "Fragebild": "null", "Fragevideo": "null" },
+	{ "id": 4, "Typendefinition": 1, "Fragetext": "Wie viele Bezirke hat OÖ?", "Fragebild": "null", "Fragevideo": "null" },
+	{ "id": 5, "Typendefinition": 1, "Fragetext": "Wer ist der Schutzpatron der Feuerwehr?", "Fragebild": "null", "Fragevideo": "null" },
+	{ "id": 6, "Typendefinition": 1, "Fragetext": "Welchen Dienstgrad hat der Gerätewart?", "Fragebild": "null", "Fragevideo": "null" },
+	{ "id": 7, "Typendefinition": 1, "Fragetext": "Wie lang ist ein B-Druckschlauch?", "Fragebild": "null", "Fragevideo": "null" }
+  ],
+  "Typendefinition": [
+    { "Typendefinition": 1, "TypName": "F_T"},
+	{ "Typendefinition": 2, "TypName": "F_T+B"},
+	{ "Typendefinition": 3, "TypName": "F_T+V"},
+	{ "Typendefinition": 4, "TypName": "I_T"},
+	{ "Typendefinition": 5, "TypName": "I_TT"},
+	{ "Typendefinition": 6, "TypName": "I_T+BB"},
+	{ "Typendefinition": 7, "TypName": "I_TT+VV"},
+	{ "Typendefinition": 8, "TypName": "I_T+BB+V"},
+	{ "Typendefinition": 9, "TypName": "I_TTTTT"},
+	{ "Typendefinition": 10, "TypName": "A_T"},
+	{ "Typendefinition": 11, "TypName": "A_S"},
+	{ "Typendefinition": 12, "TypName": "A_DP"},
+	{ "Typendefinition": 13, "TypName": "A_CB:T"},
+	{ "Typendefinition": 13, "TypName": "A_RB:T"},
+	{ "Typendefinition": 14, "TypName": "A_RB:B"},
+	{ "Typendefinition": 15, "TypName": "A_V:T-T?M"},
+	{ "Typendefinition": 16, "TypName": "A_V:B-T?M"},
+	{ "Typendefinition": 17, "TypName": "A_V:B-B?M"},
+	{ "Typendefinition": 18, "TypName": "A_V:B-B?V"}
+  ],
+  "Aufgabe": [ 
+    { "AufgabeID": 1, "Station": 1, "Stufe": 1, "Antwort": 1, "Frage": 1,"Zusatzinfo": 1,"Pflichtaufgabe": true,"TeilAufgabeVon": null, "Bezirk": 1,"Ort": "Braunau am Inn"},
+    { "AufgabeID": 2, "Station": 2, "Stufe": 2, "Antwort": 2, "Frage": 2,"Zusatzinfo": 2,"Pflichtaufgabe": false,"TeilAufgabeVon": null, "Bezirk": 2,"Ort": "Fraham"},
+	{ "AufgabeID": 3, "Station": 6, "Stufe": 1, "Antwort": 3, "Frage": 3,"Zusatzinfo": 3,"Pflichtaufgabe": true,"TeilAufgabeVon": null, "Bezirk": 2,"Ort": "Grieskirchen"},
+	{ "AufgabeID": 4, "Station": 4, "Stufe": 3, "Antwort": 4, "Frage": 4,"Zusatzinfo": 4,"Pflichtaufgabe": true,"TeilAufgabeVon": null, "Bezirk": 1,"Ort": "Mattighofen"},
+	{ "AufgabeID": 5, "Station": 1, "Stufe": 3, "Antwort": 5, "Frage": 5,"Zusatzinfo": 5,"Pflichtaufgabe": true,"TeilAufgabeVon": null, "Bezirk": 5,"Ort": "Grieskirchen"},
+	{ "AufgabeID": 6, "Station": 1, "Stufe": 1, "Antwort": 6, "Frage": 6,"Zusatzinfo": 6,"Pflichtaufgabe": false,"TeilAufgabeVon": null, "Bezirk": 1,"Ort": null},	
+	{ "AufgabeID": 7, "Station": 2, "Stufe": 2, "Antwort": 7, "Frage": 7,"Zusatzinfo": 7,"Pflichtaufgabe": false,"TeilAufgabeVon": 1, "Bezirk": 5,"Ort": "Natternbach"},
+	{ "AufgabeID": 8, "Station": 11, "Stufe": 2, "Antwort": 8, "Frage": 8,"Zusatzinfo": 8,"Pflichtaufgabe": false,"TeilAufgabeVon": 2, "Bezirk": null,"Ort": null}
+  ],
+  "Zusatzinfo": [
+    { "idZusatzinfo": 1, "Typendefinition": 5 },
+	{ "idZusatzinfo": 2, "Typendefinition": 5 },
+	{ "idZusatzinfo": 3, "Typendefinition": 5 }
+  ],
+  "InfoContent": [
+    { "InfoContentID": 1, "Zusatzinfo": 1, "InfoContent": "Hier soll die angezeigte Info stehen!", "Heading": "Überschrift des Textes?" },
+	{ "InfoContentID": 2, "Zusatzinfo": 1, "InfoContent": "Hier soll die 2. angezeigte Info stehen!", "Heading": "Überschrift des 2. Textes?" }
+  ],
+  "Station": [
+    { "StationID": 1, "Stationsname": "Allgemeinwissen" },
+	{ "StationID": 2, "Stationsname": "Dienstgrade" },
+	{ "StationID": 3, "Stationsname": "Wasserführende Armaturen + technische Geräte" },
+	{ "StationID": 4, "Stationsname": "Vorbeugender Brandschutz" },
+	{ "StationID": 5, "Stationsname": "Seilknoten" },
+	{ "StationID": 6, "Stationsname": "Nachrichtenübermittlung" },
+	{ "StationID": 7, "Stationsname": "Verkehrserziehung und Absichern von Einsatzstellen" },
+	{ "StationID": 8, "Stationsname": "Erste Hilfe" },
+	{ "StationID": 9, "Stationsname": "Taktik" },
+	{ "StationID": 10, "Stationsname": "Gefährliche Stoffe" },
+	{ "StationID": 11, "Stationsname": "Atem- und Körperschutz" }
+  ],
+  "Stufe": [
+    { "StufeID": 1, "Stufenname": "Bronze"},
+	{ "StufeID": 2, "Stufenname": "Silber"},
+	{ "StufeID": 3, "Stufenname": "Gold"}
+  ],
+  "Hintergrund": [
+    { "id": 1, "Bild": "imglink"}
+  ],
+  "Antwort": [
+    { "AntwortID": 1, "Typendefinition": 1, "AntwortContentID": 1 },
+	{ "AntwortID": 2, "Typendefinition": 3, "AntwortContentID": 2 },
+	{ "AntwortID": 3, "Typendefinition": 2, "AntwortContentID": 3 }
+  ],
+  "Bezirk": [
+    { "BezirkID": 1, "BezirkName": "Braunau am Inn"},
+	{ "BezirkID": 2, "BezirkName": "Eferding"},
+	{ "BezirkID": 3, "BezirkName": "Freistadt"},
+	{ "BezirkID": 4, "BezirkName": "Gmunden"},
+	{ "BezirkID": 5, "BezirkName": "Grieskirchen"},
+	{ "BezirkID": 6, "BezirkName": "Kirchdorf an der Krems"},
+	{ "BezirkID": 7, "BezirkName": "Linz-Land"},
+	{ "BezirkID": 8, "BezirkName": "Perg"},
+	{ "BezirkID": 9, "BezirkName": "Ried im Innkreis"},
+	{ "BezirkID": 10, "BezirkName": "Rohrbach"},
+	{ "BezirkID": 11, "BezirkName": "Schärding"},
+	{ "BezirkID": 12, "BezirkName": "Steyr-Land"},
+	{ "BezirkID": 13, "BezirkName": "Urfahr-Umgebung"},
+	{ "BezirkID": 14, "BezirkName": "Vöcklabruck"},
+	{ "BezirkID": 15, "BezirkName": "Wels-Land"},
+	{ "BezirkID": 16, "BezirkName": "Wels"},
+	{ "BezirkID": 17, "BezirkName": "Linz"},
+	{ "BezirkID": 18, "BezirkName": "Steyr"}
+  ],
+  "Standort": [
+    { "StandortID": 1, "OrtsName": "Grieskirchen", "Bezirk": 5 },
+	{ "StandortID": 2, "OrtsName": "Natternbach", "Bezirk": 5 },
+	{ "StandortID": 3, "OrtsName": "Eferding", "Bezirk": 2 },
+	{ "StandortID": 4, "OrtsName": "Fraham", "Bezirk": 2 },
+	{ "StandortID": 5, "OrtsName": "Allhaming", "Bezirk": 7 },
+	{ "StandortID": 6, "OrtsName": "Fischlham", "Bezirk": 15 },
+	{ "StandortID": 7, "OrtsName": "Asten", "Bezirk": 7 },
+	{ "StandortID": 8, "OrtsName": "Lengau", "Bezirk": 1 },
+	{ "StandortID": 9, "OrtsName": "Mining", "Bezirk": 1 },
+	{ "StandortID": 10, "OrtsName": "Mattighofen", "Bezirk": 1 },
+	{ "StandortID": 11, "OrtsName": "Moosbach", "Bezirk": 1 },
+	{ "StandortID": 12, "OrtsName": "Altheim", "Bezirk": 1 },
+	{ "StandortID": 13, "OrtsName": "Goldwörth", "Bezirk": 13 },
+	{ "StandortID": 14, "OrtsName": "Herzogsdorf", "Bezirk": 13 },
+	{ "StandortID": 15, "OrtsName": "Haibach im Mühlkreis", "Bezirk": 13 },
+	{ "StandortID": 16, "OrtsName": "Gunskirchen", "Bezirk": 15 }
+  ],
+    "Antwort_Text": [
+    { "AntwortContentID": 1, "Text": "Hier wird die 1. Antwort zu deiner Frage angezeigt"},
+	{ "AntwortContentID": 2, "Text": "Schärding"}
+  ],
+    "Antwort_DatePicker": [
+    { "AntwortContentID": 1, "Date": "20.12.1966"}
+  ],
+    "Antwort_Slider": [
+    { "AntwortContentID": 1, "MinVal": 0, "MaxVal": 100, "Sprungweite": 10, "SliderText": "Überschrift Slider", "Erwartungswert": 50}
+  ],
+    "Antwort_Checkbox": [
+    { "AntwortContentID": 1, "Anzahl": 1},
+	{ "AntwortContentID": 2, "Anzahl": 4},
+	{ "AntwortContentID": 3, "Anzahl": 2},
+	{ "AntwortContentID": 4, "Anzahl": 1}
+  ],
+    "Antwort_Verbinden": [
+    { "AntwortContentID": 1, "Anzahl": 1}
+  ],
+    "Antwort_RadioButtons": [
+    { "AntwortContentID": 1, "Anzahl": 2},
+	{ "AntwortContentID": 2, "Anzahl": 4},
+	{ "AntwortContentID": 3, "Anzahl": 1},
+	{ "AntwortContentID": 4, "Anzahl": 4}
+  ],
+    "Checkbox": [
+    { "CheckboxID": 1, "Antwort_Checkbox": 1, "Inhalt": "Josef", "CheckboxVal": false},
+	{ "CheckboxID": 2, "Antwort_Checkbox": 1, "Inhalt": "Franz", "CheckboxVal": true},
+	{ "CheckboxID": 3, "Antwort_Checkbox": 2, "Inhalt": "Schärding", "CheckboxVal": true},
+	{ "CheckboxID": 4, "Antwort_Checkbox": 2, "Inhalt": "Natternbach", "CheckboxVal": false}
+  ],
+  "RadioButtons": [
+    { "RadioButtonsID": 1, "Antwort_RadioButtons": 1, "Inhalt": "Ferdinand", "Erwartungswert": true},
+	{ "RadioButtonsID": 2, "Antwort_RadioButtons": 1, "Inhalt": "Manuel", "Erwartungswert": false},
+	{ "RadioButtonsID": 3, "Antwort_RadioButtons": 1, "Inhalt": "Michael", "Erwartungswert": false},
+	{ "RadioButtonsID": 4, "Antwort_RadioButtons": 2, "Inhalt": "Linz", "Erwartungswert": true},
+	{ "RadioButtonsID": 5, "Antwort_RadioButtons": 2, "Inhalt": "Wien", "Erwartungswert": false}
+  ],
+  "Paar": [
+    { "PaarID": 1, "Antwort_Verbinden": 1, "Teil1": "Dieser Satz", "Teil2": "endet hier" },
+	{ "PaarID": 2, "Antwort_Verbinden": 1, "Teil1": "Dieser Satz", "Teil2": "fängt hier nicht an" },
+	{ "PaarID": 3, "Antwort_Verbinden": 2, "Teil1": "Erster Teil", "Teil2": "zweiter Teil" }
+  ]
+}

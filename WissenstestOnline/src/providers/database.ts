@@ -7,6 +7,9 @@ import 'rxjs/add/operator/map';
 export class database {
 
     apiUrl = 'http://localhost:3000/'; // kann auch eine local json-file sein !!!
+    //apiUrl = 'assets/testdata.json'; // funktioniert nicht ganz, man kann nur alle Daten holen
+
+    ALLDATA: any;
 
     bezirkobject: any;
     allestandorte: any;
@@ -46,6 +49,20 @@ export class database {
 
     county: number = 0;
     countx: number = 0;
+
+    setAllData() {
+        return new Promise(resolve => {
+            this.http.get(this.apiUrl + 'db').map(res => res.json()).subscribe(data => {
+               
+                console.log(data);
+                this.ALLDATA = data;
+
+                resolve(this.ALLDATA);
+            });
+        });
+    }
+
+
 
     setBezirk() {
         return new Promise(resolve => {

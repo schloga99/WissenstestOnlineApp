@@ -49,16 +49,16 @@ export class MyApp {
 
         //this.initStorageData();
     }
-    initStorageData() { //Hier werden ALLE Daten für den Wissenstest geladen (in den Storage gespeichert)
-        this.storage.length().then((value) => {
-            this.storage.clear();
-            this.ownstorage.setstorage();
-            console.log(value + " keys in storage");
-            if (value == null) { // oder undefined
-                this.ownstorage.setstorage();
-                console.log("storage was empty, set storage")
-            }
+    //initStorageData() { //Hier werden ALLE Daten für den Wissenstest geladen (in den Storage gespeichert)
+    //    this.storage.length().then((value) => {
+    //        this.storage.clear();
+    //        this.ownstorage.setstorage();
+    //        console.log(value + " keys in storage");
+    //        if (value == null) { // oder undefined
+    //            this.ownstorage.setstorage();
+    //            console.log("storage was empty, set storage")
+    //        }
             
-        })   
-    }
+    //    })   
+    //}
 }

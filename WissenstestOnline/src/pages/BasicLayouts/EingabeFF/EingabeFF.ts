@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
 import { AuswahlStufePage } from "../AuswahlStufe/AuswahlStufe";
 import { GlobalVars } from "../../../providers/globals";
@@ -10,7 +10,7 @@ import { database } from '../../../providers/database';
     selector: 'page-EingabeFF',
     templateUrl: 'EingabeFF.html'
 })
-export class EingabeFFPage {
+export class EingabeFFPage implements OnInit {
     currbezirk: string;
     currfeuerwehr: string;
     bezirke: any;
@@ -18,6 +18,9 @@ export class EingabeFFPage {
     standorte: any;
 
     constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController, public database: database) {
+        
+    }
+    ngOnInit() {
         this.currfeuerwehr = "";
         this.currbezirk = "";
 
@@ -27,8 +30,8 @@ export class EingabeFFPage {
         //        console.log(this.bezirke);
         //    });
         //});
-        this.bezirke = database.getBezirk();
-        this.standorte = database.getStandorte();
+        this.bezirke = this.database.getBezirk();
+        this.standorte = this.database.getStandorte();
     }
 
     onLink(url: string) {

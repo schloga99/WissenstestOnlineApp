@@ -14,6 +14,15 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <button id="toolbarbutton" ion-button (click)="loadEingabeFF()" full>Fange an</button>
+
+    <ion-row>
+      <ion-col no-padding>
+        <button id="toolbarbutton" style="width:99%;" full no-margin ion-button (click)="loadNewData()">Fragen aktualisieren</button>
+      </ion-col>
+      <ion-col no-padding>
+        <button id="toolbarbutton" style="width:99%;" no-margin ion-button (click)="loadEingabeFF()">Fange an</button>
+      </ion-col>
+    </ion-row>
+
   </ion-toolbar>
 </ion-footer>

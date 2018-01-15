@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
 import { EingabeFFPage } from "../EingabeFF/EingabeFF";
@@ -9,19 +9,18 @@ import { AlertController } from 'ionic-angular';
     selector: 'page-AuswahlStufe',
     templateUrl: 'AuswahlStufe.html'
 })
-export class AuswahlStufePage{
+export class AuswahlStufePage implements OnInit {
    
     stufe: any;
     aktFF: any;
 
-    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public alertController: AlertController) {
+    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public alertController: AlertController) {}    
+    ngOnInit() {
         this.stufe = -1;
-        
-    }    
+    }
 
     ionViewWillLoad() {
         this.aktFF = this.globalvar.getfeuerwehr();
-
     }
 
 

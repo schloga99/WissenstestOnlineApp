@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
 import { AuswahlStufePage } from "../AuswahlStufe/AuswahlStufe";
@@ -11,7 +11,10 @@ import { AlertController } from 'ionic-angular';
     selector: 'page-AuswahlStation',
     templateUrl: 'AuswahlStation.html'
 })
-export class AuswahlStationPage {
+export class AuswahlStationPage implements OnInit {
+
+    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) { }
+
     stations = [
         'Allgemeinwissen',
         'Dienstgrade',
@@ -32,7 +35,7 @@ export class AuswahlStationPage {
     checkedradiobutton: any;
     ausgewaelteStationen: any; //ausgewähltestationen
 
-    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) {
+    ngOnInit() {
         this.checkedradiobutton = "";
         this.stufeoutput = "";
         this.aktFF = this.globalvar.getfeuerwehr();
@@ -46,15 +49,8 @@ export class AuswahlStationPage {
         if (this.stufe == 3) {
             this.stufeoutput = "Gold";
         }
-        //this.storage.ready().then(() => {
-        //    this.storage.get('Station').then((val) => { // retrive           
-        //        this.stations = val;
-        //        console.log(this.stations);
-        //        console.log("alle Stationen gespeichert");
-        //    })
-        //});
-
     }
+
 
     onLink(url: string) {
         window.open(url);

@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component , OnInit} from '@angular/core';
 import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
 import { AuswahlStationPage } from '../../BasicLayouts/AuswahlStation/AuswahlStation'
@@ -26,15 +26,18 @@ export class LernmodusPage {
     hideslider: any;
     slidervalue: number;
     data = [];
-    constructor(public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) {
+
+    constructor(public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) { }
+
+    ngOnInit() {
         this.aktstation = "";
         this.slidervalue = 0;
         this.aktFF = this.globalvar.getfeuerwehr();
 
         this.storage.ready().then(() => {
             this.storage.get('Fragen').then((val) => { // retrive           
-                
-                this.data = val || []; 
+
+                this.data = val || [];
                 this.Frage = this.data[0][1];
                 console.log("erste Frage gesetzt");
             })
@@ -46,7 +49,7 @@ export class LernmodusPage {
                 console.log(this.testinfo);
             })
         });
-        
+
         this.aktstufe = this.globalvar.getaktlstufe();
         if (this.aktstufe == 1) {
             this.stufeoutput = "Bronze";
@@ -61,7 +64,6 @@ export class LernmodusPage {
         this.fragenr = 0;
         this.setAntworttext(this.fragenr);
         this.aktstation = this.ausgewähltestations[0];
-
 
         this.testeinstellungen();
     }
