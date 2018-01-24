@@ -1,11 +1,11 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class GlobalVars {
     aktlfeuerwehr: any;
     aktlbezirk: any;
     aktlstufe: any;
-    ausgewaeltestationen: any;
+    ausgewaeltestationen=[];
     modus: any;
 
     constructor() {
@@ -13,7 +13,7 @@ export class GlobalVars {
         this.aktlbezirk = "";
         this.aktlstufe = -1;
         this.modus = -1;
-        this.ausgewaeltestationen = "";
+        //this.ausgewaeltestationen = "";
     }
 
     setfeuerwehrandbezirk(valuef,valueb) {
@@ -32,7 +32,12 @@ export class GlobalVars {
         return this.aktlstufe;
     }
     setstationen(value) {
-        this.ausgewaeltestationen = value;
+      let count = 0;
+      for (let a of value) {
+        this.ausgewaeltestationen[count] = a;
+        count++;
+      }
+        
     }
     getstationen() {
         return this.ausgewaeltestationen;

@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
 import { EingabeFFPage } from "../EingabeFF/EingabeFF";
@@ -13,6 +13,7 @@ export class AuswahlStufePage implements OnInit {
    
     stufe: any;
     aktFF: any;
+
 
     constructor(public navCtrl: NavController, private globalvar: GlobalVars, public alertController: AlertController) {}    
     ngOnInit() {

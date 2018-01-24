@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen} from 'ionic-native';
 import { Storage } from '@ionic/storage';
@@ -17,7 +17,7 @@ import { storage } from '../providers/storage';
     providers: [database]
 })
 export class MyApp {
-    rootPage = StartLayoutPage; 
+  rootPage = StartLayoutPage; 
 
     constructor(platform: Platform, public storage: Storage, public database: database, public ownstorage: storage) {        
         platform.ready().then(() => {
@@ -26,6 +26,8 @@ export class MyApp {
             StatusBar.styleDefault();
             Splashscreen.hide();            
         });
+        //this.database.setAllData();
+
         this.database.setBezirk();
         this.database.setStandort();
         this.database.setStufe();
@@ -36,6 +38,7 @@ export class MyApp {
         this.database.setFrage();
         this.database.setZusatzinfo();
         this.database.setTypendefinition();
+
 
         //this.database.setAntwort_Checkbox();
         //this.database.setAntwort_Datepicker();

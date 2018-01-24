@@ -22,12 +22,12 @@ export class StartLayoutPage {
     loadEingabeFF() {               
         this.navCtrl.push(EingabeFFPage);
     }
-    loadNewData() {
-        let alert = this.alertController.create({
-            title: "Info",
-            message: "Aktualisiere Fragen!",
-            buttons: ['zurück']
-        });
-        alert.present();
-    }
+    //loadNewData() {
+    //    let alert = this.alertController.create({
+    //        title: "Info",
+    //        message: "Aktualisiere Fragen!",
+    //        buttons: ['zurück']
+    //    });
+    //    alert.present();
+    //}
 }

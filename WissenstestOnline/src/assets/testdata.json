@@ -2,11 +2,13 @@
   "Frage": [
     { "id": 1, "Typendefinition": 1, "Fragetext": "Wie lang ist ein C-Druckschlauch?", "Fragebild": "null", "Fragevideo": "null" },
 	{ "id": 2, "Typendefinition": 1, "Fragetext": "Wie heißt dein Bürgermeister", "Fragebild": "null", "Fragevideo": "null" },
-	{ "id": 3, "Typendefinition": 1, "Fragetext": "Welche Mitglieder hat die Feuerwehr?", "Fragebild": "null", "Fragevideo": "null" },
+	{ "id": 3, "Typendefinition": 1, "Fragetext": "Welche Mitglieder hat die Feuerwehr?", "Fragebild": "null", "Fragevideo": "http://ia800607.us.archive.org/14/items/MickeyMouse-RunawayTrain/Film-42.mp4" },
 	{ "id": 4, "Typendefinition": 1, "Fragetext": "Wie viele Bezirke hat OÖ?", "Fragebild": "null", "Fragevideo": "null" },
 	{ "id": 5, "Typendefinition": 1, "Fragetext": "Wer ist der Schutzpatron der Feuerwehr?", "Fragebild": "null", "Fragevideo": "null" },
 	{ "id": 6, "Typendefinition": 1, "Fragetext": "Welchen Dienstgrad hat der Gerätewart?", "Fragebild": "null", "Fragevideo": "null" },
-	{ "id": 7, "Typendefinition": 1, "Fragetext": "Wie lang ist ein B-Druckschlauch?", "Fragebild": "null", "Fragevideo": "null" }
+	{ "id": 7, "Typendefinition": 1, "Fragetext": "Wie lang ist ein B-Druckschlauch?", "Fragebild": "http://www.benchmarkemail.com/images/screen_shots/imageurl01.gif", "Fragevideo": "null" },
+	{ "id": 8, "Typendefinition": 1, "Fragetext": "Wie lang ist ein D-Druckschlauch?", "Fragebild": "null", "Fragevideo": "http://ia800607.us.archive.org/14/items/MickeyMouse-RunawayTrain/Film-42.mp4" },
+	{ "id": 9, "Typendefinition": 1, "Fragetext": "Wer ist dein Feuerwehrkommandant?", "Fragebild": "http://www.benchmarkemail.com/images/screen_shots/imageurl01.gif", "Fragevideo": "http://ia800607.us.archive.org/14/items/MickeyMouse-RunawayTrain/Film-42.mp4" }
   ],
   "Typendefinition": [
     { "Typendefinition": 1, "TypName": "F_T"},
@@ -37,16 +39,34 @@
 	{ "AufgabeID": 5, "Station": 1, "Stufe": 3, "Antwort": 5, "Frage": 5,"Zusatzinfo": 5,"Pflichtaufgabe": true,"TeilAufgabeVon": null, "Bezirk": 5,"Ort": "Grieskirchen"},
 	{ "AufgabeID": 6, "Station": 1, "Stufe": 1, "Antwort": 6, "Frage": 6,"Zusatzinfo": 6,"Pflichtaufgabe": false,"TeilAufgabeVon": null, "Bezirk": 1,"Ort": null},	
 	{ "AufgabeID": 7, "Station": 2, "Stufe": 2, "Antwort": 7, "Frage": 7,"Zusatzinfo": 7,"Pflichtaufgabe": false,"TeilAufgabeVon": 1, "Bezirk": 5,"Ort": "Natternbach"},
-	{ "AufgabeID": 8, "Station": 11, "Stufe": 2, "Antwort": 8, "Frage": 8,"Zusatzinfo": 8,"Pflichtaufgabe": false,"TeilAufgabeVon": 2, "Bezirk": null,"Ort": null}
+	{ "AufgabeID": 8, "Station": 11, "Stufe": 2, "Antwort": 8, "Frage": 8,"Zusatzinfo": 8,"Pflichtaufgabe": false,"TeilAufgabeVon": null, "Bezirk": null,"Ort": null},
+	{ "AufgabeID": 9, "Station": 11, "Stufe": 2, "Antwort": 9, "Frage": 9,"Zusatzinfo": 9,"Pflichtaufgabe": false,"TeilAufgabeVon": null, "Bezirk": null,"Ort": null},
+	{ "AufgabeID": 10, "Station": 11, "Stufe": 2, "Antwort": 10, "Frage": 10,"Zusatzinfo": 10,"Pflichtaufgabe": false,"TeilAufgabeVon": null, "Bezirk": null,"Ort": null}
   ],
   "Zusatzinfo": [
-    { "idZusatzinfo": 1, "Typendefinition": 5 },
-	{ "idZusatzinfo": 2, "Typendefinition": 5 },
-	{ "idZusatzinfo": 3, "Typendefinition": 5 }
+    { "idZusatzinfo": 1, "Typendefinition": 4 },
+	{ "idZusatzinfo": 2, "Typendefinition": 4 },
+	{ "idZusatzinfo": 3, "Typendefinition": 4 },
+	{ "idZusatzinfo": 4, "Typendefinition": 5 },
+	{ "idZusatzinfo": 5, "Typendefinition": 4 },
+	{ "idZusatzinfo": 6, "Typendefinition": 4 },
+	{ "idZusatzinfo": 7, "Typendefinition": 4 },
+	{ "idZusatzinfo": 8, "Typendefinition": 4 },
+	{ "idZusatzinfo": 9, "Typendefinition": 4 },
+	{ "idZusatzinfo": 10, "Typendefinition": 4 }
   ],
   "InfoContent": [
     { "InfoContentID": 1, "Zusatzinfo": 1, "InfoContent": "Hier soll die angezeigte Info stehen!", "Heading": "Überschrift des Textes?" },
-	{ "InfoContentID": 2, "Zusatzinfo": 1, "InfoContent": "Hier soll die 2. angezeigte Info stehen!", "Heading": "Überschrift des 2. Textes?" }
+	{ "InfoContentID": 2, "Zusatzinfo": 2, "InfoContent": "Hier soll die 2. angezeigte Info stehen!", "Heading": "Überschrift des 2. Textes?" },
+	{ "InfoContentID": 3, "Zusatzinfo": 3, "InfoContent": "Hier soll die 3. angezeigte Info stehen!", "Heading": "Überschrift des 3. Textes?" },
+	{ "InfoContentID": 4, "Zusatzinfo": 4, "InfoContent": "Hier soll die 4. angezeigte Info stehen!", "Heading": "Überschrift des 4. Textes?" },
+	{ "InfoContentID": 5, "Zusatzinfo": 4, "InfoContent": "Hier soll die 4. angezeigte Info stehen(doppelt TT)!", "Heading": "Überschrift des 4.2. Textes?" },
+	{ "InfoContentID": 6, "Zusatzinfo": 6, "InfoContent": "Hier soll die 6. angezeigte Info stehen!", "Heading": "Überschrift des 6. Textes?" },
+	{ "InfoContentID": 7, "Zusatzinfo": 7, "InfoContent": "Hier soll die 7. angezeigte Info stehen!", "Heading": "Überschrift des 7. Textes?" },
+	{ "InfoContentID": 8, "Zusatzinfo": 8, "InfoContent": "Hier soll die 8. angezeigte Info stehen!", "Heading": "Überschrift des 8. Textes?" },
+	{ "InfoContentID": 9, "Zusatzinfo": 9, "InfoContent": "Hier soll die 9. angezeigte Info stehen!", "Heading": "Überschrift des 9. Textes?" },
+	{ "InfoContentID": 10, "Zusatzinfo": 10, "InfoContent": "Hier soll die 10. angezeigte Info stehen!", "Heading": "Überschrift des 10. Textes?" },
+	{ "InfoContentID": 11, "Zusatzinfo": 5, "InfoContent": "Hier soll die 5. angezeigte Info stehen!", "Heading": "Überschrift des 11. Textes?" }
   ],
   "Station": [
     { "StationID": 1, "Stationsname": "Allgemeinwissen" },

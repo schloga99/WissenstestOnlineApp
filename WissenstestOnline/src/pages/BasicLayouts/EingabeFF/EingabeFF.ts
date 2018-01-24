@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
 import { AuswahlStufePage } from "../AuswahlStufe/AuswahlStufe";
 import { GlobalVars } from "../../../providers/globals";
@@ -24,12 +24,6 @@ export class EingabeFFPage implements OnInit {
         this.currfeuerwehr = "";
         this.currbezirk = "";
 
-        //this.storage.ready().then(() => {
-        //    this.storage.get('Bezirk').then((val) => { // retrive               
-        //        this.bezirke = val;
-        //        console.log(this.bezirke);
-        //    });
-        //});
         this.bezirke = this.database.getBezirk();
         this.standorte = this.database.getStandorte();
     }
@@ -40,7 +34,7 @@ export class EingabeFFPage implements OnInit {
 
     weiterbtn() {
         console.log(this.currfeuerwehr + " = currentfeuerwehr");
-        if ((typeof this.currfeuerwehr != 'object') && (this.currfeuerwehr != "")) {        //if ( (this.currfeuerwehr != "") && (this.currfeuerwehr.length != 0) && (this.currfeuerwehr != null) && (typeof this.currfeuerwehr != 'object'))
+        if ((typeof this.currfeuerwehr != 'object') && (this.currfeuerwehr != "")) {       
             this.globalvar.setfeuerwehrandbezirk(this.currfeuerwehr, this.currbezirk);
             this.navCtrl.push(AuswahlStufePage);
 

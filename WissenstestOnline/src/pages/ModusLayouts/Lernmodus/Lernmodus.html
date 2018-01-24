@@ -1,4 +1,4 @@
-﻿<ion-header>
+<ion-header>
   <ion-toolbar>
     <ion-buttons left>
       <ion-row>
@@ -22,9 +22,12 @@
 </ion-header>
 
 <ion-content class="content" padding>
+  <ion-title style="padding-top:0.3em; padding-left:0.3em;">Frage</ion-title>
   <ion-card class="ion-cardFrage">
     <ion-card-content text-wrap>
-      {{Frage}}
+
+      {{Fragetext}}
+
     </ion-card-content>
   </ion-card>
 
@@ -41,8 +44,7 @@
     </ion-card-content>
   </ion-card>-->
 
-
-  <ion-card class="ion-cardsingletext" [hidden]="hidetext">
+  <ion-card class="ion-cardsingletext" [hidden]="!hidetext">
     <ion-card-content>
       <ion-grid>
         <ion-row>
@@ -57,7 +59,7 @@
       <ion-list radio-group [(ngModel)]="radiobuttonAntwort">
         <ion-item class="listitem">
           <ion-label>{{Antwort1}}</ion-label>
-          <ion-radio value="Antwort1" ></ion-radio>
+          <ion-radio value="Antwort1"></ion-radio>
         </ion-item>
         <ion-item class="listitem">
           <ion-label>{{Antwort2}}</ion-label>
@@ -69,12 +71,11 @@
         </ion-item>
         <ion-item>
           <ion-label>{{Antwort4}}</ion-label>
-          <ion-radio value="Antwort4" ></ion-radio>
+          <ion-radio value="Antwort4"></ion-radio>
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
-
   <ion-card class="ion-cardsingletext" [hidden]="!hidecheckbox">
     <ion-card-content>
       <ion-list>
@@ -99,7 +100,6 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
-
   <ion-card class="ion-cardSlider" [hidden]="!hideslider">
     <ion-card-content>
       <ion-item>
@@ -111,17 +111,14 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
-
   <ion-card class="ion-carddate" [hidden]="!hidedatepicker">
     <ion-card-content>
       <ion-item>
         <ion-label>Datum</ion-label>
-        <ion-datetime displayFormat="DD.MM.YYYY" pickerFormat=" DD MMMM YYYY"  doneText="Ok" cancelText="Abbrechen"  [(ngModel)]="datevalue"></ion-datetime>
+        <ion-datetime displayFormat="DD.MM.YYYY" pickerFormat=" DD MMMM YYYY" doneText="Ok" cancelText="Abbrechen" [(ngModel)]="datevalue"></ion-datetime>
       </ion-item>
     </ion-card-content>
   </ion-card>
-
-
 
 
   <label style="color: #FC0A1C;" id="infos"> <!--{{aktFF}},--> {{stufeoutput}}, {{aktstation}}, Frage {{fragenr}}</label>

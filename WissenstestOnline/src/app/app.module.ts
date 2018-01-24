@@ -1,4 +1,4 @@
-﻿import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AuswahlStationPage } from '../pages/BasicLayouts/AuswahlStation/AuswahlStation';
@@ -12,38 +12,41 @@ import { Storage } from '@ionic/storage';
 import { database } from '../providers/database';
 import { HttpModule } from '@angular/http';
 import { storage } from '../providers/storage';
+import { ZusatzinfoPage } from '../pages/ModusLayouts/Modalzusatzinfo/zusatzinfo';
 
 export function provideStorage() {
-    return new Storage(['sqlite', 'websql', 'indexeddb'], { name: 'database' });
+  return new Storage(['sqlite', 'websql', 'indexeddb'], { name: 'database' });
 }
 @NgModule({
-    declarations: [
-        MyApp,
-        AuswahlStationPage,
-        AuswahlStufePage,
-        EingabeFFPage,       
-        LernmodusPage,
-        ÜbungsmodusPage,
-        StartLayoutPage
-    ],
-    imports: [  
-        HttpModule,
-        IonicModule.forRoot(MyApp)      
-    ],
-    bootstrap: [IonicApp],
-    entryComponents: [
-        MyApp,
-        AuswahlStationPage,
-        AuswahlStufePage,
-        EingabeFFPage,
-        LernmodusPage,
-        ÜbungsmodusPage,
-        StartLayoutPage
-    ],
-    providers: [
-        { provide: ErrorHandler, useClass: IonicErrorHandler }, storage, GlobalVars, database,
-        { provide: Storage, useFactory: provideStorage }, Storage
-    ]
+  declarations: [
+    MyApp,
+    AuswahlStationPage,
+    AuswahlStufePage,
+    EingabeFFPage,
+    LernmodusPage,
+    ÜbungsmodusPage,
+    StartLayoutPage,
+    ZusatzinfoPage
+  ],
+  imports: [
+    HttpModule,
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    AuswahlStationPage,
+    AuswahlStufePage,
+    EingabeFFPage,
+    LernmodusPage,
+    ÜbungsmodusPage,
+    StartLayoutPage,
+    ZusatzinfoPage
+  ],
+  providers: [
+    { provide: ErrorHandler, useClass: IonicErrorHandler }, storage, GlobalVars, database,
+    { provide: Storage, useFactory: provideStorage }, Storage
+  ]
 })
 export class AppModule { }
 

@@ -6,6 +6,7 @@ import { LernmodusPage } from "../../ModusLayouts/Lernmodus/Lernmodus";
 import { ÜbungsmodusPage } from "../../ModusLayouts/Übungsmodus/Übungsmodus";
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
+import { database } from '../../../providers/database';
 
 @Component({
     selector: 'page-AuswahlStation',
@@ -13,21 +14,22 @@ import { AlertController } from 'ionic-angular';
 })
 export class AuswahlStationPage implements OnInit {
 
-    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController) { }
+    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController, public database: database) { }
 
-    stations = [
-        'Allgemeinwissen',
-        'Dienstgrade',
-        'Wasserführende Armaturen + technische Geräte',
-        'Vorbeugender Brandschutz',
-        'Seilknoten',
-        'Nachrichtenübermittlung',
-        'Verkehrserziehung und Absichern von Einsatzstellen',
-        'Erste Hilfe',
-        'Taktik',
-        'Gefährliche Stoffe',
-        'Atem- und Körperschutz',
-    ]; 
+    //stations = [
+    //    'Allgemeinwissen',
+    //    'Dienstgrade',
+    //    'Wasserführende Armaturen + technische Geräte',
+    //    'Vorbeugender Brandschutz',
+    //    'Seilknoten',
+    //    'Nachrichtenübermittlung',
+    //    'Verkehrserziehung und Absichern von Einsatzstellen',
+    //    'Erste Hilfe',
+    //    'Taktik',
+    //    'Gefährliche Stoffe',
+    //    'Atem- und Körperschutz',
+    //]; 
+    stations = [];
 
     stufe: any;
     stufeoutput: any;
@@ -49,6 +51,8 @@ export class AuswahlStationPage implements OnInit {
         if (this.stufe == 3) {
             this.stufeoutput = "Gold";
         }
+
+        this.stations = this.database.stations;
     }
 
 
