@@ -43,7 +43,7 @@ export class database {
   typendefinitionen = [];
   Aufgaben: Aufgabe[] = [];
   //fragen = [];
-  
+
   InfoContent = [];
   ZusatzInfo = [];
   Antworten = [];
@@ -99,9 +99,9 @@ export class database {
           //console.log(a);
           if (!this.standortegeordnet[this.countx]) this.standortegeordnet[this.countx] = [];
           for (var b of data) {
-            if (b.Bezirk == a.BezirkID) {
+            if (b.FkBezirk == a.BezirkID) {
               //console.log(b.Bezirk + " == " + a.BezirkID + ", " + b.OrtsName);
-              this.standortegeordnet[this.countx][this.county] = b.OrtsName;
+              this.standortegeordnet[this.countx][this.county] = b.Ortsname;
               this.county++;
             }
           }
@@ -115,6 +115,8 @@ export class database {
       });
     });
   }
+
+  //data von den einzelnen Tabellen
   setStation() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl + 'Station').map(res => res.json()).subscribe(data => {
@@ -201,7 +203,6 @@ export class database {
       });
     });
   }
-
   setAntwort_Datepicker() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl + 'Antwort_DatePicker').map(res => res.json()).subscribe(data => {
@@ -286,20 +287,19 @@ export class database {
 
   getstations() {
     return this.stations;
-
   }
 
   getausgewählteAufgaben() {
     let count = 0;
     let stationid = [];
+    //console.log(this.stationobject);
     for (let i of this.stationobject) {
       //console.log(this.globals.ausgewaeltestationen);
       //console.log(i.Stationsname + " stationsname");
       if (this.globals.ausgewaeltestationen[count] == i.Stationsname) {
         stationid[count] = i.StationID;
-          count++;
+        count++;
       }
-      
     }
     //console.log(stationid + " station id");
     count = 0;
@@ -308,25 +308,24 @@ export class database {
       for (let b = 0; b < this.stationobject.length; b++) {
 
         //console.log(this.globals.ausgewaeltestationen[b]);
-        if (a.Station == stationid[b]) {
+        if (a.FkStation == stationid[b]) {
 
-          if (a.Stufe == this.globals.aktlstufe) {
+          if (a.FkStufe == this.globals.aktlstufe) {
             //if (this.aufgabeobject[count].Ort == this.globals.aktlfeuerwehr) {
 
-              this.Aufgaben.push({
-                AufgabeID: a.AufgabeID,
-                Station: a.Station,
-                Stufe: a.Stufe,
-                Antwort: a.Antwort,
-                Frage: a.Frage,
-                Zusatzinfo: a.Zusatzinfo,
-                Pflichtaufgabe: a.Pflichtaufgabe,
-                TeilAufgabeVon: a.TeilAufgabeVon,
-                Bezirk: a.Bezirk,
-                Ort: a.Ort,
-              });
+            this.Aufgaben.push({
+              AufgabeID: a.AufgabeID,
+              Station: a.FkStation,
+              Stufe: a.FkStufe,
+              Antwort: a.FkAntwort,
+              Frage: a.FkFrage,
+              Zusatzinfo: a.FkZusatzinfo,
+              Pflichtaufgabe: a.Pflichtaufgabe,
+              TeilAufgabeVon: a.TeilAufgabeVon,
+              Bezirk: a.FkBezirk,
+              Standort: a.FkStandort,
+            });
             //}
-
           }
 
         }

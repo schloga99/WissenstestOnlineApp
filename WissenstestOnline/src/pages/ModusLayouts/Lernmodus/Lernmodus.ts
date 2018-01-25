@@ -22,7 +22,7 @@ export class LernmodusPage {
   Antwortvideo: any;
 
   Zusatzinfos: any;
-  
+
 
   ausgewähltestations: any;
   aktstation: any;
@@ -31,7 +31,7 @@ export class LernmodusPage {
   aktFF: any;
   fragenr: number;
 
-  hideantwort: boolean =false;
+  hideantwort: boolean = false;
   hidetext: boolean = true;
   hidecheckbox: boolean = false;
   hideradio: boolean = false;
@@ -41,20 +41,27 @@ export class LernmodusPage {
 
   slidervalue: number;
 
-  
+
   data = [];
   Aufgabedata: Aufgabe[] = [];
   Fragedata = [];
   Typendefinition = [];
-  
+
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage, public alertController: AlertController, public database: database) { }
 
   ngOnInit() {
+    this.indexAufgabe = 0;
     this.aktstation = "";
     this.slidervalue = 0;
     this.aktFF = this.globalvar.getfeuerwehr();
-
     this.aktstufe = this.globalvar.getaktlstufe();
+    this.ausgewähltestations = this.globalvar.getstationen();
+    console.log(this.ausgewähltestations);
+    this.fragenr = 0;
+    this.setAntworttext(this.fragenr);
+    this.aktstation = this.ausgewähltestations[0];
+    console.log(this.aktstation);
+
     if (this.aktstufe == 1) {
       this.stufeoutput = "Bronze";
     }
@@ -64,22 +71,9 @@ export class LernmodusPage {
     if (this.aktstufe == 3) {
       this.stufeoutput = "Gold";
     }
-    this.ausgewähltestations = this.globalvar.getstationen();
-    console.log(this.ausgewähltestations);
-    this.fragenr = 0;
-    this.setAntworttext(this.fragenr);
-
-    this.aktstation = this.ausgewähltestations[0];
-
-    console.log(this.aktstation);
 
 
-    //testeinstellungen
-      //this.aktFF = "Natternbach"
-      //this.aktstation = "Allgemeinwissen";
-      //this.aktstufe = "1";
-
-    //bekomme hier alle beötigte Daten
+    //bekomme hier alle benötigte Daten
     this.data = this.database.ALLDATA;
     this.Fragedata = this.database.frageobject;
     this.Aufgabedata = this.database.getausgewählteAufgaben();
@@ -91,13 +85,13 @@ export class LernmodusPage {
 
     let Frage0 = Aufgabe0.Frage;
     console.log(Aufgabe0.Frage);
-    this.Fragetext = this.Fragedata[Frage0].Fragetext;
-    this.Fragebild = this.Fragedata[Frage0].Fragebild;
-    this.Fragevideo = this.Fragedata[Frage0].Fragevideo;
+    this.Fragetext = this.Fragedata[Frage0].FrageText;
+    this.Fragebild = this.Fragedata[Frage0].FrageBild;
+    this.Fragevideo = this.Fragedata[Frage0].FrageVideo;
     console.log(this.Fragetext);
-    
-    
 
+
+    this.fragenr = 1;
   }
 
   onLink(url: string) {
@@ -116,40 +110,70 @@ export class LernmodusPage {
     zusatzinfomodal.present();
 
   }
-  nextbtn() {
+  indexAufgabe = 0;
+  nextbtn() {    
+    this.indexAufgabe++;
+    this.fragenr++;
+    let aktlAufgabe = this.Aufgabedata[this.indexAufgabe];
+    console.log(this.Aufgabedata[this.indexAufgabe]);
+    if (aktlAufgabe == undefined) {
+      this.indexAufgabe--;
+      this.fragenr--;
+      let alert = this.alertController.create({
+        title: 'Geschafft!',
+        subTitle: 'Du hast die ausgewählten Fragen vollständig durchgearbeitet.',
+        buttons: [
+          {
+            text: 'Zurück',
+            role: 'cancel',
+            handler: () => {
+              this.navCtrl.push(AuswahlStationPage);
+              console.log('Zurück');
+            }
+          }
+        ]
+      });
+      alert.present();
+      return;
+    }
+
+    let aktlFrage = aktlAufgabe.Frage;
+    console.log(aktlAufgabe.Frage);
+
+    this.Fragetext = this.Fragedata[aktlFrage].FrageText;
+    this.Fragebild = this.Fragedata[aktlFrage].FrageBild;
+    this.Fragevideo = this.Fragedata[aktlFrage].FrageVideo;
+    console.log(this.Fragetext);
+
 
   }
   lastbtn() {
+    this.indexAufgabe--;
+    this.fragenr--;
+    let aktlAufgabe = this.Aufgabedata[this.indexAufgabe];
+    console.log(this.Aufgabedata[this.indexAufgabe]);
+    if (aktlAufgabe == undefined) {
+      this.indexAufgabe++;
+      this.fragenr++;
+          
+      return;
+    }
 
+    let aktlFrage = aktlAufgabe.Frage;
+    console.log(aktlAufgabe.Frage);
+
+    this.Fragetext = this.Fragedata[aktlFrage].FrageText;
+    this.Fragebild = this.Fragedata[aktlFrage].FrageBild;
+    this.Fragevideo = this.Fragedata[aktlFrage].FrageVideo;
+    console.log(this.Fragetext);
   }
 
   Antwort1: any;
   Antwort2: any;
   Antwort3: any;
   Antwort4: any;
+
   setAntworttext(aktfrageNr: number) {
-    //this.storage.ready().then(() => {
-    //    this.storage.get('Antworten').then((val) => { // retrive                                           
-    //        console.log(val);
-
-    //        if (aktfrageNr == val[0][0]) {
-    //            this.fragenr = 1;
-    //            console.log("AktuelleFrageAntwortNummer = "+ aktfrageNr);
-    //            console.log("Frage: "+this.fragenr);
-    //            this.Antwort1 = val[0][1];
-    //            //this.Antwort2 = val[0][2];
-    //            //this.Antwort3 = val[0][3];
-    //            //this.Antwort4 = val[0][4];
-    //            console.log("Antwort gesetzt");
-
-    //        }
-    //    })
-    //});
-
-
-
-
-
 
   }
 };

@@ -50,6 +50,7 @@ export class MyApp {
         //this.database.setCheckboxen();
         //this.database.setRadioButtons();
 
+
         //this.initStorageData();
     }
     //initStorageData() { //Hier werden ALLE Daten für den Wissenstest geladen (in den Storage gespeichert)

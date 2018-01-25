@@ -6,9 +6,9 @@ export class Aufgabe {
   Frage: number;
   Zusatzinfo: number;
   Pflichtaufgabe: boolean;
-  TeilAufgabeVon?: boolean;
+  TeilAufgabeVon?: number;
   Bezirk?: number;
-  Ort?: string;
+  Standort?: number;
 
   constructor() { }
 }
