@@ -33,6 +33,7 @@ export class GlobalVars {
     }
     setstationen(value) {
       let count = 0;
+      this.ausgewaeltestationen = [];
       for (let a of value) {
         this.ausgewaeltestationen[count] = a;
         count++;

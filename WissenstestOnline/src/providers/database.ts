@@ -292,7 +292,11 @@ export class database {
   getausgewählteAufgaben() {
     let count = 0;
     let stationid = [];
+    console.log(this.Aufgaben.length+ "vorher");
+    this.Aufgaben.length = 0;
+    console.log(this.Aufgaben.length +"nachher");
     //console.log(this.stationobject);
+    
     for (let i of this.stationobject) {
       //console.log(this.globals.ausgewaeltestationen);
       //console.log(i.Stationsname + " stationsname");
@@ -331,6 +335,7 @@ export class database {
         }
       }
     }
+    console.log(this.Aufgaben.length + "schluss");
     return this.Aufgaben;
   }
 
