@@ -172,7 +172,7 @@ export class database {
       this.http.get(this.apiUrl + 'InfoContent').map(res => res.json()).subscribe(data => {
         console.log(data);
         this.infocontentobject = data;
-        resolve(this.InfoContent);
+        resolve(this.infocontentobject);
       });
     });
   }
@@ -280,7 +280,9 @@ export class database {
     console.log(this.bezirke);
     return this.bezirke;
   }
-
+  getInfoContent() {
+    return this.infocontentobject;
+  }
   getStandorte() {
     return this.standortegeordnet;
   }

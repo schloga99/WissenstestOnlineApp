@@ -46,6 +46,9 @@ export class LernmodusPage {
   Fragedata = [];
   Typendefinition = [];
   stations = [];
+  zusatzinfo = [];
+  infocontent = [];
+
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage, public alertController: AlertController, public database: database) { }
 
   ngOnInit() {
@@ -88,7 +91,7 @@ export class LernmodusPage {
     //setze hier erste Frage:
     let Aufgabe0 = this.Aufgabedata[0];
     console.log(this.Aufgabedata[0]);
-
+    this.aktlAufgabeinfo = this.Aufgabedata[0].Zusatzinfo;
     let Frage0 = Aufgabe0.Frage;
     console.log(Aufgabe0.Frage);
     this.aktstation = this.ausgewähltestations[0];
@@ -99,6 +102,7 @@ export class LernmodusPage {
 
 
     this.fragenr = 1;
+    this.infocontentobject = this.database.getInfoContent();
   }
 
   onLink(url: string) {
@@ -110,18 +114,20 @@ export class LernmodusPage {
     this.navCtrl.push(AuswahlStationPage);
   }
 
-  testinfo: any = "Funktioniert";
+  aktlAufgabeinfo: number;
+  infocontentobject = [];
   zusatzinfobutton() {
 
-    let zusatzinfomodal = this.modalCtrl.create(ZusatzinfoPage, { info: this.testinfo });
+    let zusatzinfomodal = this.modalCtrl.create(ZusatzinfoPage, { aktlAufgabeinfo: this.aktlAufgabeinfo, infoContents: this.infocontentobject });
     zusatzinfomodal.present();
 
   }
   indexAufgabe = 0;
   nextbtn() {
+    //Frage:
     this.indexAufgabe++;
     this.fragenr++;
-    let aktlAufgabe = this.Aufgabedata[this.indexAufgabe];
+    let aktlAufgabe = this.Aufgabedata[this.indexAufgabe];    
     console.log(this.Aufgabedata[this.indexAufgabe]);
     if (aktlAufgabe == undefined) {
       this.indexAufgabe--;
@@ -145,6 +151,7 @@ export class LernmodusPage {
       return;
     }
 
+    this.aktlAufgabeinfo = this.Aufgabedata[this.indexAufgabe].Zusatzinfo;
     let aktlFrage = aktlAufgabe.Frage;
     console.log(aktlAufgabe.Frage);
     console.log(aktlAufgabe.Station);
@@ -162,6 +169,7 @@ export class LernmodusPage {
     this.Fragevideo = this.Fragedata[aktlFrage].FrageVideo;
     console.log(this.Fragetext);
 
+   
 
   }
   lastbtn() {
