@@ -30,8 +30,8 @@ export class LernmodusPage {
   aktFF: any;
   fragenr: number;
 
-  hideantwort: boolean = false;
-  hidetext: boolean = true;
+  //hideantwort: boolean = false;
+  hidetext: boolean = false;
   hidecheckbox: boolean = false;
   hideradio: boolean = false;
   hidelabel: boolean = false;
@@ -80,6 +80,7 @@ export class LernmodusPage {
     this.Fragedata = this.database.frageobject;
     this.Aufgabedata = [];
     this.Aufgabedata = this.database.getausgewählteAufgaben();
+    console.log(this.database.getausgewählteAufgaben());
     this.Aufgabedata.sort((s1, s2) =>{
       if (s1.Station > s2.Station) return 1;
       if (s1.Station < s2.Station) return -1;
@@ -92,8 +93,10 @@ export class LernmodusPage {
     let Aufgabe0 = this.Aufgabedata[0];
     console.log(this.Aufgabedata[0]);
     this.aktlAufgabeinfo = this.Aufgabedata[0].Zusatzinfo;
-    let Frage0 = Aufgabe0.Frage;
-    console.log(Aufgabe0.Frage);
+    let Frage0 = Aufgabe0.Frage-1; // 1-1 = Stelle 0
+    console.log(Aufgabe0.Frage -1);
+
+    
     this.aktstation = this.ausgewähltestations[0];
     this.Fragetext = this.Fragedata[Frage0].FrageText;
     this.Fragebild = this.Fragedata[Frage0].FrageBild;
@@ -219,39 +222,155 @@ export class LernmodusPage {
   aktlAufgabenTypendefinitionString: string;
 
   setAntwort(aktindexNr: number) {
-
+    this.Antwort1 = undefined;
+    this.Antwort2 = undefined;
+    this.Antwort3 = undefined;
+    this.Antwort4 = undefined;
     console.log(aktindexNr);
     console.log(this.Aufgabedata);
     this.aktlAufgabenAntwortID = this.Aufgabedata[aktindexNr].Antwort;
-    this.aktlAufgabenAntwort = this.database.Antworten[this.aktlAufgabenAntwortID];
-    this.aktlAufgabenTypendefinitionID = this.aktlAufgabenAntwort.FkTypendefinition;
-    this.aktlAufgabenTypendefinitionString = this.database.typendefinitionobject[this.aktlAufgabenTypendefinitionID].TypName;
     console.log(this.aktlAufgabenAntwortID);
+    this.aktlAufgabenAntwort = this.database.Antworten[this.aktlAufgabenAntwortID - 1];
+    console.log(this.aktlAufgabenAntwort);
+    this.aktlAufgabenTypendefinitionID = this.aktlAufgabenAntwort.FkTypendefinition;
+    this.aktlAufgabenTypendefinitionString = this.database.typendefinitionobject[this.aktlAufgabenTypendefinitionID-1].TypName;
     console.log(this.aktlAufgabenAntwort);
     console.log(this.aktlAufgabenTypendefinitionID);
     console.log(this.aktlAufgabenTypendefinitionString);
-    switch (this.aktlAufgabenTypendefinitionID) {
-      case "A_T":
 
+    let AntwortContentID = this.database.antwortobject[this.aktlAufgabenAntwortID - 1].AntwortContentID;
+    console.log(AntwortContentID);
+    switch (this.aktlAufgabenTypendefinitionString) {
+      case "A_T":
+        let aktlText = this.database.Antwort_Textobject[AntwortContentID - 1].Text;
+        console.log(aktlText);
+
+        // #region hidecards
+        this.Antwort1 = aktlText;
+        this.hidetext = true;
+        this.hideslider = false;
+        this.hideradio = false;
+        this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = false;
+        // #endregion      
         break;
+
       case "A_S":
 
+        // #region hidecards
+        this.hidetext = false;
+        this.hideslider = true;
+        this.hideradio = false;
+        this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = false;
+          // #endregion
         break;
       case "A_DP":
 
+        // #region hidecards
+        this.hidetext = false;
+        this.hideslider = false;
+        this.hideradio = false;
+        this.hidelabel = false;
+        this.hidedate = true;
+        this.hidecheckbox = false;
+        // #endregion
         break;
       case "A_CB:T":
 
+         // #region hidecards
+        this.hidetext = false;
+        this.hideslider = false;
+        this.hideradio = false;
+        this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = true;
+        // #endregion
         break;
       case "A_CB:B":
 
+         // #region hidecards
+        this.hidetext = false;
+        this.hideslider = false;
+        this.hideradio = false;
+        this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = true;
+        // #endregion
         break;
       case "A_RB:T":
-        
+
+
+         // #region hidecards
+        this.hidetext = false;
+        this.hideslider = false;
+        this.hideradio = true;
+        this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = false;
+        // #endregion
         break;
       case "A_RB:B":
 
-        break;       
+        // #region hidecards
+        this.hidetext = false;
+        this.hideslider = false;
+        this.hideradio = true;
+        this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = false;
+        // #endregion
+        break;
+      case "A_V:T-T?M":
+
+
+        // #region hidecards
+        this.hidetext = false;
+        this.hideslider = false;
+        this.hideradio = false;
+        this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = false;
+        // #endregion
+        break;
+      case "A_V:B-T?M":
+
+
+        // #region hidecards
+        this.hidetext = false;
+        this.hideslider = false;
+        this.hideradio = false;
+        this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = false;
+         // #endregion
+        break;
+      case "A_V:B-B?M":
+
+
+        // #region hidecards
+        this.hidetext = false;
+        this.hideslider = false;
+        this.hideradio = false;
+        this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = false;
+         // #endregion
+        break;
+      case "A_V:B-B?V":
+
+
+        // #region hidecards
+        this.hidetext = false;
+        this.hideslider = false;
+        this.hideradio = false;
+        this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = false;
+         // #endregion
+        break;
     }
   }
 };
