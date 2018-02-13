@@ -32,37 +32,23 @@ export class MyApp {
         this.database.setStandort();
         this.database.setStufe();
         this.database.setStation();
-        this.database.setAntwort();
+        
         this.database.setAufgabe();
         this.database.setInfoContent();
         this.database.setFrage();
         this.database.setZusatzinfo();
         this.database.setTypendefinition();
 
-
-        //this.database.setAntwort_Checkbox();
-        //this.database.setAntwort_Datepicker();
-        //this.database.setAntwort_Radiobuttons();
-        //this.database.setAntwort_Slider();
-        //this.database.setAntwort_Text();
-        //this.database.setAntwort_Verbinden();
-        //this.database.setPaar();
-        //this.database.setCheckboxen();
-        //this.database.setRadioButtons();
-
-
-        //this.initStorageData();
+        //Antwortdaten from server
+        this.database.setAntwort();
+        this.database.setAntwort_Checkbox();
+        this.database.setAntwort_Datepicker();
+        this.database.setAntwort_Radiobuttons();
+        this.database.setAntwort_Slider();
+        this.database.setAntwort_Text();
+        this.database.setAntwort_Verbinden();
+        this.database.setPaar();
+        this.database.setCheckboxen();
+        this.database.setRadioButtons();     
     }
-    //initStorageData() { //Hier werden ALLE Daten für den Wissenstest geladen (in den Storage gespeichert)
-    //    this.storage.length().then((value) => {
-    //        this.storage.clear();
-    //        this.ownstorage.setstorage();
-    //        console.log(value + " keys in storage");
-    //        if (value == null) { // oder undefined
-    //            this.ownstorage.setstorage();
-    //            console.log("storage was empty, set storage")
-    //        }
-            
-    //    })   
-    //}
 }

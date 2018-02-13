@@ -1,15 +1,17 @@
 <ion-content padding no-scroll style="overflow:hidden" scroll="false" class="no-scroll">
   <div *ngFor="let info of allanzeigendeinfo">
-    <ion-title style="padding-top:0.3em; padding-left:0.3em;">{{info.Header}}</ion-title>    
-    <img [src]="info.Img" [hidden]="!info.Img"  />
-    <ion-item [hidden]="info.Img" >  
+    <ion-title style="padding-top:0.3em; padding-left:0.3em;">{{info.Header}}</ion-title>
+    <img [src]="info.Img" [hidden]="!info.Img" />
+    <ion-item [hidden]="info.Img">
       <ion-label style="font-size: medium" color="dark" stacked>{{info.Content}}</ion-label>
     </ion-item>
+    <!--<video style="width: 100%;height: 200px;" src="{{video_link}}#t=0.1" controls></video>-->
   </div>
 
   <!--<ion-item>
     <img [src]="imgSrc" />
   </ion-item>-->
+  
 
   <ion-grid ion-fixed style="bottom:0;">
     <ion-row>

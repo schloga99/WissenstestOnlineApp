@@ -189,6 +189,7 @@ export class database {
     return new Promise(resolve => {
       this.http.get(this.apiUrl + 'Antwort').map(res => res.json()).subscribe(data => {
         console.log(data);
+        this.Antworten = data;
         this.antwortobject = data;
         resolve(this.Antworten);
       });

@@ -60,7 +60,7 @@ export class LernmodusPage {
     this.ausgewähltestations = this.globalvar.getstationen();
     console.log(this.ausgewähltestations);
     this.fragenr = 0;
-    this.setAntworttext(this.fragenr);
+    
 
     console.log(this.aktstation);
 
@@ -86,7 +86,7 @@ export class LernmodusPage {
       return 0;
     });
     console.log(this.Aufgabedata);
-
+    this.setAntwort(this.fragenr);
     this.stations = this.database.stations;
     //setze hier erste Frage:
     let Aufgabe0 = this.Aufgabedata[0];
@@ -150,7 +150,7 @@ export class LernmodusPage {
       alert.present();
       return;
     }
-
+    
     this.aktlAufgabeinfo = this.Aufgabedata[this.indexAufgabe].Zusatzinfo;
     let aktlFrage = aktlAufgabe.Frage;
     console.log(aktlAufgabe.Frage);
@@ -169,7 +169,10 @@ export class LernmodusPage {
     this.Fragevideo = this.Fragedata[aktlFrage].FrageVideo;
     console.log(this.Fragetext);
 
-   
+    //Antwort
+    this.setAntwort(this.indexAufgabe);
+
+
 
   }
   lastbtn() {
@@ -200,6 +203,9 @@ export class LernmodusPage {
     this.Fragebild = this.Fragedata[aktlFrage].FrageBild;
     this.Fragevideo = this.Fragedata[aktlFrage].FrageVideo;
     console.log(this.Fragetext);
+
+    //Antwort
+    this.setAntwort(this.fragenr);
   }
 
   Antwort1: any;
@@ -207,8 +213,46 @@ export class LernmodusPage {
   Antwort3: any;
   Antwort4: any;
 
-  setAntworttext(aktfrageNr: number) {
+  aktlAufgabenAntwortID: any; //ID von Aufgabe
+  aktlAufgabenAntwort: any; //Antwort[] von Antwort
+  aktlAufgabenTypendefinitionID: any;
+  aktlAufgabenTypendefinitionString: string;
 
+  setAntwort(aktindexNr: number) {
+
+    console.log(aktindexNr);
+    console.log(this.Aufgabedata);
+    this.aktlAufgabenAntwortID = this.Aufgabedata[aktindexNr].Antwort;
+    this.aktlAufgabenAntwort = this.database.Antworten[this.aktlAufgabenAntwortID];
+    this.aktlAufgabenTypendefinitionID = this.aktlAufgabenAntwort.FkTypendefinition;
+    this.aktlAufgabenTypendefinitionString = this.database.typendefinitionobject[this.aktlAufgabenTypendefinitionID].TypName;
+    console.log(this.aktlAufgabenAntwortID);
+    console.log(this.aktlAufgabenAntwort);
+    console.log(this.aktlAufgabenTypendefinitionID);
+    console.log(this.aktlAufgabenTypendefinitionString);
+    switch (this.aktlAufgabenTypendefinitionID) {
+      case "A_T":
+
+        break;
+      case "A_S":
+
+        break;
+      case "A_DP":
+
+        break;
+      case "A_CB:T":
+
+        break;
+      case "A_CB:B":
+
+        break;
+      case "A_RB:T":
+        
+        break;
+      case "A_RB:B":
+
+        break;       
+    }
   }
 };
 
