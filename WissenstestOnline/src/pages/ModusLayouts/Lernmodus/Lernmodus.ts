@@ -30,7 +30,6 @@ export class LernmodusPage {
   aktFF: any;
   fragenr: number;
 
-  //hideantwort: boolean = false;
   hidetext: boolean = false;
   hidecheckbox: boolean = false;
   hideradio: boolean = false;
@@ -39,7 +38,6 @@ export class LernmodusPage {
   hideslider: boolean = false;
 
   slidervalue: number;
-
 
   data = [];
   Aufgabedata: Aufgabe[] = [];
@@ -61,7 +59,6 @@ export class LernmodusPage {
     console.log(this.ausgewähltestations);
     this.fragenr = 0;
     
-
     console.log(this.aktstation);
 
     if (this.aktstufe == 1) {
@@ -80,7 +77,7 @@ export class LernmodusPage {
     this.Fragedata = this.database.frageobject;
     this.Aufgabedata = [];
     this.Aufgabedata = this.database.getausgewählteAufgaben();
-    console.log(this.database.getausgewählteAufgaben());
+    //console.log(this.database.getausgewählteAufgaben());
     this.Aufgabedata.sort((s1, s2) =>{
       if (s1.Station > s2.Station) return 1;
       if (s1.Station < s2.Station) return -1;
@@ -91,7 +88,7 @@ export class LernmodusPage {
     this.stations = this.database.stations;
     //setze hier erste Frage:
     let Aufgabe0 = this.Aufgabedata[0];
-    console.log(this.Aufgabedata[0]);
+    //console.log(this.Aufgabedata[0]);
     this.aktlAufgabeinfo = this.Aufgabedata[0].Zusatzinfo;
     let Frage0 = Aufgabe0.Frage-1; // 1-1 = Stelle 0
     console.log(Aufgabe0.Frage -1);
@@ -174,9 +171,6 @@ export class LernmodusPage {
 
     //Antwort
     this.setAntwort(this.indexAufgabe);
-
-
-
   }
   lastbtn() {
     this.indexAufgabe--;
@@ -242,134 +236,169 @@ export class LernmodusPage {
     console.log(AntwortContentID);
     switch (this.aktlAufgabenTypendefinitionString) {
       case "A_T":
-        let aktlText = this.database.Antwort_Textobject[AntwortContentID - 1].Text;
-        console.log(aktlText);
-
-        // #region hidecards
-        this.Antwort1 = aktlText;
-        this.hidetext = true;
-        this.hideslider = false;
-        this.hideradio = false;
-        this.hidelabel = false;
-        this.hidedate = false;
-        this.hidecheckbox = false;
+        {
+          let aktlText = this.database.Antwort_Textobject[AntwortContentID - 1].Text;
+          console.log(aktlText);
+          this.Antwort1 = aktlText;
+          // #region hidecards       
+          this.hidetext = true;
+          this.hideslider = false;
+          this.hideradio = false;
+          this.hidelabel = false;
+          this.hidedate = false;
+          this.hidecheckbox = false;
         // #endregion      
+        }
         break;
-
       case "A_S":
+        {
+          let min;
+          let max;
+          let sprungweite;
+          let slidertext;
+          let value;
 
-        // #region hidecards
-        this.hidetext = false;
-        this.hideslider = true;
-        this.hideradio = false;
-        this.hidelabel = false;
-        this.hidedate = false;
-        this.hidecheckbox = false;
+          // #region hidecards
+          this.hidetext = false;
+          this.hideslider = true;
+          this.hideradio = false;
+          this.hidelabel = false;
+          this.hidedate = false;
+          this.hidecheckbox = false;
           // #endregion
+        }
         break;
       case "A_DP":
+        {
+          let date;
 
+          // #region hidecards
+          this.hidetext = false;
+          this.hideslider = false;
+          this.hideradio = false;
+          this.hidelabel = false;
+          this.hidedate = true;
+          this.hidecheckbox = false;
+        // #endregion
+        }
+        break;
+      case "A_CB:T": {
+          let anzahl;
+          let inhalte = []; // texte
+          let checkboxvalue = []; // true oder false
+          // #region hidecards
+          this.hidetext = false;
+          this.hideslider = false;
+          this.hideradio = false;
+          this.hidelabel = false;
+          this.hidedate = false;
+          this.hidecheckbox = true;
+        // #endregion
+        }   
+        break;
+      case "A_CB:B": {
+        let anzahl;
+        let inhalte = []; // texte
+        let checkboxvalue = []; // true oder false
         // #region hidecards
         this.hidetext = false;
         this.hideslider = false;
         this.hideradio = false;
         this.hidelabel = false;
-        this.hidedate = true;
-        this.hidecheckbox = false;
-        // #endregion
-        break;
-      case "A_CB:T":
-
-         // #region hidecards
-        this.hidetext = false;
-        this.hideslider = false;
-        this.hideradio = false;
-        this.hidelabel = false;
         this.hidedate = false;
         this.hidecheckbox = true;
-        // #endregion
-        break;
-      case "A_CB:B":
-
-         // #region hidecards
-        this.hidetext = false;
-        this.hideslider = false;
-        this.hideradio = false;
-        this.hidelabel = false;
-        this.hidedate = false;
-        this.hidecheckbox = true;
-        // #endregion
+        // #endregion     
+      }
         break;
       case "A_RB:T":
-
-
-         // #region hidecards
-        this.hidetext = false;
-        this.hideslider = false;
-        this.hideradio = true;
-        this.hidelabel = false;
-        this.hidedate = false;
-        this.hidecheckbox = false;
+        {
+          let anzahl;
+          let content = [];
+          let Erwartungsweit = []; //true oder false
+          // #region hidecards
+          this.hidetext = false;
+          this.hideslider = false;
+          this.hideradio = true;
+          this.hidelabel = false;
+          this.hidedate = false;
+          this.hidecheckbox = false;
         // #endregion
+        }
         break;
       case "A_RB:B":
-
-        // #region hidecards
-        this.hidetext = false;
-        this.hideslider = false;
-        this.hideradio = true;
-        this.hidelabel = false;
-        this.hidedate = false;
-        this.hidecheckbox = false;
+        {
+          let anzahl;
+          let content = [];
+          let Erwartungsweit = []; //true oder false
+          // #region hidecards
+          this.hidetext = false;
+          this.hideslider = false;
+          this.hideradio = true;
+          this.hidelabel = false;
+          this.hidedate = false;
+          this.hidecheckbox = false;
         // #endregion
+        }
         break;
       case "A_V:T-T?M":
-
-
-        // #region hidecards
-        this.hidetext = false;
-        this.hideslider = false;
-        this.hideradio = false;
-        this.hidelabel = false;
-        this.hidedate = false;
-        this.hidecheckbox = false;
-        // #endregion
+        {
+          let anzahl;
+          let Teile1 = []; //alle 1. Teile 
+          let Teile2 = []; //alle 2. Teile
+          // #region hidecards
+          this.hidetext = false;
+          this.hideslider = false;
+          this.hideradio = false;
+          this.hidelabel = false;
+          this.hidedate = false;
+          this.hidecheckbox = false;
+        // #endregion  
+        }
         break;
       case "A_V:B-T?M":
-
-
-        // #region hidecards
-        this.hidetext = false;
-        this.hideslider = false;
-        this.hideradio = false;
-        this.hidelabel = false;
-        this.hidedate = false;
-        this.hidecheckbox = false;
+        {
+          let anzahl;
+          let Teile1 = []; //alle 1. Teile 
+          let Teile2 = []; //alle 2. Teile
+          // #region hidecards
+          this.hidetext = false;
+          this.hideslider = false;
+          this.hideradio = false;
+          this.hidelabel = false;
+          this.hidedate = false;
+          this.hidecheckbox = false;
          // #endregion
+        }
         break;
       case "A_V:B-B?M":
-
-
-        // #region hidecards
-        this.hidetext = false;
-        this.hideslider = false;
-        this.hideradio = false;
-        this.hidelabel = false;
-        this.hidedate = false;
-        this.hidecheckbox = false;
-         // #endregion
+        {
+          let anzahl;
+          let Teile1 = []; //alle 1. Teile 
+          let Teile2 = []; //alle 2. Teile
+          // #region hidecards
+          this.hidetext = false;
+          this.hideslider = false;
+          this.hideradio = false;
+          this.hidelabel = false;
+          this.hidedate = false;
+          this.hidecheckbox = false;
+          // #endregion}
+        } 
         break;
       case "A_V:B-B?V":
-
-
-        // #region hidecards
-        this.hidetext = false;
-        this.hideslider = false;
-        this.hideradio = false;
-        this.hidelabel = false;
-        this.hidedate = false;
-        this.hidecheckbox = false;
+        {
+          let anzahl;
+          let Teile1 = []; //alle 1. Teile 
+          let Teile2 = []; //alle 2. Teile
+          // #region hidecards
+          this.hidetext = false;
+          this.hideslider = false;
+          this.hideradio = false;
+          this.hidelabel = false;
+          this.hidedate = false;
+          this.hidecheckbox = false;
          // #endregion
+        }
         break;
     }
   }

@@ -36,22 +36,15 @@ export class database {
   RadioButtonsobject: any;
   Paarobject: any;
 
-
-
-
   stufen = [];
   typendefinitionen = [];
   Aufgaben: Aufgabe[] = [];
-  //fragen = [];
 
   InfoContent = [];
   ZusatzInfo = [];
   Antworten = [];
 
-
-  constructor(public http: Http, public ownstorage: storage, public globals: GlobalVars) {
-
-  }
+  constructor(public http: Http, public ownstorage: storage, public globals: GlobalVars) {}
 
   county: number = 0;
   countx: number = 0;
