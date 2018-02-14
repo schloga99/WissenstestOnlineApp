@@ -39,7 +39,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="ion-cardradio" [hidden]="!hideradiobuttons">
+  <ion-card class="ion-cardradio" [hidden]="!hideradio">
     <ion-card-content>
       <ion-list radio-group [(ngModel)]="radiobuttonAntwort">
         <ion-item class="listitem">
@@ -61,6 +61,7 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+
   <ion-card class="ion-cardsingletext" [hidden]="!hidecheckbox">
     <ion-card-content>
       <ion-list>
@@ -85,6 +86,7 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+
   <ion-card class="ion-cardSlider" [hidden]="!hideslider">
     <ion-card-content>
       <ion-item>
@@ -96,7 +98,8 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
-  <ion-card class="ion-carddate" [hidden]="!hidedatepicker">
+
+  <ion-card class="ion-carddate" [hidden]="!hidedate">
     <ion-card-content>
       <ion-item>
         <ion-label>Datum</ion-label>

@@ -33,7 +33,7 @@ export class LernmodusPage {
   hidetext: boolean = false;
   hidecheckbox: boolean = false;
   hideradio: boolean = false;
-  hidelabel: boolean = false;
+  //hidelabel: boolean = false;
   hidedate: boolean = false;
   hideslider: boolean = false;
 
@@ -58,7 +58,7 @@ export class LernmodusPage {
     this.ausgewähltestations = this.globalvar.getstationen();
     console.log(this.ausgewähltestations);
     this.fragenr = 0;
-    
+
     console.log(this.aktstation);
 
     if (this.aktstufe == 1) {
@@ -71,14 +71,13 @@ export class LernmodusPage {
       this.stufeoutput = "Gold";
     }
 
-
     //bekomme hier alle benötigte Daten
     this.data = this.database.ALLDATA;
     this.Fragedata = this.database.frageobject;
     this.Aufgabedata = [];
     this.Aufgabedata = this.database.getausgewählteAufgaben();
     //console.log(this.database.getausgewählteAufgaben());
-    this.Aufgabedata.sort((s1, s2) =>{
+    this.Aufgabedata.sort((s1, s2) => {
       if (s1.Station > s2.Station) return 1;
       if (s1.Station < s2.Station) return -1;
       return 0;
@@ -90,16 +89,14 @@ export class LernmodusPage {
     let Aufgabe0 = this.Aufgabedata[0];
     //console.log(this.Aufgabedata[0]);
     this.aktlAufgabeinfo = this.Aufgabedata[0].Zusatzinfo;
-    let Frage0 = Aufgabe0.Frage-1; // 1-1 = Stelle 0
-    console.log(Aufgabe0.Frage -1);
+    let Frage0 = Aufgabe0.Frage - 1; // 1-1 = Stelle 0
+    console.log(Aufgabe0.Frage - 1);
 
-    
     this.aktstation = this.ausgewähltestations[0];
     this.Fragetext = this.Fragedata[Frage0].FrageText;
     this.Fragebild = this.Fragedata[Frage0].FrageBild;
     this.Fragevideo = this.Fragedata[Frage0].FrageVideo;
     console.log(this.Fragetext);
-
 
     this.fragenr = 1;
     this.infocontentobject = this.database.getInfoContent();
@@ -120,14 +117,14 @@ export class LernmodusPage {
 
     let zusatzinfomodal = this.modalCtrl.create(ZusatzinfoPage, { aktlAufgabeinfo: this.aktlAufgabeinfo, infoContents: this.infocontentobject });
     zusatzinfomodal.present();
-
   }
   indexAufgabe = 0;
+
   nextbtn() {
     //Frage:
     this.indexAufgabe++;
     this.fragenr++;
-    let aktlAufgabe = this.Aufgabedata[this.indexAufgabe];    
+    let aktlAufgabe = this.Aufgabedata[this.indexAufgabe];
     console.log(this.Aufgabedata[this.indexAufgabe]);
     if (aktlAufgabe == undefined) {
       this.indexAufgabe--;
@@ -150,7 +147,7 @@ export class LernmodusPage {
       alert.present();
       return;
     }
-    
+
     this.aktlAufgabeinfo = this.Aufgabedata[this.indexAufgabe].Zusatzinfo;
     let aktlFrage = aktlAufgabe.Frage;
     console.log(aktlAufgabe.Frage);
@@ -180,7 +177,6 @@ export class LernmodusPage {
     if (aktlAufgabe == undefined) {
       this.indexAufgabe++;
       this.fragenr++;
-
       return;
     }
 
@@ -202,7 +198,7 @@ export class LernmodusPage {
     console.log(this.Fragetext);
 
     //Antwort
-    this.setAntwort(this.fragenr);
+    this.setAntwort(this.indexAufgabe);
   }
 
   Antwort1: any;
@@ -216,6 +212,14 @@ export class LernmodusPage {
   aktlAufgabenTypendefinitionString: string;
 
   setAntwort(aktindexNr: number) {
+
+    //Antwort noch auf Bezirk und Standort überprüfen ob null
+    //und aktuelle Eingaben (Bezirk und FF) vergleichen
+    //wenn undefined --> drinnen lassen
+    //wenn Bezirk null ist --> drinnen lassen --> sonst Standortabfrage
+    //wenn standort null --> Bezirk vergleichen --> gleich --> drinnen lassen
+    // Aufgabedata wird somit verändert 
+
     this.Antwort1 = undefined;
     this.Antwort2 = undefined;
     this.Antwort3 = undefined;
@@ -227,13 +231,13 @@ export class LernmodusPage {
     this.aktlAufgabenAntwort = this.database.Antworten[this.aktlAufgabenAntwortID - 1];
     console.log(this.aktlAufgabenAntwort);
     this.aktlAufgabenTypendefinitionID = this.aktlAufgabenAntwort.FkTypendefinition;
-    this.aktlAufgabenTypendefinitionString = this.database.typendefinitionobject[this.aktlAufgabenTypendefinitionID-1].TypName;
+    this.aktlAufgabenTypendefinitionString = this.database.typendefinitionobject[this.aktlAufgabenTypendefinitionID - 1].TypName;
     console.log(this.aktlAufgabenAntwort);
     console.log(this.aktlAufgabenTypendefinitionID);
     console.log(this.aktlAufgabenTypendefinitionString);
 
     let AntwortContentID = this.database.antwortobject[this.aktlAufgabenAntwortID - 1].AntwortContentID;
-    console.log(AntwortContentID);
+    //console.log(AntwortContentID);
     switch (this.aktlAufgabenTypendefinitionString) {
       case "A_T":
         {
@@ -244,10 +248,10 @@ export class LernmodusPage {
           this.hidetext = true;
           this.hideslider = false;
           this.hideradio = false;
-          this.hidelabel = false;
+          //this.hidelabel = false;
           this.hidedate = false;
           this.hidecheckbox = false;
-        // #endregion      
+          // #endregion      
         }
         break;
       case "A_S":
@@ -262,7 +266,7 @@ export class LernmodusPage {
           this.hidetext = false;
           this.hideslider = true;
           this.hideradio = false;
-          this.hidelabel = false;
+          //this.hidelabel = false;
           this.hidedate = false;
           this.hidecheckbox = false;
           // #endregion
@@ -276,25 +280,25 @@ export class LernmodusPage {
           this.hidetext = false;
           this.hideslider = false;
           this.hideradio = false;
-          this.hidelabel = false;
+          //this.hidelabel = false;
           this.hidedate = true;
           this.hidecheckbox = false;
-        // #endregion
+          // #endregion
         }
         break;
       case "A_CB:T": {
-          let anzahl;
-          let inhalte = []; // texte
-          let checkboxvalue = []; // true oder false
-          // #region hidecards
-          this.hidetext = false;
-          this.hideslider = false;
-          this.hideradio = false;
-          this.hidelabel = false;
-          this.hidedate = false;
-          this.hidecheckbox = true;
+        let anzahl;
+        let inhalte = []; // texte
+        let checkboxvalue = []; // true oder false
+        // #region hidecards
+        this.hidetext = false;
+        this.hideslider = false;
+        this.hideradio = false;
+        // this.hidelabel = false;
+        this.hidedate = false;
+        this.hidecheckbox = true;
         // #endregion
-        }   
+      }
         break;
       case "A_CB:B": {
         let anzahl;
@@ -304,7 +308,7 @@ export class LernmodusPage {
         this.hidetext = false;
         this.hideslider = false;
         this.hideradio = false;
-        this.hidelabel = false;
+        // this.hidelabel = false;
         this.hidedate = false;
         this.hidecheckbox = true;
         // #endregion     
@@ -319,10 +323,10 @@ export class LernmodusPage {
           this.hidetext = false;
           this.hideslider = false;
           this.hideradio = true;
-          this.hidelabel = false;
+          // this.hidelabel = false;
           this.hidedate = false;
           this.hidecheckbox = false;
-        // #endregion
+          // #endregion
         }
         break;
       case "A_RB:B":
@@ -334,10 +338,10 @@ export class LernmodusPage {
           this.hidetext = false;
           this.hideslider = false;
           this.hideradio = true;
-          this.hidelabel = false;
+          //this.hidelabel = false;
           this.hidedate = false;
           this.hidecheckbox = false;
-        // #endregion
+          // #endregion
         }
         break;
       case "A_V:T-T?M":
@@ -349,10 +353,10 @@ export class LernmodusPage {
           this.hidetext = false;
           this.hideslider = false;
           this.hideradio = false;
-          this.hidelabel = false;
+          //  this.hidelabel = false;
           this.hidedate = false;
           this.hidecheckbox = false;
-        // #endregion  
+          // #endregion  
         }
         break;
       case "A_V:B-T?M":
@@ -364,10 +368,10 @@ export class LernmodusPage {
           this.hidetext = false;
           this.hideslider = false;
           this.hideradio = false;
-          this.hidelabel = false;
+          //  this.hidelabel = false;
           this.hidedate = false;
           this.hidecheckbox = false;
-         // #endregion
+          // #endregion
         }
         break;
       case "A_V:B-B?M":
@@ -379,11 +383,11 @@ export class LernmodusPage {
           this.hidetext = false;
           this.hideslider = false;
           this.hideradio = false;
-          this.hidelabel = false;
+          //this.hidelabel = false;
           this.hidedate = false;
           this.hidecheckbox = false;
           // #endregion}
-        } 
+        }
         break;
       case "A_V:B-B?V":
         {
@@ -394,10 +398,10 @@ export class LernmodusPage {
           this.hidetext = false;
           this.hideslider = false;
           this.hideradio = false;
-          this.hidelabel = false;
+         // this.hidelabel = false;
           this.hidedate = false;
           this.hidecheckbox = false;
-         // #endregion
+          // #endregion
         }
         break;
     }
