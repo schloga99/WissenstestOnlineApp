@@ -46,6 +46,7 @@ export function provideStorage() {
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler }, storage, GlobalVars, database,
     { provide: Storage, useFactory: provideStorage }
+    
   ]
 })
 export class AppModule { }

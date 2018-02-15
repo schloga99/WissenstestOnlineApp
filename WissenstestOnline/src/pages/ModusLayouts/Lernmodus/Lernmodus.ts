@@ -211,6 +211,17 @@ export class LernmodusPage {
   aktlAufgabenTypendefinitionID: any;
   aktlAufgabenTypendefinitionString: string;
 
+  //slider
+  min: any;
+  max: any;
+  sprungweite: any;
+  slidertext: any;
+  value: any;
+
+  //datepicker
+  datevalue:any;
+
+
   setAntwort(aktindexNr: number) {
 
     //Antwort noch auf Bezirk und Standort überprüfen ob null
@@ -256,11 +267,11 @@ export class LernmodusPage {
         break;
       case "A_S":
         {
-          let min;
-          let max;
-          let sprungweite;
-          let slidertext;
-          let value;
+          this.min;
+          this.max;
+          this.sprungweite;
+          this.slidertext;
+          this.value;
 
           // #region hidecards
           this.hidetext = false;
@@ -274,8 +285,13 @@ export class LernmodusPage {
         break;
       case "A_DP":
         {
-          let date;
-
+          //console.log(this.database.Antwort_DatePickerobject[AntwortContentID - 1].Date);
+          let dateEU = this.database.Antwort_DatePickerobject[AntwortContentID - 1].Date;          
+          let dateArray = dateEU.split('.');
+          let datestring = dateArray[2] + '-' + dateArray[1] + '-' + dateArray[0];         
+          let date = new Date(datestring).toISOString();
+          this.datevalue = date;
+          console.log(datestring);
           // #region hidecards
           this.hidetext = false;
           this.hideslider = false;
