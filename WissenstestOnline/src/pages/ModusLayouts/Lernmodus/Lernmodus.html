@@ -89,10 +89,11 @@
 
   <ion-card class="ion-cardSlider" [hidden]="!hideslider">
     <ion-card-content>
+      {{slidertext}}
       <ion-item>
-        <ion-range min="0" max="100" [(ngModel)]="slidervalue" color="danger">
-          <ion-label range-left>0</ion-label>
-          <ion-label range-right>100</ion-label>
+        <ion-range [step]=sprungweite [min]=min [max]=max [(ngModel)]="slidervalue" color="danger">
+          <ion-label range-left>{{min}}</ion-label>
+          <ion-label range-right>{{max}}</ion-label>
         </ion-range>
         <ion-label>{{slidervalue}}</ion-label>
       </ion-item>

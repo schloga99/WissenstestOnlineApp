@@ -37,8 +37,6 @@ export class LernmodusPage {
   hidedate: boolean = false;
   hideslider: boolean = false;
 
-  slidervalue: number;
-
   data = [];
   Aufgabedata: Aufgabe[] = [];
   Fragedata = [];
@@ -216,7 +214,7 @@ export class LernmodusPage {
   max: any;
   sprungweite: any;
   slidertext: any;
-  value: any;
+  slidervalue: any;
 
   //datepicker
   datevalue:any;
@@ -267,12 +265,12 @@ export class LernmodusPage {
         break;
       case "A_S":
         {
-          this.min;
-          this.max;
-          this.sprungweite;
-          this.slidertext;
-          this.value;
-
+          this.min = this.database.Antwort_Sliderobject[AntwortContentID - 1].MinVal;
+          this.max = this.database.Antwort_Sliderobject[AntwortContentID - 1].MaxVal;
+          this.sprungweite = this.database.Antwort_Sliderobject[AntwortContentID - 1].Sprungweite;
+          this.slidertext = this.database.Antwort_Sliderobject[AntwortContentID - 1].SliderText;
+          this.slidervalue = this.database.Antwort_Sliderobject[AntwortContentID - 1].ErwartungsWert;
+          console.log(this.slidervalue);
           // #region hidecards
           this.hidetext = false;
           this.hideslider = true;
