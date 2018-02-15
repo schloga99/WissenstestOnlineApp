@@ -36,6 +36,8 @@ export class LernmodusPage {
   //hidelabel: boolean = false;
   hidedate: boolean = false;
   hideslider: boolean = false;
+  hidecheckboxbilder: boolean = false;
+  hideradiobilder: boolean = false;
 
   data = [];
   Aufgabedata: Aufgabe[] = [];
@@ -217,8 +219,21 @@ export class LernmodusPage {
   slidervalue: any;
 
   //datepicker
-  datevalue:any;
+  datevalue: any;
 
+  //checkbox
+  checkbox1: boolean=false;
+  checkbox2: boolean=false;
+  checkbox3: boolean=false;
+  checkbox4: boolean = false;
+  hidecheckbox3: boolean = false;
+  hidecheckbox4: boolean = false;
+
+  //checkbox bilder
+  Img1: string;
+  Img2: string;
+  Img3: string;
+  Img4: string;
 
   setAntwort(aktindexNr: number) {
 
@@ -301,9 +316,33 @@ export class LernmodusPage {
         }
         break;
       case "A_CB:T": {
-        let anzahl;
         let inhalte = []; // texte
+        let count = 0;
         let checkboxvalue = []; // true oder false
+        console.log(AntwortContentID);
+        let anzahl = this.database.Antwort_Checkboxobject[AntwortContentID - 1].Anzahl;
+        for (var i = 0; i < this.database.Checkboxobject.length; i++) {
+          if (AntwortContentID == this.database.Checkboxobject[i].FkAntwortCheckbox) {
+            inhalte[count] = this.database.Checkboxobject[i].Inhalt;
+            checkboxvalue[count] = this.database.Checkboxobject[i].CheckboxVal;
+            count++;
+          }
+        }
+
+        this.Antwort1 = inhalte[0];
+        this.Antwort2 = inhalte[1];
+        this.hidecheckbox3 = false;
+        this.hidecheckbox4 = false;
+        this.checkbox1 = checkboxvalue[0];
+        this.checkbox2 = checkboxvalue[1];
+        if (anzahl > 2) {
+          this.Antwort3 = inhalte[2]; this.checkbox3 = checkboxvalue[2]; this.hidecheckbox3 = true;
+        }
+        if (anzahl > 3) {
+          this.Antwort4 = inhalte[3]; this.checkbox4 = checkboxvalue[3]; this.hidecheckbox4 = true;
+        }
+        //console.log(anzahl + " Anzahl checkboxen");
+       // console.log(this.hidecheckbox3 +" checkbox boolean");
         // #region hidecards
         this.hidetext = false;
         this.hideslider = false;
@@ -316,8 +355,9 @@ export class LernmodusPage {
         break;
       case "A_CB:B": {
         let anzahl;
-        let inhalte = []; // texte
+        let inhalte = []; // string url's vom Bild
         let checkboxvalue = []; // true oder false
+
         // #region hidecards
         this.hidetext = false;
         this.hideslider = false;

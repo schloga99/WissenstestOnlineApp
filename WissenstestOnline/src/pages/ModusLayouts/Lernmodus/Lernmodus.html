@@ -75,11 +75,12 @@
           <ion-checkbox [(ngModel)]="checkbox2"></ion-checkbox>
         </ion-item>
 
-        <ion-item>
+        <ion-item [hidden]="!hidecheckbox3">
           <ion-label>{{Antwort3}}</ion-label>
           <ion-checkbox [(ngModel)]="checkbox3"></ion-checkbox>
         </ion-item>
-        <ion-item>
+
+        <ion-item [hidden]="!hidecheckbox4">
           <ion-label>{{Antwort4}}</ion-label>
           <ion-checkbox [(ngModel)]="checkbox4"></ion-checkbox>
         </ion-item>
@@ -109,7 +110,56 @@
     </ion-card-content>
   </ion-card>
 
+  <!--CARD checkbox Bilder-->
+  <ion-card class="ion-cardsingletext" [hidden]="!hidecheckboxbilder">
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <img [src]="Img1" [hidden]="!Img1" />
+          <ion-checkbox [(ngModel)]="checkbox1"></ion-checkbox>
+        </ion-item>
 
+        <ion-item>
+          <img [src]="Img2" [hidden]="!Img2" />
+          <ion-checkbox [(ngModel)]="checkbox2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item [hidden]="!hidecheckbox3">
+          <img [src]="Img3" [hidden]="!Img3" />
+          <ion-checkbox [(ngModel)]="checkbox3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item [hidden]="!hidecheckbox4">
+          <img [src]="Img4" [hidden]="!Img4" />
+          <ion-checkbox [(ngModel)]="checkbox4"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!--Radio button bilder card-->
+  <ion-card class="ion-cardradio" [hidden]="!hideradiobilder">
+    <ion-card-content>
+      <ion-list radio-group [(ngModel)]="radiobuttonAntwort">
+        <ion-item class="listitem">
+          <img [src]="Img1" [hidden]="!Img1" />
+          <ion-radio value="Antwort1"></ion-radio>
+        </ion-item>
+        <ion-item class="listitem">
+          <img [src]="Img2" [hidden]="!Img2" />
+          <ion-radio value="Antwort2"></ion-radio>
+        </ion-item>
+        <ion-item class="listitem">
+          <img [src]="Img3" [hidden]="!Img3" />
+          <ion-radio value="Antwort3"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <img [src]="Img4" [hidden]="!Img4" />
+          <ion-radio value="Antwort4"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
   <label style="color: #FC0A1C;" id="infos"> <!--{{aktFF}},--> {{stufeoutput}}, {{aktstation}}, Frage {{fragenr}}</label>
 </ion-content>
 
