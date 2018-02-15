@@ -44,19 +44,19 @@
       <ion-list radio-group [(ngModel)]="radiobuttonAntwort">
         <ion-item class="listitem">
           <ion-label>{{Antwort1}}</ion-label>
-          <ion-radio value="Antwort1"></ion-radio>
+          <ion-radio [checked]="radiobool1" value="Antwort1"></ion-radio>
         </ion-item>
         <ion-item class="listitem">
           <ion-label>{{Antwort2}}</ion-label>
-          <ion-radio value="Antwort2"></ion-radio>
+          <ion-radio [checked]="radiobool2"  value="Antwort2"></ion-radio>
         </ion-item>
-        <ion-item class="listitem">
+        <ion-item [hidden]="!hideradiobutton3" class="listitem">
           <ion-label>{{Antwort3}}</ion-label>
-          <ion-radio value="Antwort3"></ion-radio>
+          <ion-radio  [checked]="radiobool3" value="Antwort3"></ion-radio>
         </ion-item>
-        <ion-item>
+        <ion-item [hidden]="!hideradiobutton4">
           <ion-label>{{Antwort4}}</ion-label>
-          <ion-radio value="Antwort4"></ion-radio>
+          <ion-radio [checked]="radiobool4"  value="Antwort4"></ion-radio>
         </ion-item>
       </ion-list>
     </ion-card-content>

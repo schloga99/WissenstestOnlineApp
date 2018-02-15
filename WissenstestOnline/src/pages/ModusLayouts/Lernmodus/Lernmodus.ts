@@ -229,11 +229,19 @@ export class LernmodusPage {
   hidecheckbox3: boolean = false;
   hidecheckbox4: boolean = false;
 
-  //checkbox bilder
+  //checkbox und radiobuttons variablen für bilder
   Img1: string;
   Img2: string;
   Img3: string;
   Img4: string;
+
+  //radiobutton
+  hideradiobutton3: boolean = false;
+  hideradiobutton4: boolean = false;
+  radiobool1: boolean = false;
+  radiobool2: boolean = false;
+  radiobool3: boolean = false;
+  radiobool4: boolean = false;
 
   setAntwort(aktindexNr: number) {
 
@@ -370,9 +378,31 @@ export class LernmodusPage {
         break;
       case "A_RB:T":
         {
-          let anzahl;
+          let anzahl = this.database.Antwort_RadioButtonsobject[AntwortContentID -1].Anzahl;
+          let count = 0;
           let content = [];
-          let Erwartungsweit = []; //true oder false
+          let Erwartungswert = []; //true oder false
+
+          for (var i = 0; i < this.database.RadioButtonsobject.length; i++) {
+            if (AntwortContentID == this.database.RadioButtonsobject[i].FkAntwortRadiobuttons) {
+              content[count] = this.database.RadioButtonsobject[i].Content;
+              Erwartungswert[count] = this.database.RadioButtonsobject[i].ErwartungsWert;
+              count++;
+            }
+          }
+          this.Antwort1 = content[0];
+          this.Antwort2 = content[1];
+          this.hidecheckbox3 = false;
+          this.hidecheckbox4 = false;
+          console.log(Erwartungswert[0]);
+          this.radiobool1 = Erwartungswert[0];
+          this.radiobool2 = Erwartungswert[1];
+          if (anzahl > 2) {
+            this.Antwort3 = content[2]; this.radiobool3 = Erwartungswert[2]; this.hideradiobutton3 = true;
+          }
+          if (anzahl > 3) {
+            this.Antwort4 = content[3]; this.radiobool4 = Erwartungswert[3]; this.hideradiobutton4 = true;
+          }
           // #region hidecards
           this.hidetext = false;
           this.hideslider = false;
