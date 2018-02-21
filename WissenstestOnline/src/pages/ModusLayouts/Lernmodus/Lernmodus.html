@@ -41,22 +41,22 @@
 
   <ion-card class="ion-cardradio" [hidden]="!hideradio">
     <ion-card-content>
-      <ion-list radio-group [(ngModel)]="radiobuttonAntwort">
+      <ion-list disabled radio-group [(ngModel)]="radiobuttonAntwort">
         <ion-item class="listitem">
-          <ion-label>{{Antwort1}}</ion-label>
+          <ion-label style="opacity: 1 !important;">{{Antwort1}}</ion-label>
           <ion-radio [checked]="radiobool1" value="Antwort1"></ion-radio>
         </ion-item>
         <ion-item class="listitem">
-          <ion-label>{{Antwort2}}</ion-label>
-          <ion-radio [checked]="radiobool2"  value="Antwort2"></ion-radio>
+          <ion-label style="opacity: 1 !important;">{{Antwort2}}</ion-label>
+          <ion-radio [checked]="radiobool2" value="Antwort2"></ion-radio>
         </ion-item>
         <ion-item [hidden]="!hideradiobutton3" class="listitem">
-          <ion-label>{{Antwort3}}</ion-label>
-          <ion-radio  [checked]="radiobool3" value="Antwort3"></ion-radio>
+          <ion-label style="opacity: 1 !important;">{{Antwort3}}</ion-label>
+          <ion-radio [checked]="radiobool3" value="Antwort3"></ion-radio>
         </ion-item>
         <ion-item [hidden]="!hideradiobutton4">
-          <ion-label>{{Antwort4}}</ion-label>
-          <ion-radio [checked]="radiobool4"  value="Antwort4"></ion-radio>
+          <ion-label style="opacity: 1 !important;">{{Antwort4}}</ion-label>
+          <ion-radio [checked]="radiobool4" value="Antwort4"></ion-radio>
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -64,25 +64,22 @@
 
   <ion-card class="ion-cardsingletext" [hidden]="!hidecheckbox">
     <ion-card-content>
-      <ion-list>
+      <ion-list >
         <ion-item>
-          <ion-label>{{Antwort1}}</ion-label>
-          <ion-checkbox [(ngModel)]="checkbox1"></ion-checkbox>
+          <ion-label style="opacity: 1 !important;">{{Antwort1}}</ion-label>
+          <ion-checkbox disabled [(ngModel)]="checkbox1"></ion-checkbox>
         </ion-item>
-
         <ion-item>
-          <ion-label>{{Antwort2}}</ion-label>
-          <ion-checkbox [(ngModel)]="checkbox2"></ion-checkbox>
+          <ion-label style="opacity: 1 !important;">{{Antwort2}}</ion-label>
+          <ion-checkbox  disabled [(ngModel)]="checkbox2"></ion-checkbox>
         </ion-item>
-
         <ion-item [hidden]="!hidecheckbox3">
-          <ion-label>{{Antwort3}}</ion-label>
-          <ion-checkbox [(ngModel)]="checkbox3"></ion-checkbox>
+          <ion-label style="opacity: 1 !important;">{{Antwort3}}</ion-label>
+          <ion-checkbox disabled [(ngModel)]="checkbox3"></ion-checkbox>
         </ion-item>
-
         <ion-item [hidden]="!hidecheckbox4">
-          <ion-label>{{Antwort4}}</ion-label>
-          <ion-checkbox [(ngModel)]="checkbox4"></ion-checkbox>
+          <ion-label style="opacity: 1 !important;">{{Antwort4}}</ion-label>
+          <ion-checkbox disabled [(ngModel)]="checkbox4"></ion-checkbox>
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -92,7 +89,7 @@
     <ion-card-content>
       {{slidertext}}
       <ion-item>
-        <ion-range [step]=sprungweite [min]=min [max]=max [(ngModel)]="slidervalue" color="danger">
+        <ion-range style="opacity: 1 !important;" disabled [step]=sprungweite [min]=min [max]=max [(ngModel)]="slidervalue" color="danger">
           <ion-label range-left>{{min}}</ion-label>
           <ion-label range-right>{{max}}</ion-label>
         </ion-range>
@@ -103,9 +100,9 @@
 
   <ion-card class="ion-carddate" [hidden]="!hidedate">
     <ion-card-content>
-      <ion-item>
-        <ion-label>Datum</ion-label>
-        <ion-datetime displayFormat="DD.MM.YYYY" doneText="Ok" cancelText="Abbrechen" [(ngModel)]="datevalue"></ion-datetime>
+      <ion-item style="opacity: 1 !important;">
+        <ion-label style="opacity: 1 !important;">Datum</ion-label>
+        <ion-datetime  style="opacity: 1 !important;" disabled displayFormat="DD.MM.YYYY" doneText="Ok" cancelText="Abbrechen" [(ngModel)]="datevalue"></ion-datetime>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -113,7 +110,7 @@
   <!--CARD checkbox Bilder-->
   <ion-card class="ion-cardsingletext" [hidden]="!hidecheckboxbilder">
     <ion-card-content>
-      <ion-list>
+      <ion-list style="opacity: 1 !important;" disabled>
         <ion-item>
           <img [src]="Img1" [hidden]="!Img1" />
           <ion-checkbox [(ngModel)]="checkbox1"></ion-checkbox>
@@ -138,9 +135,9 @@
   </ion-card>
 
   <!--Radio button bilder card-->
-  <ion-card class="ion-cardradio" [hidden]="!hideradiobilder">
+  <ion-card  class="ion-cardradio" [hidden]="!hideradiobilder">
     <ion-card-content>
-      <ion-list radio-group [(ngModel)]="radiobuttonAntwort">
+      <ion-list disabled radio-group [(ngModel)]="radiobuttonAntwort">
         <ion-item class="listitem">
           <img [src]="Img1" [hidden]="!Img1" />
           <ion-radio value="Antwort1"></ion-radio>
@@ -153,14 +150,16 @@
           <img [src]="Img3" [hidden]="!Img3" />
           <ion-radio value="Antwort3"></ion-radio>
         </ion-item>
-        <ion-item>
+        <ion-item no-lines>
           <img [src]="Img4" [hidden]="!Img4" />
           <ion-radio value="Antwort4"></ion-radio>
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <label style="color: #FC0A1C;" id="infos"> <!--{{aktFF}},--> {{stufeoutput}}, {{aktstation}}, Frage {{fragenr}}</label>
+  <label style="color: #FC0A1C;" id="infos">{{stufeoutput}}, {{aktstation}}</label>
+  <label style="color: #FC0A1C;" id="infos">Frage {{fragenr}} von {{anzahlStationen}}</label>
+
 </ion-content>
 
 <ion-footer>

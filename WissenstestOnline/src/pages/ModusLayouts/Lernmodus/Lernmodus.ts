@@ -29,6 +29,7 @@ export class LernmodusPage {
   stufeoutput: any;
   aktFF: any;
   fragenr: number;
+  anzahlStationen: number;
 
   hidetext: boolean = false;
   hidecheckbox: boolean = false;
@@ -83,6 +84,7 @@ export class LernmodusPage {
       return 0;
     });
     console.log(this.Aufgabedata);
+    this.anzahlStationen = this.Aufgabedata.length;
     this.setAntwort(this.fragenr);
     this.stations = this.database.stations;
     //setze hier erste Frage:
@@ -361,7 +363,7 @@ export class LernmodusPage {
         // #endregion
       }
         break;
-      case "A_CB:B": {
+      case "A_CB:B": { //ComboboxBilder
         let anzahl;
         let inhalte = []; // string url's vom Bild
         let checkboxvalue = []; // true oder false
@@ -413,7 +415,7 @@ export class LernmodusPage {
           // #endregion
         }
         break;
-      case "A_RB:B":
+      case "A_RB:B": //sollte Bilder als Auswahl haben
         {
           let anzahl;
           let content = [];
@@ -428,7 +430,7 @@ export class LernmodusPage {
           // #endregion
         }
         break;
-      case "A_V:T-T?M":
+      case "A_V:T-T?M": //Antwortverbinden
         {
           let anzahl;
           let Teile1 = []; //alle 1. Teile 
@@ -443,7 +445,7 @@ export class LernmodusPage {
           // #endregion  
         }
         break;
-      case "A_V:B-T?M":
+      case "A_V:B-T?M": //Antwortverbinden
         {
           let anzahl;
           let Teile1 = []; //alle 1. Teile 
@@ -458,7 +460,7 @@ export class LernmodusPage {
           // #endregion
         }
         break;
-      case "A_V:B-B?M":
+      case "A_V:B-B?M": //Antwortverbinden
         {
           let anzahl;
           let Teile1 = []; //alle 1. Teile 
@@ -473,7 +475,7 @@ export class LernmodusPage {
           // #endregion}
         }
         break;
-      case "A_V:B-B?V":
+      case "A_V:B-B?V": //Antwortverbinden
         {
           let anzahl;
           let Teile1 = []; //alle 1. Teile 

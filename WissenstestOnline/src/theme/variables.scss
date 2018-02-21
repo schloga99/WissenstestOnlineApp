@@ -1,4 +1,4 @@
-﻿// Ionic Variables and Theming. For more info, please see:
+// Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
 
@@ -15,6 +15,13 @@ $font-path: "../assets/fonts";
 
 .alert-checkbox-label {
   white-space: normal !important;
+}
+.checkbox-disabled, .checkbox-disabled ion-label {
+  opacity: 1 !important;
+}
+
+.radio-disabled, .radio-disabled ion-label {
+  opacity: 1 !important;
 }
 
 // Named Color Variables
@@ -33,6 +40,7 @@ $colors: (
   dark:       #222,
   ffred:      #FC0A1C
 );
+
 
 
 

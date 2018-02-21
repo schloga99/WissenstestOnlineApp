@@ -1,4 +1,4 @@
-﻿page-Lernmodus {
+page-Lernmodus {
   $redcolor: #FC0A1C;
 
   .content {
@@ -28,5 +28,10 @@
 
   .listitem {
     border-bottom: 1px solid green;
+  }
+
+
+  ion-checkbox [disabled] {
+    background-color: #ffffff !important;
   }
 }
