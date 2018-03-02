@@ -27,10 +27,10 @@ export class MyApp {
             Splashscreen.hide();            
         });
         //this.database.setAllData();
-
         this.database.setBezirk();
-        this.database.setStandort();
+
         this.database.setStufe();
+        this.database.setStandort();
         this.database.setStation();
         
         this.database.setAufgabe();
@@ -52,3 +52,4 @@ export class MyApp {
         this.database.setRadioButtons();     
     }
 }
+

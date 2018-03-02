@@ -42,45 +42,23 @@
   <ion-card class="ion-cardradio" [hidden]="!hideradio">
     <ion-card-content>
       <ion-list disabled radio-group [(ngModel)]="radiobuttonAntwort">
-        <ion-item class="listitem">
-          <ion-label style="opacity: 1 !important;">{{Antwort1}}</ion-label>
-          <ion-radio [checked]="radiobool1" value="Antwort1"></ion-radio>
+        <ion-item class="listitem" *ngFor="let antwort of RadiobuttonAntworten;let i=index">
+          <ion-label style="opacity: 1 !important;">{{antwort}}</ion-label>
+          <ion-radio [checked]="radioboolarray[i]" value="antwort"></ion-radio>
         </ion-item>
-        <ion-item class="listitem">
-          <ion-label style="opacity: 1 !important;">{{Antwort2}}</ion-label>
-          <ion-radio [checked]="radiobool2" value="Antwort2"></ion-radio>
-        </ion-item>
-        <ion-item [hidden]="!hideradiobutton3" class="listitem">
-          <ion-label style="opacity: 1 !important;">{{Antwort3}}</ion-label>
-          <ion-radio [checked]="radiobool3" value="Antwort3"></ion-radio>
-        </ion-item>
-        <ion-item [hidden]="!hideradiobutton4">
-          <ion-label style="opacity: 1 !important;">{{Antwort4}}</ion-label>
-          <ion-radio [checked]="radiobool4" value="Antwort4"></ion-radio>
-        </ion-item>
+        
       </ion-list>
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="ion-cardsingletext" [hidden]="!hidecheckbox">
+  <ion-card class="ion-cardcheckbox" [hidden]="!hidecheckbox">
     <ion-card-content>
-      <ion-list >
-        <ion-item>
-          <ion-label style="opacity: 1 !important;">{{Antwort1}}</ion-label>
-          <ion-checkbox disabled [(ngModel)]="checkbox1"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label style="opacity: 1 !important;">{{Antwort2}}</ion-label>
-          <ion-checkbox  disabled [(ngModel)]="checkbox2"></ion-checkbox>
-        </ion-item>
-        <ion-item [hidden]="!hidecheckbox3">
-          <ion-label style="opacity: 1 !important;">{{Antwort3}}</ion-label>
-          <ion-checkbox disabled [(ngModel)]="checkbox3"></ion-checkbox>
-        </ion-item>
-        <ion-item [hidden]="!hidecheckbox4">
-          <ion-label style="opacity: 1 !important;">{{Antwort4}}</ion-label>
-          <ion-checkbox disabled [(ngModel)]="checkbox4"></ion-checkbox>
-        </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let antwort of CheckboxAntworten;let i=index" >
+          <ion-label style="opacity: 1 !important;">{{antwort}}</ion-label>
+          <ion-checkbox disabled [(ngModel)]="checkboxarray[i]"></ion-checkbox>
+        </ion-item> 
+        
       </ion-list>
     </ion-card-content>
   </ion-card>

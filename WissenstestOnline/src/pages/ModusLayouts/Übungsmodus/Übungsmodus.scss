@@ -1,93 +1,37 @@
-﻿page-Übungsmodus {
+page-Übungsmodus {
   $redcolor: #FC0A1C;
 
   .content {
     background-color: white;
-    color: $redcolor;
+    //color: $redcolor;
     font-size: 24px;
   }
 
   #infos {
     font-size: 16px;
     text-align: left;
-    position: absolute;
-    bottom: 0;
+    position: relative;
     left: 0;
-    margin-bottom: 5px;
+    bottom: 0;
     margin-left: 10px;
+    display: block;
   }
 
-  ion-card {
+  .ion-cardFrage, .ion-cardAntwort {
     position: relative;
     text-align: center;
   }
 
-  #btnletzte {
-    bottom: 0;
-    left: 0;
-    cursor: pointer;
-    display: inline-block;
-    height: 40px;
-    margin-left: 40px;
-    margin-bottom: 25px;
-    position: absolute;
-    line-height: 1.7em;
-    padding-left: 35px;
-    padding-right: 1em;
-    background: $redcolor;
-    color: white;
-    width: 130px;
-
-    &:after {
-      // triangle hover color
-      border-left: 20px solid $redcolor;
-    }
+  .ion-card2 {
+    margin-top: 0%;
   }
 
-  #btnletzte:after {
-    // the triangle
-    content: "";
-    position: absolute;
-    border-bottom: 20px solid transparent;
-    border-top: 20px solid transparent;
-    height: 0px;
-    width: 0px;
-    margin-left: -20px;
-    left: 0;
-    transform: rotate(180deg);
+  .listitem {
+    border-bottom: 1px solid green;
   }
 
-  #btnnächste {
-    bottom: 0;
-    right: 0;
-    cursor: pointer;
-    display: inline-block;
-    height: 40px;
-    margin-right: 40px;
-    margin-bottom: 25px;
-    position: absolute;
-    line-height: 1.7em;
-    padding-left: 1em;
-    padding-right: 35px;
-    background: $redcolor;
-    color: white;
-    width: 130px;
 
-    &:after {
-      // triangle hover color
-      border-left: 20px solid $redcolor;
-    }
-  }
-
-  #btnnächste:after {
-    // the triangle
-    content: "";
-    position: absolute;
-    border-bottom: 20px solid transparent;
-    border-top: 20px solid transparent;
-    height: 0px;
-    width: 0px;
-    margin-right: -20px;
-    right: 0;
+  ion-checkbox [disabled] {
+    background-color: #ffffff !important;
   }
 }

@@ -1,26 +1,177 @@
-﻿<ion-content class="content" padding>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left>
+      <ion-row>
+        <ion-col no-padding>
+          <button (tap)="abbruchbtn()" id="abbrechen" no-margin ion-button color="danger">Abbrechen</button>
+        </ion-col>
+        <ion-col end no-padding>
+        </ion-col>
+      </ion-row>
+    </ion-buttons>
+    <ion-buttons right>
+      <ion-row>
+        <ion-col no-padding>
+          <button (tap)="zusatzinfobutton()" no-margin ion-button color="danger">? - Info</button>
+        </ion-col>
+        <ion-col end no-padding>
+        </ion-col>
+      </ion-row>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-  <a role="button" (tap)="abbruchbtn()" id="abbrechen">abbrechen</a>
-  <a role="button" id="zusatzinfo">? info</a>
-
-  <ion-card>
-    <ion-card-content> <!--Fragebereich-->
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+<ion-content class="content" padding>
+  <ion-title style="padding-top:0.3em; padding-left:0.3em;">Frage</ion-title>
+  <ion-card class="ion-cardFrage">
+    <ion-card-content text-wrap>
+      {{Fragetext}}
     </ion-card-content>
   </ion-card>
-  <ion-card>
-    <ion-card-content>  <!--Antwortbereich-->
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+
+  <ion-card class="ion-cardsingletext" [hidden]="!hidetext">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort1}}</ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
   </ion-card>
 
-  <a role="button" id="btnletzte">back</a>
-  <a role="button" id="btnnächste">weiter</a>
-  <label id="infos">Feuerwehr, Stufe, Station, Frage 2</label>
+  <ion-card class="ion-cardradio" [hidden]="!hideradio">
+    <ion-card-content>
+      <ion-list  radio-group [(ngModel)]="radiobuttonAntwort">
+        <ion-item class="listitem">
+          <ion-label style="opacity: 1 !important;">{{Antwort1}}</ion-label>
+          <ion-radio [checked]="radiobool1" value="Antwort1"></ion-radio>
+        </ion-item>
+        <ion-item class="listitem">
+          <ion-label style="opacity: 1 !important;">{{Antwort2}}</ion-label>
+          <ion-radio [checked]="radiobool2" value="Antwort2"></ion-radio>
+        </ion-item>
+        <ion-item [hidden]="!hideradiobutton3" class="listitem">
+          <ion-label style="opacity: 1 !important;">{{Antwort3}}</ion-label>
+          <ion-radio [checked]="radiobool3" value="Antwort3"></ion-radio>
+        </ion-item>
+        <ion-item [hidden]="!hideradiobutton4">
+          <ion-label style="opacity: 1 !important;">{{Antwort4}}</ion-label>
+          <ion-radio [checked]="radiobool4" value="Antwort4"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-cardsingletext" [hidden]="!hidecheckbox">
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label style="opacity: 1 !important;">{{Antwort1}}</ion-label>
+          <ion-checkbox  [(ngModel)]="checkbox1"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label style="opacity: 1 !important;">{{Antwort2}}</ion-label>
+          <ion-checkbox  [(ngModel)]="checkbox2"></ion-checkbox>
+        </ion-item>
+        <ion-item [hidden]="!hidecheckbox3">
+          <ion-label style="opacity: 1 !important;">{{Antwort3}}</ion-label>
+          <ion-checkbox  [(ngModel)]="checkbox3"></ion-checkbox>
+        </ion-item>
+        <ion-item [hidden]="!hidecheckbox4">
+          <ion-label style="opacity: 1 !important;">{{Antwort4}}</ion-label>
+          <ion-checkbox  [(ngModel)]="checkbox4"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-cardSlider" [hidden]="!hideslider">
+    <ion-card-content>
+      {{slidertext}}
+      <ion-item>
+        <ion-range style="opacity: 1 !important;"  [step]=sprungweite [min]=min [max]=max [(ngModel)]="slidervalue" color="danger">
+          <ion-label range-left>{{min}}</ion-label>
+          <ion-label range-right>{{max}}</ion-label>
+        </ion-range>
+        <ion-label>{{slidervalue}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-carddate" [hidden]="!hidedate">
+    <ion-card-content>
+      <ion-item style="opacity: 1 !important;">
+        <ion-label style="opacity: 1 !important;">Datum</ion-label>
+        <ion-datetime style="opacity: 1 !important;"  displayFormat="DD.MM.YYYY" doneText="Ok" cancelText="Abbrechen" [(ngModel)]="datevalue"></ion-datetime>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!--CARD checkbox Bilder-->
+  <ion-card class="ion-cardsingletext" [hidden]="!hidecheckboxbilder">
+    <ion-card-content>
+      <ion-list style="opacity: 1 !important;" >
+        <ion-item>
+          <img [src]="Img1" [hidden]="!Img1" />
+          <ion-checkbox [(ngModel)]="checkbox1"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <img [src]="Img2" [hidden]="!Img2" />
+          <ion-checkbox [(ngModel)]="checkbox2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item [hidden]="!hidecheckbox3">
+          <img [src]="Img3" [hidden]="!Img3" />
+          <ion-checkbox [(ngModel)]="checkbox3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item [hidden]="!hidecheckbox4">
+          <img [src]="Img4" [hidden]="!Img4" />
+          <ion-checkbox [(ngModel)]="checkbox4"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!--Radio button bilder card-->
+  <ion-card class="ion-cardradio" [hidden]="!hideradiobilder">
+    <ion-card-content>
+      <ion-list  radio-group [(ngModel)]="radiobuttonAntwort">
+        <ion-item class="listitem">
+          <img [src]="Img1" [hidden]="!Img1" />
+          <ion-radio value="Antwort1"></ion-radio>
+        </ion-item>
+        <ion-item class="listitem">
+          <img [src]="Img2" [hidden]="!Img2" />
+          <ion-radio value="Antwort2"></ion-radio>
+        </ion-item>
+        <ion-item class="listitem">
+          <img [src]="Img3" [hidden]="!Img3" />
+          <ion-radio value="Antwort3"></ion-radio>
+        </ion-item>
+        <ion-item no-lines>
+          <img [src]="Img4" [hidden]="!Img4" />
+          <ion-radio value="Antwort4"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <label style="color: #FC0A1C;" id="infos">{{stufeoutput}}, {{aktstation}}</label>
+  <label style="color: #FC0A1C;" id="infos">Frage {{fragenr}} von {{anzahlStationen}}</label>
 
 </ion-content>
-<!--<ion-footer>
-  <ion-toolbar>
 
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col no-padding>
+        <button (tap)="lastbtn()" no-margin ion-button full large color="primary" style="font-size: 1.6rem">Letzte Frage</button>
+      </ion-col>
+      <ion-col no-padding>
+        <button (tap)="nextbtn()" no-margin ion-button full large color="ffred" style="font-size: 1.6rem"> Nächste Frage</button>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
-</ion-footer>-->
+</ion-footer>
+

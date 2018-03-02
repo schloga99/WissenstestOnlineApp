@@ -8,9 +8,9 @@ import { GlobalVars } from "./globals"
 @Injectable()
 export class database {
 
-  apiUrl = 'http://localhost:3000/'; // kann auch eine local json-file sein !!!
+  //apiUrl = 'http://localhost:3000/'; // kann auch eine local json-file sein !!!
   //apiUrl = 'assets/testdata.json'; //man kann nur alle Daten holen
-
+  apiUrl = 'http://www.3.mitterhauser.org/GetDB/Get?table=';
   bezirke = [];
   standortegeordnet = [[]];
   ALLDATA: any;
@@ -49,17 +49,17 @@ export class database {
   county: number = 0;
   countx: number = 0;
 
-  setAllData() {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'db').map(res => res.json()).subscribe(data => {
+  //setAllData() {
+  //  return new Promise(resolve => {
+  //    this.http.get(this.apiUrl + 'db').map(res => res.json()).subscribe(data => {
 
-        console.log(data);
-        this.ALLDATA = data;
+  //      console.log(data);
+  //      this.ALLDATA = data;
 
-        resolve(this.ALLDATA);
-      });
-    });
-  }
+  //      resolve(this.ALLDATA);
+  //    });
+  //  });
+  //}
 
   setBezirk() {
     return new Promise(resolve => {
@@ -88,6 +88,7 @@ export class database {
         this.allestandorte = data;
         this.countx = 0;
         this.county = 0;
+        console.log(this.bezirkobject);
         for (var a of this.bezirkobject) {
           //console.log(a);
           if (!this.standortegeordnet[this.countx]) this.standortegeordnet[this.countx] = [];
@@ -162,7 +163,7 @@ export class database {
   }
   setInfoContent() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'InfoContent').map(res => res.json()).subscribe(data => {
+      this.http.get(this.apiUrl + 'Infocontent').map(res => res.json()).subscribe(data => {
         console.log(data);
         this.infocontentobject = data;
         resolve(this.infocontentobject);
@@ -190,7 +191,7 @@ export class database {
   }
   setAntwort_Text() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'Antwort_Text').map(res => res.json()).subscribe(data => {
+      this.http.get(this.apiUrl + 'Antwort_text').map(res => res.json()).subscribe(data => {
         console.log(data);
         this.Antwort_Textobject = data;
         resolve(this.Antwort_Textobject);
@@ -199,7 +200,7 @@ export class database {
   }
   setAntwort_Datepicker() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'Antwort_DatePicker').map(res => res.json()).subscribe(data => {
+      this.http.get(this.apiUrl + 'Antwort_datepicker').map(res => res.json()).subscribe(data => {
         console.log(data);
         this.Antwort_DatePickerobject = data;
         resolve(this.Antwort_DatePickerobject);
@@ -208,7 +209,7 @@ export class database {
   }
   setAntwort_Slider() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'Antwort_Slider').map(res => res.json()).subscribe(data => {
+      this.http.get(this.apiUrl + 'Antwort_slider').map(res => res.json()).subscribe(data => {
         console.log(data);
         this.Antwort_Sliderobject = data;
         resolve(this.Antwort_Sliderobject);
@@ -217,7 +218,7 @@ export class database {
   }
   setAntwort_Checkbox() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'Antwort_Checkbox').map(res => res.json()).subscribe(data => {
+      this.http.get(this.apiUrl + 'Antwort_checkbox').map(res => res.json()).subscribe(data => {
         console.log(data);
         this.Antwort_Checkboxobject = data;
         resolve(this.Antwort_Checkboxobject);
@@ -226,7 +227,7 @@ export class database {
   }
   setAntwort_Verbinden() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'Antwort_Verbinden').map(res => res.json()).subscribe(data => {
+      this.http.get(this.apiUrl + 'Antwort_verbinden').map(res => res.json()).subscribe(data => {
         console.log(data);
         this.Antwort_Verbindenobject = data;
         resolve(this.Antwort_Verbindenobject);
@@ -235,7 +236,7 @@ export class database {
   }
   setAntwort_Radiobuttons() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'Antwort_RadioButtons').map(res => res.json()).subscribe(data => {
+      this.http.get(this.apiUrl + 'Antwort_radiobutton').map(res => res.json()).subscribe(data => {
         console.log(data);
         this.Antwort_RadioButtonsobject = data;
         resolve(this.Antwort_RadioButtonsobject);
@@ -244,7 +245,7 @@ export class database {
   }
   setRadioButtons() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'RadioButtons').map(res => res.json()).subscribe(data => {
+      this.http.get(this.apiUrl + 'Radiobutton').map(res => res.json()).subscribe(data => {
         console.log(data);
         this.RadioButtonsobject = data;
         resolve(this.RadioButtonsobject);
