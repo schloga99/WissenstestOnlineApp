@@ -76,18 +76,20 @@ export class database {
         }
         this.countx = 0;
         //console.log(this.ownstorage.bezirke);
-        resolve(this.bezirke);
+        resolve(this.bezirkobject);
       });
     });
   }
 
   setStandort() {
+
     return new Promise(resolve => {
+      
       this.http.get(this.apiUrl + 'Standort').map(res => res.json()).subscribe(data => {
         console.log(data);
         this.allestandorte = data;
         this.countx = 0;
-        this.county = 0;
+        this.county = 0;       
         console.log(this.bezirkobject);
         for (var a of this.bezirkobject) {
           //console.log(a);

@@ -27,12 +27,18 @@ export class MyApp {
             Splashscreen.hide();            
         });
         //this.database.setAllData();
-        this.database.setBezirk();
+        
+        this.database.setBezirk()
+          .then(value => {
+            if (value) {
+              console.log("Standorteintragung");
+              this.database.setStandort();
+            }           
+          });
 
         this.database.setStufe();
-        this.database.setStandort();
-        this.database.setStation();
-        
+        //this.database.setStandort();
+        this.database.setStation();       
         this.database.setAufgabe();
         this.database.setInfoContent();
         this.database.setFrage();

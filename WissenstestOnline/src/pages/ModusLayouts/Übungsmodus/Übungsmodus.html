@@ -31,56 +31,36 @@
 
   <ion-card class="ion-cardsingletext" [hidden]="!hidetext">
     <ion-card-content>
-      <ion-grid>
-        <ion-row>
-          <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort1}}</ion-col>
-        </ion-row>
-      </ion-grid>
+      <!--<ion-grid>
+    <ion-row>
+      <ion-col style="border:1px solid;" id="col1" col-3>{{Antwort1}}</ion-col>
+    </ion-row>
+  </ion-grid>-->
+      <ion-item>
+        <ion-input placeholder="Clear Input" clearInput></ion-input>
+      </ion-item>
     </ion-card-content>
   </ion-card>
 
   <ion-card class="ion-cardradio" [hidden]="!hideradio">
     <ion-card-content>
-      <ion-list  radio-group [(ngModel)]="radiobuttonAntwort">
-        <ion-item class="listitem">
-          <ion-label style="opacity: 1 !important;">{{Antwort1}}</ion-label>
-          <ion-radio [checked]="radiobool1" value="Antwort1"></ion-radio>
-        </ion-item>
-        <ion-item class="listitem">
-          <ion-label style="opacity: 1 !important;">{{Antwort2}}</ion-label>
-          <ion-radio [checked]="radiobool2" value="Antwort2"></ion-radio>
-        </ion-item>
-        <ion-item [hidden]="!hideradiobutton3" class="listitem">
-          <ion-label style="opacity: 1 !important;">{{Antwort3}}</ion-label>
-          <ion-radio [checked]="radiobool3" value="Antwort3"></ion-radio>
-        </ion-item>
-        <ion-item [hidden]="!hideradiobutton4">
-          <ion-label style="opacity: 1 !important;">{{Antwort4}}</ion-label>
-          <ion-radio [checked]="radiobool4" value="Antwort4"></ion-radio>
+      <ion-list radio-group [(ngModel)]="radiobuttonAntwort">
+        <ion-item class="listitem" *ngFor="let antwort of RadiobuttonAntworten;let i=index">
+          <ion-label style="opacity: 1 !important;">{{antwort}}</ion-label>
+          <ion-radio [checked]="radioboolarray[i]" value="antwort"></ion-radio>
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="ion-cardsingletext" [hidden]="!hidecheckbox">
+  <ion-card class="ion-cardcheckbox" [hidden]="!hidecheckbox">
     <ion-card-content>
       <ion-list>
-        <ion-item>
-          <ion-label style="opacity: 1 !important;">{{Antwort1}}</ion-label>
-          <ion-checkbox  [(ngModel)]="checkbox1"></ion-checkbox>
+        <ion-item *ngFor="let antwort of CheckboxAntworten;let i=index">
+          <ion-label style="opacity: 1 !important;">{{antwort}}</ion-label>
+          <ion-checkbox [(ngModel)]="checkboxarray[i]"></ion-checkbox>
         </ion-item>
-        <ion-item>
-          <ion-label style="opacity: 1 !important;">{{Antwort2}}</ion-label>
-          <ion-checkbox  [(ngModel)]="checkbox2"></ion-checkbox>
-        </ion-item>
-        <ion-item [hidden]="!hidecheckbox3">
-          <ion-label style="opacity: 1 !important;">{{Antwort3}}</ion-label>
-          <ion-checkbox  [(ngModel)]="checkbox3"></ion-checkbox>
-        </ion-item>
-        <ion-item [hidden]="!hidecheckbox4">
-          <ion-label style="opacity: 1 !important;">{{Antwort4}}</ion-label>
-          <ion-checkbox  [(ngModel)]="checkbox4"></ion-checkbox>
-        </ion-item>
+
       </ion-list>
     </ion-card-content>
   </ion-card>
@@ -89,7 +69,7 @@
     <ion-card-content>
       {{slidertext}}
       <ion-item>
-        <ion-range style="opacity: 1 !important;"  [step]=sprungweite [min]=min [max]=max [(ngModel)]="slidervalue" color="danger">
+        <ion-range style="opacity: 1 !important;" [step]=sprungweite [min]=min [max]=max [(ngModel)]="slidervalue" color="danger">
           <ion-label range-left>{{min}}</ion-label>
           <ion-label range-right>{{max}}</ion-label>
         </ion-range>
@@ -102,7 +82,7 @@
     <ion-card-content>
       <ion-item style="opacity: 1 !important;">
         <ion-label style="opacity: 1 !important;">Datum</ion-label>
-        <ion-datetime style="opacity: 1 !important;"  displayFormat="DD.MM.YYYY" doneText="Ok" cancelText="Abbrechen" [(ngModel)]="datevalue"></ion-datetime>
+        <ion-datetime style="opacity: 1 !important;" displayFormat="DD.MM.YYYY" doneText="Ok" cancelText="Abbrechen" [(ngModel)]="datevalue"></ion-datetime>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -137,7 +117,7 @@
   <!--Radio button bilder card-->
   <ion-card class="ion-cardradio" [hidden]="!hideradiobilder">
     <ion-card-content>
-      <ion-list  radio-group [(ngModel)]="radiobuttonAntwort">
+      <ion-list radio-group [(ngModel)]="radiobuttonAntwort">
         <ion-item class="listitem">
           <img [src]="Img1" [hidden]="!Img1" />
           <ion-radio value="Antwort1"></ion-radio>
@@ -174,4 +154,3 @@
     </ion-row>
   </ion-toolbar>
 </ion-footer>
-

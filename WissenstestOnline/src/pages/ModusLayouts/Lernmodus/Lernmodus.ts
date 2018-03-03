@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
-import { AuswahlStationPage } from '../../BasicLayouts/AuswahlStation/AuswahlStation'
+import { AuswahlStationPage } from '../../BasicLayouts/AuswahlStation/AuswahlStation';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { ModalController, NavParams } from 'ionic-angular';
-import { ZusatzinfoPage } from '../Modalzusatzinfo/zusatzinfo'
+import { ZusatzinfoPage } from '../Modalzusatzinfo/zusatzinfo';
 import { database } from '../../../providers/database';
 import { Aufgabe } from './Aufgabe';
 
@@ -604,7 +604,7 @@ export class LernmodusPage {
         break;
     }
   }
-};
+}
 
 
 
