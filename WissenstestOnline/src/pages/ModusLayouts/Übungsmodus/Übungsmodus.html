@@ -37,43 +37,43 @@
     </ion-row>
   </ion-grid>-->
       <ion-item>
-        <ion-input placeholder="Clear Input" clearInput></ion-input>
+        <ion-input [(ngModel)]="InputText" placeholder="Eingabe" clearInput></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="ion-cardradio" [hidden]="!hideradio">
+  <!--<ion-card text-wrap class="ion-cardradio" [hidden]="!hideradio">
     <ion-card-content>
       <ion-list radio-group [(ngModel)]="radiobuttonAntwort">
         <ion-item class="listitem" *ngFor="let antwort of RadiobuttonAntworten;let i=index">
           <ion-label style="opacity: 1 !important;">{{antwort}}</ion-label>
-          <ion-radio [checked]="radioboolarray[i]" value="antwort"></ion-radio>
+          <ion-radio  [(ngModel)]="InputRadioButtonChecked[i]" value="antwort"></ion-radio>  [checked]="radioboolarray[i]" 
         </ion-item>
       </ion-list>
     </ion-card-content>
-  </ion-card>
+  </ion-card>-->
 
-  <ion-card class="ion-cardcheckbox" [hidden]="!hidecheckbox">
+  <ion-card text-wrap class="ion-cardcheckbox" [hidden]="!hidecheckbox">
     <ion-card-content>
       <ion-list>
         <ion-item *ngFor="let antwort of CheckboxAntworten;let i=index">
           <ion-label style="opacity: 1 !important;">{{antwort}}</ion-label>
-          <ion-checkbox [(ngModel)]="checkboxarray[i]"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="InputCheckboxChecked[i]"></ion-checkbox>
         </ion-item>
 
       </ion-list>
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="ion-cardSlider" [hidden]="!hideslider">
+  <ion-card text-wrap class="ion-cardSlider" [hidden]="!hideslider">
     <ion-card-content>
       {{slidertext}}
       <ion-item>
-        <ion-range style="opacity: 1 !important;" [step]=sprungweite [min]=min [max]=max [(ngModel)]="slidervalue" color="danger">
+        <ion-range style="opacity: 1 !important;" [step]=sprungweite [min]=min [max]=max [(ngModel)]="InputSliderValue" color="danger">
           <ion-label range-left>{{min}}</ion-label>
           <ion-label range-right>{{max}}</ion-label>
         </ion-range>
-        <ion-label>{{slidervalue}}</ion-label>
+        <ion-label>{{InputSliderValue}}</ion-label>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -82,7 +82,7 @@
     <ion-card-content>
       <ion-item style="opacity: 1 !important;">
         <ion-label style="opacity: 1 !important;">Datum</ion-label>
-        <ion-datetime style="opacity: 1 !important;" displayFormat="DD.MM.YYYY" doneText="Ok" cancelText="Abbrechen" [(ngModel)]="datevalue"></ion-datetime>
+        <ion-datetime style="opacity: 1 !important;" displayFormat="DD.MM.YYYY" doneText="Ok" cancelText="Abbrechen" [(ngModel)]="InputDate"></ion-datetime>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -90,13 +90,13 @@
   <!--CARD checkbox Bilder-->
   <ion-card class="ion-cardsingletext" [hidden]="!hidecheckboxbilder">
     <ion-card-content>
-      <ion-list style="opacity: 1 !important;" >
+      <ion-list *ngFor="let img of CheckboxAntworten;let i=index" style="opacity: 1 !important;" >
         <ion-item>
-          <img [src]="Img1" [hidden]="!Img1" />
-          <ion-checkbox [(ngModel)]="checkbox1"></ion-checkbox>
+          <img [src]="img" [hidden]="!img" />
+          <ion-checkbox [(ngModel)]="ImgArray[i]"></ion-checkbox>
         </ion-item>
 
-        <ion-item>
+        <!--<ion-item>
           <img [src]="Img2" [hidden]="!Img2" />
           <ion-checkbox [(ngModel)]="checkbox2"></ion-checkbox>
         </ion-item>
@@ -109,7 +109,7 @@
         <ion-item [hidden]="!hidecheckbox4">
           <img [src]="Img4" [hidden]="!Img4" />
           <ion-checkbox [(ngModel)]="checkbox4"></ion-checkbox>
-        </ion-item>
+        </ion-item>-->
       </ion-list>
     </ion-card-content>
   </ion-card>
@@ -117,12 +117,12 @@
   <!--Radio button bilder card-->
   <ion-card class="ion-cardradio" [hidden]="!hideradiobilder">
     <ion-card-content>
-      <ion-list radio-group [(ngModel)]="radiobuttonAntwort">
+      <ion-list *ngFor="let img of RadiobuttonAntworten;let i=index" radio-group [(ngModel)]="radiobuttonAntwort">
         <ion-item class="listitem">
-          <img [src]="Img1" [hidden]="!Img1" />
-          <ion-radio value="Antwort1"></ion-radio>
+          <img [src]="img" [hidden]="!img" />
+          <ion-radio value="ImgArray[i]"></ion-radio>
         </ion-item>
-        <ion-item class="listitem">
+        <!--<ion-item class="listitem">
           <img [src]="Img2" [hidden]="!Img2" />
           <ion-radio value="Antwort2"></ion-radio>
         </ion-item>
@@ -133,7 +133,7 @@
         <ion-item no-lines>
           <img [src]="Img4" [hidden]="!Img4" />
           <ion-radio value="Antwort4"></ion-radio>
-        </ion-item>
+        </ion-item>-->
       </ion-list>
     </ion-card-content>
   </ion-card>

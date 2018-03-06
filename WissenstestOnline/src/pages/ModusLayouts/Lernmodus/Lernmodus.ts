@@ -138,13 +138,29 @@ export class LernmodusPage {
         }
       }
     }
-
+    console.log(this.Aufgabedata);
     //console.log(this.database.getausgewählteAufgaben());
-    this.Aufgabedata.sort((s1, s2) => {
-      if (s1.Station > s2.Station) return 1;
-      if (s1.Station < s2.Station) return -1;
-      return 0;
+    //this.Aufgabedata.sort((s1, s2) => {
+    //  if (s1.AufgabeID > s2.AufgabeID) return 1;
+    //  if (s1.AufgabeID < s2.AufgabeID) return -1;
+    //  return 0;
+    //});
+
+    //this.Aufgabedata.sort(function (a, b) {
+    //  return a.AufgabeID - b.AufgabeID;
+    //});
+
+    this.Aufgabedata.sort(function (a, b) {
+      return a.Station - b.Station;
     });
+
+    //this.Aufgabedata.sort((s1, s2) =>
+    //  s1.AufgabeID < s2.AufgabeID ? -1 : s1.AufgabeID > s2.AufgabeID ? 1 : 0
+    //);
+
+    //this.Aufgabedata.sort((s1, s2) =>
+    //  s1.Station < s2.Station ? -1 : s1.Station > s2.Station ? 1 : 0
+    //);
     console.log(this.Aufgabedata);
     this.anzahlStationen = this.Aufgabedata.length;
     this.setAntwort(this.fragenr);
@@ -157,7 +173,7 @@ export class LernmodusPage {
     console.log(Aufgabe0.Frage);
 
     for (var a = 0; a < this.database.frageobject.length; a++) {
-      console.log(this.database.frageobject[a].FrageID);
+      //console.log(this.database.frageobject[a].FrageID);
       if (Frage0 == this.database.frageobject[a].FrageID) {
         this.Fragetext = this.Fragedata[a].FrageText;
         this.Fragebild = this.Fragedata[a].FrageBild;
@@ -316,7 +332,7 @@ export class LernmodusPage {
 
   radioboolarray = [];// true oder false
   RadiobuttonAntworten = [];
-
+  radiobuttonAntwort: string;
   setAntwort(aktindexNr: number) {
 
     this.Antwort1 = undefined;
@@ -502,13 +518,17 @@ export class LernmodusPage {
               count++;
             }
           }
+          console.log(Erwartungswert);
           this.Antwort1 = content[0];
           this.Antwort2 = content[1];
           for (var ant = 0; ant < content.length; ant++) {
             this.RadiobuttonAntworten[ant] = content[ant];
             this.radioboolarray[ant] = Erwartungswert[ant];
+            if (this.radioboolarray[ant] == true) {
+              this.radiobuttonAntwort = this.RadiobuttonAntworten[ant];
+            }
           }
-          console.log(Erwartungswert[0]);
+          console.log(this.radioboolarray);
           //this.radiobool1 = Erwartungswert[0];
           //this.radiobool2 = Erwartungswert[1];
           //if (anzahl > 2) {

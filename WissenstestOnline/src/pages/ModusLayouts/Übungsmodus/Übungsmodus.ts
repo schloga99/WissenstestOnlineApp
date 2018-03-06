@@ -10,7 +10,7 @@ import { Aufgabe } from '../Lernmodus/Aufgabe';
 import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'page-Übungsmodus',
+  selector: 'page-uebungsmodus',
   templateUrl: 'Übungsmodus.html'
 })
 export class ÜbungsmodusPage {
@@ -132,11 +132,11 @@ export class ÜbungsmodusPage {
     }
 
     //console.log(this.database.getausgewählteAufgaben());
-    this.Aufgabedata.sort((s1, s2) => {
-      if (s1.Station > s2.Station) return 1;
-      if (s1.Station < s2.Station) return -1;
-      return 0;
+    this.Aufgabedata.sort(function (a, b) {
+      return a.Station - b.Station;
     });
+
+
     console.log(this.Aufgabedata);
     this.anzahlStationen = this.Aufgabedata.length;
     this.setAntwort(this.fragenr);
@@ -186,7 +186,7 @@ export class ÜbungsmodusPage {
   InputText:string="";
   InputRadioButtonChecked = [];
   InputCheckboxChecked = [];
-  InputSliderValue: any;
+  InputSliderValue:number = 0;
   InputDate: any;
 
 
@@ -252,7 +252,10 @@ export class ÜbungsmodusPage {
 
   }
 
-
+  vergleicheAntwort(aktindexNr: number) {
+    this.InputText = "";
+    this.boolBeantwortet = false;
+  }
 
   lastbtn() {
     this.boolBeantwortet == false;
@@ -314,23 +317,18 @@ export class ÜbungsmodusPage {
 
   //checkbox
 
-  checkboxarray = []; //true oder false 
+  checkboxarray = []; //true oder false (checked)
   CheckboxAntworten = [];
 
   //checkbox und radiobuttons variablen für bilder
-  Img1: string;
-  Img2: string;
-  Img3: string;
-  Img4: string;
   ImgArray = [];
 
   //radiobutton
 
-  radioboolarray = [];// true oder false
+  radioboolarray = []; //true oder false (checked)
   RadiobuttonAntworten = [];
-  vergleicheAntwort(aktindexNr:number) {
-
-  }
+  radiobuttonAntwort: string;
+ 
 
   setAntwort(aktindexNr: number) {
 
@@ -507,6 +505,9 @@ export class ÜbungsmodusPage {
           for (var ant = 0; ant < content.length; ant++) {
             this.RadiobuttonAntworten[ant] = content[ant];
             this.radioboolarray[ant] = Erwartungswert[ant];
+            if (this.radioboolarray[ant] == true) {
+              this.radiobuttonAntwort = this.RadiobuttonAntworten[ant];
+            }
           }
           console.log(Erwartungswert[0]);          
           // #region hidecards
