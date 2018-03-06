@@ -87,7 +87,7 @@ export class LernmodusPage {
     console.log(this.Aufgabedata.length);
     console.log(this.Aufgabedata);
     var AufgabenIndex = 0;
-    var filteredAufgabendata = this.Aufgabedata;   
+    var filteredAufgabendata = this.Aufgabedata;
     AufgabenIndex = this.Aufgabedata.length;
 
     for (var i = 0; i < this.Aufgabedata.length; i++) {
@@ -124,7 +124,7 @@ export class LernmodusPage {
         //console.log(AufgabestandortOrtsname);
         if (AufgabestandortOrtsname == this.globalvar.aktlfeuerwehr) {
           //donothing
-          console.log(AufgabestandortOrtsname +" ist gleich mit aktl FF");
+          console.log(AufgabestandortOrtsname + " ist gleich mit aktl FF");
         }
         else {
           //herauslöschen
@@ -450,20 +450,27 @@ export class LernmodusPage {
           }
         }
         console.log(checkboxvalue);
+        console.log(inhalte);
+
+        // shuffle both arrays same
+        // first is not affected
+        var i = 0, len = checkboxvalue.length, next, order = [];
+        while (i < len) order[i] = ++i; //[1,2,3...]
+        order.sort(function () { return Math.random() - .5 });
+
+        for (i = 0; i < len; i++) {
+          next = order[i];
+          checkboxvalue.push(checkboxvalue[next]);
+          inhalte.push(inhalte[next]);
+        }
+        checkboxvalue.splice(1, len);
+        inhalte.splice(1, len);
+        // end of shuffle
+
         for (var inh = 0; inh < inhalte.length; inh++) {
           this.CheckboxAntworten[inh] = inhalte[inh];
           this.checkboxarray[inh] = checkboxvalue[inh];
         }
-        //this.Antwort1 = inhalte[0];
-        //this.Antwort2 = inhalte[1];
-        //this.checkbox1 = checkboxvalue[0];
-        //this.checkbox2 = checkboxvalue[1];
-        //if (anzahl > 2) {
-        //  this.Antwort3 = inhalte[2]; this.checkbox3 = checkboxvalue[2]; this.hidecheckbox3 = true;
-        //}
-        //if (anzahl > 3) {
-        //  this.Antwort4 = inhalte[3]; this.checkbox4 = checkboxvalue[3]; this.hidecheckbox4 = true;
-        //}
 
         // #region hidecards
         this.hidetext = false;
@@ -511,8 +518,22 @@ export class LernmodusPage {
             }
           }
           console.log(Erwartungswert);
-          this.Antwort1 = content[0];
-          this.Antwort2 = content[1];
+
+          // shuffle both arrays same
+          // first index is not affected
+          var i = 0, len = Erwartungswert.length, next, order = [];
+          while (i < len) order[i] = ++i; //[1,2,3...]
+          order.sort(function () { return Math.random() - .5 });
+
+          for (i = 0; i < len; i++) {
+            next = order[i];
+            Erwartungswert.push(Erwartungswert[next]);
+            content.push(content[next]);
+          }
+          Erwartungswert.splice(1, len);
+          content.splice(1, len);
+        // end of shuffle
+         
           for (var ant = 0; ant < content.length; ant++) {
             this.RadiobuttonAntworten[ant] = content[ant];
             this.radioboolarray[ant] = Erwartungswert[ant];
@@ -521,14 +542,8 @@ export class LernmodusPage {
             }
           }
           console.log(this.radioboolarray);
-          //this.radiobool1 = Erwartungswert[0];
-          //this.radiobool2 = Erwartungswert[1];
-          //if (anzahl > 2) {
-          //  this.Antwort3 = content[2]; this.radiobool3 = Erwartungswert[2]; this.hideradiobutton3 = true;
-          //}
-          //if (anzahl > 3) {
-          //  this.Antwort4 = content[3]; this.radiobool4 = Erwartungswert[3]; this.hideradiobutton4 = true;
-          //}
+
+
           // #region hidecards
           this.hidetext = false;
           this.hideslider = false;
