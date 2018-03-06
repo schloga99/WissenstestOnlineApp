@@ -76,80 +76,72 @@ export class LernmodusPage {
     this.Fragedata = this.database.frageobject;
     this.Aufgabedata = [];
     this.Aufgabedata = this.database.getausgewählteAufgaben();
-
-    //Antwort noch auf Bezirk und Standort überprüfen ob null
-    //und aktuelle Eingaben (Bezirk und FF) vergleichen
-    //wenn undefined --> drinnen lassen
-    //wenn Bezirk null ist --> drinnen lassen --> sonst Standortabfrage
-    //wenn standort null --> Bezirk vergleichen --> gleich --> drinnen lassen
-
-    console.log(this.globalvar.aktlfeuerwehr);
+    //console.log(this.database.getausgewählteAufgaben());
+    //console.log(this.globalvar.aktlfeuerwehr);
     let Aufgabenbezirkindex;
     for (var b = 0; b < this.database.bezirkobject.length; b++) {
       if (this.database.bezirkobject[b].BezirkName == this.globalvar.aktlbezirk) {
         Aufgabenbezirkindex = this.database.bezirkobject[b].BezirkID;
       }
     }
+    console.log(this.Aufgabedata.length);
+    console.log(this.Aufgabedata);
+    var AufgabenIndex = 0;
+    var filteredAufgabendata = this.Aufgabedata;   
+    AufgabenIndex = this.Aufgabedata.length;
 
     for (var i = 0; i < this.Aufgabedata.length; i++) {
+      console.log(i);
+      console.log(this.Aufgabedata[i]);
       if (this.Aufgabedata[i].Standort == undefined) {
         if (this.Aufgabedata[i].Bezirk == undefined) {
-          //donothing
+          console.log("Standort undefined und Bezirk undefined");
         }
         else if (Aufgabenbezirkindex == this.Aufgabedata[i].Bezirk) {
-          //donothing
+          console.log("Standort undefined und Bezirk gleich");
         } else {
           //herauslöschen 
-          console.log(this.globalvar.aktlbezirk);
-          console.log(Aufgabenbezirkindex);
-          console.log(this.Aufgabedata[i].Bezirk);
-          let index = this.Aufgabedata.indexOf(this.Aufgabedata[i]);
-          if (index > -1) {
-            this.Aufgabedata.splice(index, 1);
-          }
+          //console.log(this.globalvar.aktlbezirk);
+          //console.log(Aufgabenbezirkindex);
+          console.log("herauslöschen von Bezirk " + this.Aufgabedata[i].Bezirk);
+          //let index = filteredAufgabendata.indexOf(filteredAufgabendata[i],0);
+          //if (index > -1) {           
+          //  filteredAufgabendata.splice(index, 1);
+          //}
+
+          filteredAufgabendata = filteredAufgabendata.filter(obj => obj != this.Aufgabedata[i]);
         }
-      } else {
+      } else { //Standort steht drinnen
         let AufgabestandortOrtsname;
-        console.log(this.database.allestandorte.length);
+        console.log(this.Aufgabedata[i].Standort + " Standort steht drinnen");
         for (var a = 0; a < this.database.allestandorte.length; a++) {
           if (this.database.allestandorte[a].StandortID == this.Aufgabedata[i].Standort) {
             AufgabestandortOrtsname = this.database.allestandorte[a].Ortsname;
             console.log(this.database.allestandorte[a].Ortsname);
           }
         }
-        console.log(AufgabestandortOrtsname);
-        if (AufgabestandortOrtsname != this.globalvar.aktlfeuerwehr) {
 
-          if (this.Aufgabedata[i].Bezirk == undefined) {
-            //donothing
-          }
-          if (Aufgabenbezirkindex == this.Aufgabedata[i].Bezirk) {
-            //donothing
-          } else {
-            //herauslöschen
-            console.log(this.globalvar.aktlbezirk);
-            console.log(this.Aufgabedata[i].Bezirk);
-            console.log(this.Aufgabedata[i]);
-            let index = this.Aufgabedata.indexOf(this.Aufgabedata[i]);
-            if (index > -1) {
-              this.Aufgabedata.splice(index, 1);
-            }
-          }
+        //console.log(AufgabestandortOrtsname);
+        if (AufgabestandortOrtsname == this.globalvar.aktlfeuerwehr) {
+          //donothing
+          console.log(AufgabestandortOrtsname +" ist gleich mit aktl FF");
+        }
+        else {
+          //herauslöschen
+          console.log("herauslöschen der Aufgabe");
+          console.log(this.Aufgabedata[i]);
+          //let index = filteredAufgabendata.indexOf(filteredAufgabendata[i],0);
+          //if (index > -1) {           
+          //  filteredAufgabendata.splice(index, 1);
+          //}
+          filteredAufgabendata = filteredAufgabendata.filter(obj => obj != this.Aufgabedata[i]);
         }
       }
     }
+
+    console.log(filteredAufgabendata);
     console.log(this.Aufgabedata);
-    //console.log(this.database.getausgewählteAufgaben());
-    //this.Aufgabedata.sort((s1, s2) => {
-    //  if (s1.AufgabeID > s2.AufgabeID) return 1;
-    //  if (s1.AufgabeID < s2.AufgabeID) return -1;
-    //  return 0;
-    //});
-
-    //this.Aufgabedata.sort(function (a, b) {
-    //  return a.AufgabeID - b.AufgabeID;
-    //});
-
+    this.Aufgabedata = filteredAufgabendata;
     this.Aufgabedata.sort(function (a, b) {
       return a.Station - b.Station;
     });
