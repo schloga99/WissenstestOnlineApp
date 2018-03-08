@@ -32,7 +32,7 @@
   <ion-card class="ion-cardsingletext" [hidden]="!hidetext">
     <ion-card-content>
       <ion-item>
-        <ion-input [(ngModel)]="InputText" placeholder="Eingabe" clearInput></ion-input>
+        <ion-input [ngStyle]="{'background-color': background}" [(ngModel)]="InputText" placeholder="Eingabe" clearInput></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -107,6 +107,12 @@
 
   <label style="color: #FC0A1C;" id="infos">{{stufeoutput}}, {{aktstation}}</label>
   <label style="color: #FC0A1C;" id="infos">Frage {{fragenr}} von {{anzahlStationen}}</label>
+  <br />
+
+  <ion-item-group [hidden]="!hiderichtigeAntwort">
+    <ion-item-divider>richtige Antwort</ion-item-divider>
+    <ion-item id="infos" *ngFor="let antwort of richtigeAntwort">{{antwort}}</ion-item>
+  </ion-item-group>
 
 </ion-content>
 
