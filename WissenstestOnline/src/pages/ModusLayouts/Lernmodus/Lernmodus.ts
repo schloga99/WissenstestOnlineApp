@@ -453,25 +453,39 @@ export class LernmodusPage {
         console.log(inhalte);
 
         // shuffle both arrays same
-        // first is not affected
-        var i = 0, len = checkboxvalue.length, next, order = [];
-        while (i < len) order[i] = ++i; //[1,2,3...]
-        order.sort(function () { return Math.random() - .5 });
-
-        for (i = 0; i < len; i++) {
-          next = order[i];
-          checkboxvalue.push(checkboxvalue[next]);
-          inhalte.push(inhalte[next]);
+        var arrayShuffcb = new Array();
+        for (var i = 0; i < checkboxvalue.length; i++) {
+          arrayShuffcb.push(i);
         }
-        checkboxvalue.splice(1, len);
-        inhalte.splice(1, len);
+        var i = arrayShuffcb.length, j, tempi, tempj;
+          if (i === 0) return false;
+          while (--i) {
+            j = Math.floor(Math.random() * (i + 1));
+            tempi = arrayShuffcb[i];
+            tempj = arrayShuffcb[j];
+            arrayShuffcb[i] = tempj;
+            arrayShuffcb[j] = tempi;
+          }
+        var temp_cbval = new Array();
+        for (i = 0; i < arrayShuffcb.length; i++) {
+          temp_cbval.push(checkboxvalue[arrayShuffcb[i]]);
+        }
+        checkboxvalue = new Array();
+        checkboxvalue = temp_cbval.slice(0);
+        temp_cbval = new Array();
+        for (i = 0; i < arrayShuffcb.length; i++) {
+          temp_cbval.push(inhalte[arrayShuffcb[i]]);
+        }
+        inhalte = new Array();
+        inhalte = temp_cbval.slice(0);
+        console.log(inhalte);
+        console.log(checkboxvalue);
         // end of shuffle
 
         for (var inh = 0; inh < inhalte.length; inh++) {
           this.CheckboxAntworten[inh] = inhalte[inh];
           this.checkboxarray[inh] = checkboxvalue[inh];
         }
-
         // #region hidecards
         this.hidetext = false;
         this.hideslider = false;
@@ -520,18 +534,33 @@ export class LernmodusPage {
           console.log(Erwartungswert);
 
           // shuffle both arrays same
-          // first index is not affected
-          var i = 0, len = Erwartungswert.length, next, order = [];
-          while (i < len) order[i] = ++i; //[1,2,3...]
-          order.sort(function () { return Math.random() - .5 });
-
-          for (i = 0; i < len; i++) {
-            next = order[i];
-            Erwartungswert.push(Erwartungswert[next]);
-            content.push(content[next]);
+          var arrayShuffrad = new Array();
+          for (var i = 0; i < Erwartungswert.length; i++) {
+            arrayShuffrad.push(i);
           }
-          Erwartungswert.splice(1, len);
-          content.splice(1, len);
+          var i = arrayShuffrad.length, j, tempi, tempj;
+          if (i === 0) return false;
+          while (--i) {
+            j = Math.floor(Math.random() * (i + 1));
+            tempi = arrayShuffrad[i];
+            tempj = arrayShuffrad[j];
+            arrayShuffrad[i] = tempj;
+            arrayShuffrad[j] = tempi;
+          }
+          var temp_radval = new Array();
+          for (i = 0; i < arrayShuffrad.length; i++) {
+            temp_radval.push(Erwartungswert[arrayShuffrad[i]]);
+          }
+          Erwartungswert = new Array();
+          Erwartungswert = temp_radval.slice(0);
+          temp_radval = new Array();
+          for (i = 0; i < arrayShuffrad.length; i++) {
+            temp_radval.push(content[arrayShuffrad[i]]);
+          }
+          content = new Array();
+          content = temp_radval.slice(0);
+          console.log(content);
+          console.log(Erwartungswert);
         // end of shuffle
          
           for (var ant = 0; ant < content.length; ant++) {
@@ -632,6 +661,37 @@ export class LernmodusPage {
     }
   }
 }
+//function shuffle(array1, array2) {
+//  // shuffle both arrays same
+//  var arrayShuff = new Array();
+//  for (var i = 0; i < array1.length; i++) {
+//    arrayShuff.push(i);
+//  }
+//  var i = arrayShuff.length, j, tempi, tempj;
+//  if (i === 0) return false;
+//  while (--i) {
+//    j = Math.floor(Math.random() * (i + 1));
+//    tempi = arrayShuff[i];
+//    tempj = arrayShuff[j];
+//    arrayShuff[i] = tempj;
+//    arrayShuff[j] = tempi;
+//  }
+//  var tempshuff = new Array();
+//  for (i = 0; i < arrayShuff.length; i++) {
+//    tempshuff.push(array1[arrayShuff[i]]);
+//  }
+//  array1 = new Array();
+//  array1 = tempshuff.slice(0);
+//  tempshuff = new Array();
+//  for (i = 0; i < arrayShuff.length; i++) {
+//    tempshuff.push(array2[arrayShuff[i]]);
+//  }
+//  array2 = new Array();
+//  array2 = tempshuff.slice(0);
+//  console.log(array2);
+//  console.log(array1);
+//  // end of shuffle
+//}
 
 
 

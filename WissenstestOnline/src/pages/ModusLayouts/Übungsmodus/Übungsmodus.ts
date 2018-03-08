@@ -71,12 +71,9 @@ export class ÜbungsmodusPage {
     }
 
     //bekomme hier alle benötigte Daten
-    //this.data = this.database.ALLDATA;
     this.Fragedata = this.database.frageobject;
     this.Aufgabedata = [];
     this.Aufgabedata = this.database.getausgewählteAufgaben();
-    //console.log(this.database.getausgewählteAufgaben());
-    //console.log(this.globalvar.aktlfeuerwehr);
     let Aufgabenbezirkindex;
     for (var b = 0; b < this.database.bezirkobject.length; b++) {
       if (this.database.bezirkobject[b].BezirkName == this.globalvar.aktlbezirk) {
@@ -100,14 +97,7 @@ export class ÜbungsmodusPage {
           console.log("Standort undefined und Bezirk gleich");
         } else {
           //herauslöschen 
-          //console.log(this.globalvar.aktlbezirk);
-          //console.log(Aufgabenbezirkindex);
           console.log("herauslöschen von Bezirk " + this.Aufgabedata[i].Bezirk);
-          //let index = filteredAufgabendata.indexOf(filteredAufgabendata[i],0);
-          //if (index > -1) {           
-          //  filteredAufgabendata.splice(index, 1);
-          //}
-
           filteredAufgabendata = filteredAufgabendata.filter(obj => obj != this.Aufgabedata[i]);
         }
       } else { //Standort steht drinnen
@@ -119,7 +109,6 @@ export class ÜbungsmodusPage {
             console.log(this.database.allestandorte[a].Ortsname);
           }
         }
-
         //console.log(AufgabestandortOrtsname);
         if (AufgabestandortOrtsname == this.globalvar.aktlfeuerwehr) {
           //donothing
@@ -129,10 +118,6 @@ export class ÜbungsmodusPage {
           //herauslöschen
           console.log("herauslöschen der Aufgabe");
           console.log(this.Aufgabedata[i]);
-          //let index = filteredAufgabendata.indexOf(filteredAufgabendata[i],0);
-          //if (index > -1) {           
-          //  filteredAufgabendata.splice(index, 1);
-          //}
           filteredAufgabendata = filteredAufgabendata.filter(obj => obj != this.Aufgabedata[i]);
         }
       }
@@ -147,7 +132,7 @@ export class ÜbungsmodusPage {
 
     console.log(this.Aufgabedata);
     this.anzahlStationen = this.Aufgabedata.length;
-    this.setAntwort(this.fragenr);
+    this.setAntwort(this.indexAufgabe);
     this.stations = this.database.stations;
     //setze hier erste Frage:
     let Aufgabe0 = this.Aufgabedata[0];
@@ -157,7 +142,7 @@ export class ÜbungsmodusPage {
     console.log(Aufgabe0.Frage);
 
     for (var a = 0; a < this.database.frageobject.length; a++) {
-      console.log(this.database.frageobject[a].FrageID);
+      // console.log(this.database.frageobject[a].FrageID);
       if (Frage0 == this.database.frageobject[a].FrageID) {
         this.Fragetext = this.Fragedata[a].FrageText;
         this.Fragebild = this.Fragedata[a].FrageBild;
@@ -189,84 +174,147 @@ export class ÜbungsmodusPage {
 
   indexAufgabe = 0;
   boolBeantwortet: boolean = false;
-
+  indexbeende = 0.5;
   //Eingaben von User
-  InputText:string="";
+  InputText: string = "";
   InputRadioButtonChecked = [];
   InputCheckboxChecked = [];
-  InputSliderValue:number = 0;
+  InputSliderValue: number = 0;
   InputDate: any;
-
+  ersteFragebool = true;
 
   nextbtn() {
-    //Frage:
-    this.indexAufgabe++;
-    this.fragenr++;
-    let aktlAufgabe = this.Aufgabedata[this.indexAufgabe];
-    console.log(this.Aufgabedata[this.indexAufgabe]);
-    if (aktlAufgabe == undefined) {
-      this.indexAufgabe--;
-      this.fragenr--;
-      this.globalvar.ausgewaeltestationen = [];
-      let alert = this.alertController.create({
-        title: 'Geschafft!',
-        subTitle: 'Du hast die ausgewählten Fragen vollständig durchgearbeitet.',
-        buttons: [
-          {
-            text: 'Zurück',
-            role: 'cancel',
-            handler: () => {
-              this.navCtrl.push(AuswahlStationPage);
-              console.log('Zurück');
-            }
-          }
-        ]
-      });
-      alert.present();
-      return;
-    }
-
-    this.aktlAufgabeinfo = this.Aufgabedata[this.indexAufgabe].Zusatzinfo;
-    let aktlFrage = aktlAufgabe.Frage;
-    console.log(aktlAufgabe.Frage);
-    console.log(aktlAufgabe.Station);
-    let aktlstation = aktlAufgabe.Station;
-
-    for (let i = 0; i < this.stations.length; i++) {
-      if (i == aktlstation) {
-        this.aktstation = this.stations[i - 1];
-        console.log(this.stations[0]);
-      }
-    }
-    console.log(this.aktstation);
-    console.log(this.Fragedata);
-    for (var a = 0; a < this.Fragedata.length; a++) {
-      if (this.Fragedata[a].FrageID == aktlFrage) {
-        this.Fragetext = this.Fragedata[a].FrageText;
-        this.Fragebild = this.Fragedata[a].FrageBild;
-        this.Fragevideo = this.Fragedata[a].FrageVideo;
-        console.log(this.Fragetext);
-      }
-    }
-    //Antwort
-    if (this.boolBeantwortet == false) {
-      this.boolBeantwortet = true;
-      this.setAntwort(this.indexAufgabe);
-    } else {
+    
+    if (this.ersteFragebool == true) {
       this.vergleicheAntwort(this.indexAufgabe);
+      this.fragenr++;
+      this.indexbeende++;
+      this.indexAufgabe++;
+      console.log("erste Frage und Antwort verglichen")
+      this.ersteFragebool = false;
     }
-    //Antwort
-    //this.setAntwort(this.indexAufgabe);
+    else if (this.indexbeende == this.Aufgabedata.length) {
+      console.log(this.indexAufgabe);
+      console.log(this.fragenr);
+      console.log("INDEX beende ist gleich mit Länge des Arrays");
+      this.vergleicheAntwort(this.indexAufgabe);
+      this.fragenr = this.fragenr + 1;
+      this.indexbeende = this.indexbeende + 0.5;
+      this.indexAufgabe = this.indexAufgabe+1;
+    }
+    else {
+      this.indexbeende = this.indexbeende + 0.5;
+      console.log(this.indexbeende);
+      //Frage:
+      this.indexAufgabe++;
+      this.fragenr++;
 
+      let aktlAufgabe = this.Aufgabedata[this.indexAufgabe];
+      console.log(this.fragenr);
+      if (aktlAufgabe == undefined)
+      {
+        this.indexAufgabe--;
+        this.fragenr--;
+        this.globalvar.ausgewaeltestationen = [];
+        let alert = this.alertController.create({
+          title: 'Geschafft!',
+          subTitle: 'Du hast die ausgewählten Fragen vollständig durchgearbeitet.',
+          buttons: [
+            {
+              text: 'Zurück',
+              role: 'cancel',
+              handler: () => {
+                this.navCtrl.push(AuswahlStationPage);
+                console.log('Zurück');
+              }
+            }
+          ]
+        });
+        alert.present();
+        return;
+      }
+      //Antwort
+      if (this.boolBeantwortet == false) {
+        this.boolBeantwortet = true;
+        this.setAntwort(this.indexAufgabe);
+      } else {
+        this.vergleicheAntwort(this.indexAufgabe);
+      }
+
+      aktlAufgabe = this.Aufgabedata[this.indexAufgabe];
+      console.log(this.Aufgabedata[this.indexAufgabe]);
+      //if (aktlAufgabe == undefined) {
+      //  this.indexAufgabe--;
+      //  this.fragenr--;
+      //  this.globalvar.ausgewaeltestationen = [];
+      //  let alert = this.alertController.create({
+      //    title: 'Geschafft!',
+      //    subTitle: 'Du hast die ausgewählten Fragen vollständig durchgearbeitet.',
+      //    buttons: [
+      //      {
+      //        text: 'Zurück',
+      //        role: 'cancel',
+      //        handler: () => {
+      //          this.navCtrl.push(AuswahlStationPage);
+      //          console.log('Zurück');
+      //        }
+      //      }
+      //    ]
+      //  });
+      //  alert.present();
+      //  return;
+      //}
+
+      this.aktlAufgabeinfo = this.Aufgabedata[this.indexAufgabe].Zusatzinfo;
+      let aktlFrage = aktlAufgabe.Frage;
+      console.log(aktlAufgabe.Frage);
+      console.log(aktlAufgabe.Station);
+      let aktlstation = aktlAufgabe.Station;
+
+      for (let i = 0; i < this.stations.length; i++) {
+        if (i == aktlstation) {
+          this.aktstation = this.stations[i - 1];
+          console.log(this.stations[0]);
+        }
+      }
+      console.log(this.aktstation);
+      console.log(this.Fragedata);
+      for (var a = 0; a < this.Fragedata.length; a++) {
+        if (this.Fragedata[a].FrageID == aktlFrage) {
+          this.Fragetext = this.Fragedata[a].FrageText;
+          this.Fragebild = this.Fragedata[a].FrageBild;
+          this.Fragevideo = this.Fragedata[a].FrageVideo;
+          console.log(this.Fragetext);
+        }
+      }
+      console.log(aktlAufgabe);
+
+      
+
+    }
   }
 
   vergleicheAntwort(aktindexNr: number) {
+    if (this.Aufgabedata.length == this.fragenr-1) {
+      //not --
+      //this.fragenr--;
+    } else {
+      this.indexAufgabe--;
+      this.fragenr--;
+    }
+    
     this.InputText = "";
     this.boolBeantwortet = false;
+    this.InputRadioButtonChecked = [];
+    this.InputCheckboxChecked = [];
+    this.InputSliderValue = 0;
+    this.InputDate = null;
+
   }
 
   lastbtn() {
-    this.boolBeantwortet == false;
+    this.boolBeantwortet = false;
+
     this.indexAufgabe--;
     this.fragenr--;
 
@@ -298,9 +346,9 @@ export class ÜbungsmodusPage {
         console.log(this.Fragetext);
       }
     }
-   
+
     this.setAntwort(this.indexAufgabe);
-    
+
   }
 
   Antwort1: any;
@@ -336,21 +384,20 @@ export class ÜbungsmodusPage {
   radioboolarray = []; //true oder false (checked)
   RadiobuttonAntworten = [];
   radiobuttonAntwort: string;
- 
+
 
   setAntwort(aktindexNr: number) {
-
     this.Antwort1 = undefined;
     this.Antwort2 = undefined;
     this.Antwort3 = undefined;
     this.Antwort4 = undefined;
+
     console.log(aktindexNr);
     console.log(this.Aufgabedata);
     this.aktlAufgabenAntwortID = this.Aufgabedata[aktindexNr].Antwort;
     console.log(this.aktlAufgabenAntwortID);
     let aktlAntwortIndex = 0;
     for (var a = 0; a < this.database.Antworten.length; a++) {
-      //console.log(this.database.Antworten[a].AntwortID);
       if (this.aktlAufgabenAntwortID == this.database.Antworten[a].AntwortID) {
         this.aktlAufgabenAntwort = this.database.Antworten[a];
         aktlAntwortIndex = a;
@@ -460,11 +507,41 @@ export class ÜbungsmodusPage {
           }
         }
         console.log(checkboxvalue);
+
+        // shuffle both arrays same
+        var arrayShuffcb = new Array();
+        for (var i = 0; i < checkboxvalue.length; i++) {
+          arrayShuffcb.push(i);
+        }
+        var i = arrayShuffcb.length, j, tempi, tempj;
+        if (i === 0) return false;
+        while (--i) {
+          j = Math.floor(Math.random() * (i + 1));
+          tempi = arrayShuffcb[i];
+          tempj = arrayShuffcb[j];
+          arrayShuffcb[i] = tempj;
+          arrayShuffcb[j] = tempi;
+        }
+        var temp_cbval = new Array();
+        for (i = 0; i < arrayShuffcb.length; i++) {
+          temp_cbval.push(checkboxvalue[arrayShuffcb[i]]);
+        }
+        checkboxvalue = new Array();
+        checkboxvalue = temp_cbval.slice(0);
+        temp_cbval = new Array();
+        for (i = 0; i < arrayShuffcb.length; i++) {
+          temp_cbval.push(inhalte[arrayShuffcb[i]]);
+        }
+        inhalte = new Array();
+        inhalte = temp_cbval.slice(0);
+        console.log(inhalte);
+        console.log(checkboxvalue);
+        // end of shuffle
+
         for (var inh = 0; inh < inhalte.length; inh++) {
           this.CheckboxAntworten[inh] = inhalte[inh];
           this.checkboxarray[inh] = checkboxvalue[inh];
         }
-
         // #region hidecards
         this.hidetext = false;
         this.hideslider = false;
@@ -508,8 +585,36 @@ export class ÜbungsmodusPage {
               count++;
             }
           }
-          this.Antwort1 = content[0];
-          this.Antwort2 = content[1];
+          // shuffle both arrays same
+          var arrayShuffrad = new Array();
+          for (var i = 0; i < Erwartungswert.length; i++) {
+            arrayShuffrad.push(i);
+          }
+          var i = arrayShuffrad.length, j, tempi, tempj;
+          if (i === 0) return false;
+          while (--i) {
+            j = Math.floor(Math.random() * (i + 1));
+            tempi = arrayShuffrad[i];
+            tempj = arrayShuffrad[j];
+            arrayShuffrad[i] = tempj;
+            arrayShuffrad[j] = tempi;
+          }
+          var temp_radval = new Array();
+          for (i = 0; i < arrayShuffrad.length; i++) {
+            temp_radval.push(Erwartungswert[arrayShuffrad[i]]);
+          }
+          Erwartungswert = new Array();
+          Erwartungswert = temp_radval.slice(0);
+          temp_radval = new Array();
+          for (i = 0; i < arrayShuffrad.length; i++) {
+            temp_radval.push(content[arrayShuffrad[i]]);
+          }
+          content = new Array();
+          content = temp_radval.slice(0);
+          console.log(content);
+          console.log(Erwartungswert);
+          // end of shuffle
+
           for (var ant = 0; ant < content.length; ant++) {
             this.RadiobuttonAntworten[ant] = content[ant];
             this.radioboolarray[ant] = Erwartungswert[ant];
@@ -517,7 +622,7 @@ export class ÜbungsmodusPage {
               this.radiobuttonAntwort = this.RadiobuttonAntworten[ant];
             }
           }
-          console.log(Erwartungswert[0]);          
+          //console.log(Erwartungswert[0]);
           // #region hidecards
           this.hidetext = false;
           this.hideslider = false;
@@ -599,4 +704,37 @@ export class ÜbungsmodusPage {
         break;
     }
   }
+
 }
+
+//function shuffle(array1, array2) {
+//  // shuffle both arrays same
+//  var arrayShuff = new Array();
+//  for (var i = 0; i < array1.length; i++) {
+//    arrayShuff.push(i);
+//  }
+//  var i = arrayShuff.length, j, tempi, tempj;
+//  if (i === 0) return false;
+//  while (--i) {
+//    j = Math.floor(Math.random() * (i + 1));
+//    tempi = arrayShuff[i];
+//    tempj = arrayShuff[j];
+//    arrayShuff[i] = tempj;
+//    arrayShuff[j] = tempi;
+//  }
+//  var tempshuff = new Array();
+//  for (i = 0; i < arrayShuff.length; i++) {
+//    tempshuff.push(array1[arrayShuff[i]]);
+//  }
+//  array1 = new Array();
+//  array1 = tempshuff.slice(0);
+//  tempshuff = new Array();
+//  for (i = 0; i < arrayShuff.length; i++) {
+//    tempshuff.push(array2[arrayShuff[i]]);
+//  }
+//  array2 = new Array();
+//  array2 = tempshuff.slice(0);
+//  console.log(array2);
+//  console.log(array1);
+//  // end of shuffle
+//}
