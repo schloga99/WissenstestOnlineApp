@@ -50,6 +50,7 @@ export class LernmodusPage {
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage, public alertController: AlertController, public database: database) { }
 
   ngOnInit() {
+    
     this.indexAufgabe = 0;
     this.aktstation = "";
     this.slidervalue = 0;
@@ -168,7 +169,11 @@ export class LernmodusPage {
       //console.log(this.database.frageobject[a].FrageID);
       if (Frage0 == this.database.frageobject[a].FrageID) {
         this.Fragetext = this.Fragedata[a].FrageText;
-        this.Fragebild = this.Fragedata[a].FrageBild;
+        console.log(this.Fragedata[a].FrageBild);
+        this.Fragebild = "http://www.3.mitterhauser.org/images/" + this.Fragedata[a].FrageBild +".png";
+        if (this.Fragebild == "http://www.3.mitterhauser.org/images/undefined.png") {
+          this.Fragebild = false;
+        }
         this.Fragevideo = this.Fragedata[a].FrageVideo;
       }
     }
@@ -242,7 +247,11 @@ export class LernmodusPage {
     for (var a = 0; a < this.Fragedata.length; a++) {
       if (this.Fragedata[a].FrageID == aktlFrage) {
         this.Fragetext = this.Fragedata[a].FrageText;
-        this.Fragebild = this.Fragedata[a].FrageBild;
+        //this.Fragebild = this.Fragedata[a].FrageBild;
+        this.Fragebild = "http://www.3.mitterhauser.org/images/" + this.Fragedata[a].FrageBild + ".png";
+        if (this.Fragebild == "http://www.3.mitterhauser.org/images/undefined.png") {
+          this.Fragebild = false;
+        }
         this.Fragevideo = this.Fragedata[a].FrageVideo;
         console.log(this.Fragetext);
       }
@@ -278,7 +287,11 @@ export class LernmodusPage {
     for (var a = 0; a < this.Fragedata.length; a++) {
       if (this.Fragedata[a].FrageID == aktlFrage) {
         this.Fragetext = this.Fragedata[a].FrageText;
-        this.Fragebild = this.Fragedata[a].FrageBild;
+        //this.Fragebild = this.Fragedata[a].FrageBild;
+        this.Fragebild = "http://www.3.mitterhauser.org/images/" + this.Fragedata[a].FrageBild + ".png";
+        if (this.Fragebild == "http://www.3.mitterhauser.org/images/undefined.png") {
+          this.Fragebild = false;
+        }
         this.Fragevideo = this.Fragedata[a].FrageVideo;
         console.log(this.Fragetext);
       }
@@ -661,38 +674,6 @@ export class LernmodusPage {
     }
   }
 }
-//function shuffle(array1, array2) {
-//  // shuffle both arrays same
-//  var arrayShuff = new Array();
-//  for (var i = 0; i < array1.length; i++) {
-//    arrayShuff.push(i);
-//  }
-//  var i = arrayShuff.length, j, tempi, tempj;
-//  if (i === 0) return false;
-//  while (--i) {
-//    j = Math.floor(Math.random() * (i + 1));
-//    tempi = arrayShuff[i];
-//    tempj = arrayShuff[j];
-//    arrayShuff[i] = tempj;
-//    arrayShuff[j] = tempi;
-//  }
-//  var tempshuff = new Array();
-//  for (i = 0; i < arrayShuff.length; i++) {
-//    tempshuff.push(array1[arrayShuff[i]]);
-//  }
-//  array1 = new Array();
-//  array1 = tempshuff.slice(0);
-//  tempshuff = new Array();
-//  for (i = 0; i < arrayShuff.length; i++) {
-//    tempshuff.push(array2[arrayShuff[i]]);
-//  }
-//  array2 = new Array();
-//  array2 = tempshuff.slice(0);
-//  console.log(array2);
-//  console.log(array1);
-//  // end of shuffle
-//}
-
 
 
 

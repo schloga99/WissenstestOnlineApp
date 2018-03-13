@@ -26,6 +26,8 @@
   <ion-card class="ion-cardFrage">
     <ion-card-content text-wrap>
       {{Fragetext}}
+      <br />     
+        <img [src]="Fragebild" style="width:50%;height:50%;" [hidden]="!Fragebild" />           
     </ion-card-content>
   </ion-card>
 

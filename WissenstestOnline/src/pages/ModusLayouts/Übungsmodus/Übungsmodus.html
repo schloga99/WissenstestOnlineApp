@@ -26,12 +26,14 @@
   <ion-card class="ion-cardFrage">
     <ion-card-content text-wrap>
       {{Fragetext}}
+      <br />
+      <img [src]="Fragebild" style="width:50%;height:50%;" [hidden]="!Fragebild" />
     </ion-card-content>
   </ion-card>
 
   <ion-card class="ion-cardsingletext" [hidden]="!hidetext">
     <ion-card-content>
-      <ion-item>
+      <ion-item no-lines>
         <ion-input [ngStyle]="{'background-color': background}" [(ngModel)]="InputText" placeholder="Eingabe" clearInput></ion-input>
       </ion-item>
     </ion-card-content>
@@ -41,7 +43,7 @@
     <ion-card-content>
       <ion-list radio-group [(ngModel)]="InputRadioButtonChecked">
         <ion-item no-lines style="white-space:normal;" class="listitem" *ngFor="let antwort of RadiobuttonAntworten;let i=index">
-          <ion-label style="opacity: 1 !important; white-space:normal;">{{antwort}}</ion-label>
+          <ion-label [style.backgroundColor]="backgroundarray[i]" style="opacity: 1 !important; white-space:normal;">{{antwort}}</ion-label>
           <ion-radio [value]="antwort"></ion-radio>
         </ion-item>
       </ion-list>
@@ -51,11 +53,10 @@
   <ion-card text-wrap class="ion-cardcheckbox" [hidden]="!hidecheckbox">
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let antwort of CheckboxAntworten;let i=index">
-          <ion-label style="opacity: 1 !important;">{{antwort}}</ion-label>
-          <ion-checkbox [(ngModel)]="InputCheckboxChecked[i]"></ion-checkbox>
+        <ion-item *ngFor="let antwort of CheckboxAntworten;let i=index;">
+          <ion-label [style.backgroundColor]="backgroundarray[i]"  style="opacity: 1 !important;">{{antwort}}</ion-label>
+          <ion-checkbox  [(ngModel)]="InputCheckboxChecked[i]"></ion-checkbox>
         </ion-item>
-
       </ion-list>
     </ion-card-content>
   </ion-card>
@@ -64,7 +65,7 @@
     <ion-card-content>
       {{slidertext}}
       <ion-item>
-        <ion-range style="opacity: 1 !important;" [step]=sprungweite [min]=min [max]=max [(ngModel)]="InputSliderValue" color="danger">
+        <ion-range [ngStyle]="{'background-color': background}" style="opacity: 1 !important;" [step]=sprungweite [min]=min [max]=max [(ngModel)]="InputSliderValue" color="danger">
           <ion-label range-left>{{min}}</ion-label>
           <ion-label range-right>{{max}}</ion-label>
         </ion-range>
@@ -120,10 +121,10 @@
   <ion-toolbar>
     <ion-row>
       <ion-col no-padding>
-        <button (tap)="lastbtn()" no-margin ion-button full large color="primary" style="font-size: 1.6rem">Letzte Frage</button>
+        <button disabled (tap)="lastbtn()" no-margin ion-button full large color="primary" style="font-size: 1.6rem">Letzte Frage</button>
       </ion-col>
       <ion-col no-padding>
-        <button (tap)="nextbtn()" no-margin ion-button full large color="ffred" style="font-size: 1.6rem"> Nächste Frage</button>
+        <button (tap)="nextbtn()" no-margin ion-button full large color="ffred" style="font-size: 1.6rem">{{NextButtonText}}</button>
       </ion-col>
     </ion-row>
   </ion-toolbar>

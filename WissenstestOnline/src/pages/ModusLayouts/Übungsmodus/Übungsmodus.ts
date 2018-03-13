@@ -23,6 +23,9 @@ export class ÜbungsmodusPage {
   Antwortvideo: any;
 
   Zusatzinfos: any;
+  NextButtonText: string = "Check";
+  NextButtonText1: string = "Check";
+  NextButtonText2: string = "Nächste Frage";
 
   ausgewähltestations: any;
   aktstation: any;
@@ -145,7 +148,11 @@ export class ÜbungsmodusPage {
       // console.log(this.database.frageobject[a].FrageID);
       if (Frage0 == this.database.frageobject[a].FrageID) {
         this.Fragetext = this.Fragedata[a].FrageText;
-        this.Fragebild = this.Fragedata[a].FrageBild;
+        //this.Fragebild = this.Fragedata[a].FrageBild;
+        this.Fragebild = "http://www.3.mitterhauser.org/images/" + this.Fragedata[a].FrageBild + ".png";
+        if (this.Fragebild == "http://www.3.mitterhauser.org/images/undefined.png") {
+          this.Fragebild = false;
+        }
         this.Fragevideo = this.Fragedata[a].FrageVideo;
       }
     }
@@ -175,6 +182,7 @@ export class ÜbungsmodusPage {
   indexAufgabe = 0;
   boolBeantwortet: boolean = false;
   indexbeende = 0.5;
+
   //Eingaben von User
   InputText: string = "";
   InputRadioButtonChecked = [];
@@ -184,10 +192,20 @@ export class ÜbungsmodusPage {
   ersteFragebool = true;
 
   nextbtn() {
+    if (this.NextButtonText == this.NextButtonText1) {
+      this.NextButtonText = this.NextButtonText2;
+    } else {
+      this.NextButtonText = this.NextButtonText1;
+    }
+
     console.log(this.indexbeende);
     if (this.lastbuttonpressed != false) {
       this.lastbuttonpressed = false;
-      this.indexbeende = this.indexbeende - 1;
+      if (this.indexbeende == this.Aufgabedata.length) {
+        this.indexbeende = this.indexbeende - 0.5;
+      } else {
+        this.indexbeende = this.indexbeende - 1;
+      }      
       
     }
 
@@ -220,13 +238,16 @@ export class ÜbungsmodusPage {
       let aktlAufgabe = this.Aufgabedata[this.indexAufgabe];
       console.log(this.fragenr);
       if (aktlAufgabe == undefined) {
-
-        if (this.fragenr == this.Aufgabedata.length) {
-          this.vergleicheAntwort(this.indexAufgabe);
-          return;
+        console.log(this.indexbeende);
+        console.log(this.indexAufgabe);
+        console.log(this.Aufgabedata.length);
+        if (this.indexbeende < this.Aufgabedata.length) {
+          if (this.indexAufgabe == this.Aufgabedata.length) {
+            this.vergleicheAntwort(this.indexAufgabe);
+            return;
+          }         
         }
         
-
           this.fragenr--;
           this.globalvar.ausgewaeltestationen = [];
           let alert = this.alertController.create({
@@ -284,7 +305,11 @@ export class ÜbungsmodusPage {
       for (var a = 0; a < this.Fragedata.length; a++) {
         if (this.Fragedata[a].FrageID == aktlFrage) {
           this.Fragetext = this.Fragedata[a].FrageText;
-          this.Fragebild = this.Fragedata[a].FrageBild;
+          //this.Fragebild = this.Fragedata[a].FrageBild;
+          this.Fragebild = "http://www.3.mitterhauser.org/images/" + this.Fragedata[a].FrageBild + ".png";
+          if (this.Fragebild == "http://www.3.mitterhauser.org/images/undefined.png") {
+            this.Fragebild = false;
+          }
           this.Fragevideo = this.Fragedata[a].FrageVideo;
           console.log(this.Fragetext);
         }
@@ -295,6 +320,7 @@ export class ÜbungsmodusPage {
   background = 'white';
   richtigeAntwort = [];
   hiderichtigeAntwort = false;
+  backgroundarray = [];
 
   vergleicheAntwort(aktindexNr: number) {
     if (this.Aufgabedata.length == this.fragenr - 1) {
@@ -304,6 +330,7 @@ export class ÜbungsmodusPage {
       this.fragenr--;
     }
     this.richtigeAntwort = [];
+    this.backgroundarray = [];
 
     switch (this.aktlAufgabenTypendefinitionString) {
       case "A_T":
@@ -313,7 +340,7 @@ export class ÜbungsmodusPage {
           let upperantwort = this.Antwort1.toUpperCase();
 
           if (upperInput == upperantwort) {
-            this.background = 'green';
+            this.background = '#00eb00';
             console.log("richtig");
           } else {
             this.background = '#FC0A1C';
@@ -333,6 +360,14 @@ export class ÜbungsmodusPage {
       case "A_S":
         {
           console.log("slidervergleich");
+          if (this.InputSliderValue == this.slidervalue) {
+            this.background = '#00eb00';
+          } else {
+            this.background = '#FC0A1C';
+            this.richtigeAntwort.push(this.slidervalue);
+            console.log("falsch");
+            this.hiderichtigeAntwort = true;
+          }
           // #region hidecards
           this.hidetext = false;
           this.hideslider = true;
@@ -343,8 +378,9 @@ export class ÜbungsmodusPage {
         }
         break;
       case "A_DP":
-        {
+        { //funktioniert nicht -> keine Testdaten oder Daten die man dafür braucht
           console.log("Datevergleich");
+
           // #region hidecards
           this.hidetext = false;
           this.hideslider = false;
@@ -355,8 +391,45 @@ export class ÜbungsmodusPage {
         }
         break;
       case "A_CB:T": {
+        
         console.log("Comboboxvergleich");
+        console.log(this.InputCheckboxChecked);
+        console.log(this.checkboxarray);
+        for (var b = 0; b < this.checkboxarray.length; b++) {
+          if (this.InputCheckboxChecked[b] == this.checkboxarray[b]) {
+            this.backgroundarray.push('#00eb00');
+            console.log("richtig");
+          } else {
+            console.log("falsch");
+            this.backgroundarray.push('#FC0A1C');
+            this.hiderichtigeAntwort = true;           
+          }
+        }
+        console.log(this.InputCheckboxChecked);
+        console.log(this.checkboxarray);
 
+
+        if (this.checkboxarray.length == this.InputCheckboxChecked.length && this.checkboxarray.every((v, i) => v === this.InputCheckboxChecked[i])) {
+          //don't show richtige Antwort
+          this.backgroundarray = [];
+          for (var c = 0; c < this.checkboxarray.length; c++) {
+            if (this.checkboxarray[c] == false) {
+              this.backgroundarray[c].push('#ffffff');
+            }
+            else {
+              this.backgroundarray.push('#00eb00');
+            }
+          }
+        } else {
+          for (var a = 0; a < this.checkboxarray.length; a++) {
+            if (this.checkboxarray[a] == true) {
+              this.richtigeAntwort.push(this.CheckboxAntworten[a]);
+            }
+          }
+        }
+        
+        console.log(this.backgroundarray);
+        console.log(this.richtigeAntwort);
         // #region hidecards
         this.hidetext = false;
         this.hideslider = false;
@@ -380,6 +453,44 @@ export class ÜbungsmodusPage {
       case "A_RB:T":
         {
           console.log("Radiobuttonvergleich");
+          console.log(this.InputRadioButtonChecked);
+          console.log(this.radioboolarray);
+          for (var b = 0; b < this.radioboolarray.length; b++) {
+            if (this.InputRadioButtonChecked[b] == this.radioboolarray[b]) {
+              this.backgroundarray.push('#00eb00');
+              console.log("richtig");
+            } else {
+              console.log("falsch");
+              this.backgroundarray.push('#FC0A1C');
+              this.hiderichtigeAntwort = true;
+            }
+          }
+          console.log(this.InputRadioButtonChecked);
+          console.log(this.radioboolarray);
+
+
+          if (this.radioboolarray.length == this.InputRadioButtonChecked.length && this.radioboolarray.every((v, i) => v === this.InputRadioButtonChecked[i])) {
+            //don't show richtige Antwort
+            this.backgroundarray = [];
+            for (var c = 0; c < this.radioboolarray.length; c++) {
+              if (this.radioboolarray[c] == false) {
+                this.backgroundarray[c].push('#ffffff');
+              }
+              else {
+                this.backgroundarray.push('#00eb00');
+              }
+            }
+          } else {
+            for (var a = 0; a < this.radioboolarray.length; a++) {
+              if (this.radioboolarray[a] == true) {
+                this.richtigeAntwort.push(this.RadiobuttonAntworten[a]);
+              }
+            }
+          }
+
+          console.log(this.backgroundarray);
+          console.log(this.richtigeAntwort);
+
           // #region hidecards
           this.hidetext = false;
           this.hideslider = false;
@@ -469,13 +580,24 @@ export class ÜbungsmodusPage {
       console.log(this.indexbeende);
       if (this.indexbeende == 2) {
         this.indexbeende = this.indexbeende - 1;
-      } else {
+      } else if (this.indexbeende == 0) {       
+        this.indexbeende = this.indexbeende + 0.5;
+        this.lastbuttonpressed = false;
+        this.boolBeantwortet = false;
+      } else if (this.indexbeende==0.5){
+        //donothing
+        this.boolBeantwortet = false;
+        this.lastbuttonpressed = false;
+      }else{
         this.indexbeende = this.indexbeende - 0.5;
       }
 
       this.setAntwort(this.indexAufgabe);
     } else {
-      this.indexbeende = this.indexbeende - 0.5;
+      if (this.indexbeende > 0) {
+        this.indexbeende = this.indexbeende - 0.5;
+      }
+      
       //this.vergleicheAntwort(this.indexAufgabe);
 
     }
@@ -507,7 +629,11 @@ export class ÜbungsmodusPage {
     for (var a = 0; a < this.Fragedata.length; a++) {
       if (this.Fragedata[a].FrageID == aktlFrage) {
         this.Fragetext = this.Fragedata[a].FrageText;
-        this.Fragebild = this.Fragedata[a].FrageBild;
+        //this.Fragebild = this.Fragedata[a].FrageBild;
+        this.Fragebild = "http://www.3.mitterhauser.org/images/" + this.Fragedata[a].FrageBild + ".png";
+        if (this.Fragebild == "http://www.3.mitterhauser.org/images/undefined.png") {
+          this.Fragebild =false;
+        }
         this.Fragevideo = this.Fragedata[a].FrageVideo;
         console.log(this.Fragetext);
       }
@@ -551,7 +677,7 @@ export class ÜbungsmodusPage {
 
   setAntwort(aktindexNr: number) {
     this.Antwort1 = undefined;
-
+    this.backgroundarray = [];
     console.log(aktindexNr);
     console.log(this.Aufgabedata);
     this.aktlAufgabenAntwortID = this.Aufgabedata[aktindexNr].Antwort;
@@ -866,35 +992,3 @@ export class ÜbungsmodusPage {
   }
 
 }
-
-//function shuffle(array1, array2) {
-//  // shuffle both arrays same
-//  var arrayShuff = new Array();
-//  for (var i = 0; i < array1.length; i++) {
-//    arrayShuff.push(i);
-//  }
-//  var i = arrayShuff.length, j, tempi, tempj;
-//  if (i === 0) return false;
-//  while (--i) {
-//    j = Math.floor(Math.random() * (i + 1));
-//    tempi = arrayShuff[i];
-//    tempj = arrayShuff[j];
-//    arrayShuff[i] = tempj;
-//    arrayShuff[j] = tempi;
-//  }
-//  var tempshuff = new Array();
-//  for (i = 0; i < arrayShuff.length; i++) {
-//    tempshuff.push(array1[arrayShuff[i]]);
-//  }
-//  array1 = new Array();
-//  array1 = tempshuff.slice(0);
-//  tempshuff = new Array();
-//  for (i = 0; i < arrayShuff.length; i++) {
-//    tempshuff.push(array2[arrayShuff[i]]);
-//  }
-//  array2 = new Array();
-//  array2 = tempshuff.slice(0);
-//  console.log(array2);
-//  console.log(array1);
-//  // end of shuffle
-//}
