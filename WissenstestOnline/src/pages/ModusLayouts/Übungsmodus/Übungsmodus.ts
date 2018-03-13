@@ -395,26 +395,32 @@ export class ÜbungsmodusPage {
         console.log("Comboboxvergleich");
         console.log(this.InputCheckboxChecked);
         console.log(this.checkboxarray);
+        let tempinput = [];
+        for (var inp = 0; inp < this.checkboxarray.length; inp++) {
+          tempinput.push(false);
+          if (this.InputCheckboxChecked[inp] == true) {
+            tempinput[inp] = true;
+          }
+        }
+
         for (var b = 0; b < this.checkboxarray.length; b++) {
-          if (this.InputCheckboxChecked[b] == this.checkboxarray[b]) {
+          if (tempinput[b] == this.checkboxarray[b]) {
             this.backgroundarray.push('#00eb00');
             console.log("richtig");
           } else {
             console.log("falsch");
-            this.backgroundarray.push('#FC0A1C');
-            this.hiderichtigeAntwort = true;           
+            this.backgroundarray.push('#FC0A1C');  
           }
         }
-        console.log(this.InputCheckboxChecked);
+        console.log(tempinput);
         console.log(this.checkboxarray);
 
-
-        if (this.checkboxarray.length == this.InputCheckboxChecked.length && this.checkboxarray.every((v, i) => v === this.InputCheckboxChecked[i])) {
+        if (this.checkboxarray.length == tempinput.length && this.checkboxarray.every((v, i) => v === tempinput[i])) {
           //don't show richtige Antwort
           this.backgroundarray = [];
           for (var c = 0; c < this.checkboxarray.length; c++) {
             if (this.checkboxarray[c] == false) {
-              this.backgroundarray[c].push('#ffffff');
+              this.backgroundarray.push('#ffffff');
             }
             else {
               this.backgroundarray.push('#00eb00');
@@ -427,7 +433,14 @@ export class ÜbungsmodusPage {
             }
           }
         }
-        
+
+        this.hiderichtigeAntwort = false;   
+        for (var check = 0; check < this.checkboxarray.length; check++) {
+          if (this.checkboxarray[check] != tempinput[check]) {           
+             this.hiderichtigeAntwort = true;                           
+          }
+        }
+
         console.log(this.backgroundarray);
         console.log(this.richtigeAntwort);
         // #region hidecards
@@ -455,38 +468,30 @@ export class ÜbungsmodusPage {
           console.log("Radiobuttonvergleich");
           console.log(this.InputRadioButtonChecked);
           console.log(this.radioboolarray);
-          for (var b = 0; b < this.radioboolarray.length; b++) {
-            if (this.InputRadioButtonChecked[b] == this.radioboolarray[b]) {
-              this.backgroundarray.push('#00eb00');
-              console.log("richtig");
-            } else {
-              console.log("falsch");
+
+          for (var a = 0; a < this.radioboolarray.length; a++) {
+            if (this.InputRadioButtonChecked == undefined) {
               this.backgroundarray.push('#FC0A1C');
-              this.hiderichtigeAntwort = true;
-            }
+            } else {
+              if (this.InputRadioButtonChecked == this.RadiobuttonAntworten[a]) {
+                if (this.radioboolarray[a] == false) {                  
+                  this.hiderichtigeAntwort = true;
+                  this.backgroundarray.push('#FC0A1C');                
+                } else {                          
+                  this.backgroundarray.push('#00eb00');
+                  this.richtigeAntwort.push(this.RadiobuttonAntworten[a]);
+                }               
+              } else {
+                if (this.radioboolarray[a] == true) {
+                  this.backgroundarray.push('#00eb00');
+                  this.richtigeAntwort.push(this.RadiobuttonAntworten[a]);
+                } else {
+                  this.backgroundarray.push('#FC0A1C');
+                }    
+              }
+            }          
           }
-          console.log(this.InputRadioButtonChecked);
-          console.log(this.radioboolarray);
 
-
-          if (this.radioboolarray.length == this.InputRadioButtonChecked.length && this.radioboolarray.every((v, i) => v === this.InputRadioButtonChecked[i])) {
-            //don't show richtige Antwort
-            this.backgroundarray = [];
-            for (var c = 0; c < this.radioboolarray.length; c++) {
-              if (this.radioboolarray[c] == false) {
-                this.backgroundarray[c].push('#ffffff');
-              }
-              else {
-                this.backgroundarray.push('#00eb00');
-              }
-            }
-          } else {
-            for (var a = 0; a < this.radioboolarray.length; a++) {
-              if (this.radioboolarray[a] == true) {
-                this.richtigeAntwort.push(this.RadiobuttonAntworten[a]);
-              }
-            }
-          }
 
           console.log(this.backgroundarray);
           console.log(this.richtigeAntwort);
