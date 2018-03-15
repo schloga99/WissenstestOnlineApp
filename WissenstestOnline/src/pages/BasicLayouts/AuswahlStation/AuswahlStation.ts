@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalVars } from "../../../providers/globals";
 import { NavController } from 'ionic-angular';
 import { AuswahlStufePage } from "../AuswahlStufe/AuswahlStufe";
@@ -14,21 +14,8 @@ import { database } from '../../../providers/database';
 })
 export class AuswahlStationPage implements OnInit {
 
-    constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController, public database: database) { }
-
-    //stations = [
-    //    'Allgemeinwissen',
-    //    'Dienstgrade',
-    //    'Wasserführende Armaturen + technische Geräte',
-    //    'Vorbeugender Brandschutz',
-    //    'Seilknoten',
-    //    'Nachrichtenübermittlung',
-    //    'Verkehrserziehung und Absichern von Einsatzstellen',
-    //    'Erste Hilfe',
-    //    'Taktik',
-    //    'Gefährliche Stoffe',
-    //    'Atem- und Körperschutz',
-    //]; 
+    constructor(public navCtrl: NavController, private globalvar: GlobalVars,public alertController: AlertController, public database: database) { }
+  
     stations = [];
 
     stufe: any;
@@ -51,10 +38,8 @@ export class AuswahlStationPage implements OnInit {
         if (this.stufe == 3) {
             this.stufeoutput = "Gold";
         }
-
         this.stations = this.database.stations;
     }
-
 
     onLink(url: string) {
         window.open(url);

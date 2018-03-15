@@ -83,14 +83,13 @@ export class ÜbungsmodusPage {
         Aufgabenbezirkindex = this.database.bezirkobject[b].BezirkID;
       }
     }
-    console.log(this.Aufgabedata.length);
     console.log(this.Aufgabedata);
     var AufgabenIndex = 0;
     var filteredAufgabendata = this.Aufgabedata;
     AufgabenIndex = this.Aufgabedata.length;
 
     for (var i = 0; i < this.Aufgabedata.length; i++) {
-      console.log(i);
+      
       console.log(this.Aufgabedata[i]);
       if (this.Aufgabedata[i].Standort == undefined) {
         if (this.Aufgabedata[i].Bezirk == undefined) {
@@ -108,8 +107,7 @@ export class ÜbungsmodusPage {
         console.log(this.Aufgabedata[i].Standort + " Standort steht drinnen");
         for (var a = 0; a < this.database.allestandorte.length; a++) {
           if (this.database.allestandorte[a].StandortID == this.Aufgabedata[i].Standort) {
-            AufgabestandortOrtsname = this.database.allestandorte[a].Ortsname;
-            console.log(this.database.allestandorte[a].Ortsname);
+            AufgabestandortOrtsname = this.database.allestandorte[a].Ortsname;           
           }
         }
         //console.log(AufgabestandortOrtsname);
@@ -119,15 +117,11 @@ export class ÜbungsmodusPage {
         }
         else {
           //herauslöschen
-          console.log("herauslöschen der Aufgabe");
-          console.log(this.Aufgabedata[i]);
+          console.log("herauslöschen der Aufgabe");         
           filteredAufgabendata = filteredAufgabendata.filter(obj => obj != this.Aufgabedata[i]);
         }
       }
     }
-
-    console.log(filteredAufgabendata);
-    console.log(this.Aufgabedata);
     this.Aufgabedata = filteredAufgabendata;
     this.Aufgabedata.sort(function (a, b) {
       return a.Station - b.Station;
@@ -139,16 +133,12 @@ export class ÜbungsmodusPage {
     this.stations = this.database.stations;
     //setze hier erste Frage:
     let Aufgabe0 = this.Aufgabedata[0];
-    console.log(this.Aufgabedata[0]);
     this.aktlAufgabeinfo = this.Aufgabedata[0].Zusatzinfo;
     let Frage0 = Aufgabe0.Frage;
-    console.log(Aufgabe0.Frage);
 
     for (var a = 0; a < this.database.frageobject.length; a++) {
-      // console.log(this.database.frageobject[a].FrageID);
       if (Frage0 == this.database.frageobject[a].FrageID) {
         this.Fragetext = this.Fragedata[a].FrageText;
-        //this.Fragebild = this.Fragedata[a].FrageBild;
         this.Fragebild = "http://www.3.mitterhauser.org/images/" + this.Fragedata[a].FrageBild + ".png";
         if (this.Fragebild == "http://www.3.mitterhauser.org/images/undefined.png") {
           this.Fragebild = false;
@@ -178,6 +168,7 @@ export class ÜbungsmodusPage {
     let zusatzinfomodal = this.modalCtrl.create(ZusatzinfoPage, { aktlAufgabeinfo: this.aktlAufgabeinfo, infoContents: this.infocontentobject });
     zusatzinfomodal.present();
   }
+  myColor: string = 'hexblack';
 
   indexAufgabe = 0;
   boolBeantwortet: boolean = false;
@@ -205,8 +196,8 @@ export class ÜbungsmodusPage {
         this.indexbeende = this.indexbeende - 0.5;
       } else {
         this.indexbeende = this.indexbeende - 1;
-      }      
-      
+      }
+
     }
 
     if (this.ersteFragebool == true) {
@@ -217,15 +208,11 @@ export class ÜbungsmodusPage {
       console.log("erste Frage und Antwort verglichen")
       this.ersteFragebool = false;
     }
-    else if (this.indexbeende == this.Aufgabedata.length) {
-      console.log(this.indexbeende);
-      console.log(this.indexAufgabe);
-      console.log(this.fragenr);    
+    else if (this.indexbeende == this.Aufgabedata.length) {      
       console.log("INDEX beende ist gleich mit Länge des Arrays");
       this.vergleicheAntwort(this.indexAufgabe);
       this.fragenr = this.fragenr + 1;
       this.indexbeende = this.indexbeende + 0.5;
-      
       this.indexAufgabe = this.indexAufgabe + 1;
     }
     else {
@@ -240,33 +227,32 @@ export class ÜbungsmodusPage {
       if (aktlAufgabe == undefined) {
         console.log(this.indexbeende);
         console.log(this.indexAufgabe);
-        console.log(this.Aufgabedata.length);
         if (this.indexbeende < this.Aufgabedata.length) {
           if (this.indexAufgabe == this.Aufgabedata.length) {
             this.vergleicheAntwort(this.indexAufgabe);
             return;
-          }         
+          }
         }
-        
-          this.fragenr--;
-          this.globalvar.ausgewaeltestationen = [];
-          let alert = this.alertController.create({
-            title: 'Geschafft!',
-            subTitle: 'Du hast die ausgewählten Fragen vollständig durchgearbeitet.',
-            buttons: [
-              {
-                text: 'Zurück',
-                role: 'cancel',
-                handler: () => {
-                  this.navCtrl.push(AuswahlStationPage);
-                  console.log('Zurück');
-                }
+
+        this.fragenr--;
+        this.globalvar.ausgewaeltestationen = [];
+        let alert = this.alertController.create({
+          title: 'Geschafft!',
+          subTitle: 'Du hast die ausgewählten Fragen vollständig durchgearbeitet.',
+          buttons: [
+            {
+              text: 'Zurück',
+              role: 'cancel',
+              handler: () => {
+                this.navCtrl.push(AuswahlStationPage);
+                console.log('Zurück');
               }
-            ]
-          });
-          alert.present();
-          return;
-        
+            }
+          ]
+        });
+        alert.present();
+        return;
+
       }
       //Antwort
       if (this.boolBeantwortet == false) {
@@ -286,8 +272,6 @@ export class ÜbungsmodusPage {
       }
 
       aktlAufgabe = this.Aufgabedata[this.indexAufgabe];
-      console.log(this.Aufgabedata[this.indexAufgabe]);
-
       this.aktlAufgabeinfo = this.Aufgabedata[this.indexAufgabe].Zusatzinfo;
       let aktlFrage = aktlAufgabe.Frage;
       console.log(aktlAufgabe.Frage);
@@ -300,7 +284,6 @@ export class ÜbungsmodusPage {
           console.log(this.stations[0]);
         }
       }
-      console.log(this.aktstation);
       console.log(this.Fragedata);
       for (var a = 0; a < this.Fragedata.length; a++) {
         if (this.Fragedata[a].FrageID == aktlFrage) {
@@ -314,7 +297,6 @@ export class ÜbungsmodusPage {
           console.log(this.Fragetext);
         }
       }
-      console.log(aktlAufgabe);
     }
   }
   background = 'white';
@@ -338,7 +320,6 @@ export class ÜbungsmodusPage {
           console.log("singleTextvergleich");
           let upperInput = this.InputText.toUpperCase();
           let upperantwort = this.Antwort1.toUpperCase();
-
           if (upperInput == upperantwort) {
             this.background = '#00eb00';
             console.log("richtig");
@@ -391,8 +372,7 @@ export class ÜbungsmodusPage {
         }
         break;
       case "A_CB:T": {
-        
-        console.log("Comboboxvergleich");
+        console.log("Checkboxvergleich");
         console.log(this.InputCheckboxChecked);
         console.log(this.checkboxarray);
         let tempinput = [];
@@ -402,47 +382,33 @@ export class ÜbungsmodusPage {
             tempinput[inp] = true;
           }
         }
-
         for (var b = 0; b < this.checkboxarray.length; b++) {
           if (tempinput[b] == this.checkboxarray[b]) {
-            this.backgroundarray.push('#00eb00');
+            this.backgroundarray.push('#FC0A1C');
             console.log("richtig");
           } else {
             console.log("falsch");
-            this.backgroundarray.push('#FC0A1C');  
+            this.backgroundarray.push('#00eb00');
           }
         }
         console.log(tempinput);
-        console.log(this.checkboxarray);
 
-        if (this.checkboxarray.length == tempinput.length && this.checkboxarray.every((v, i) => v === tempinput[i])) {
-          //don't show richtige Antwort
-          this.backgroundarray = [];
-          for (var c = 0; c < this.checkboxarray.length; c++) {
-            if (this.checkboxarray[c] == false) {
-              this.backgroundarray.push('#ffffff');
-            }
-            else {
-              this.backgroundarray.push('#00eb00');
-            }
-          }
-        } else {
-          for (var a = 0; a < this.checkboxarray.length; a++) {
-            if (this.checkboxarray[a] == true) {
-              this.richtigeAntwort.push(this.CheckboxAntworten[a]);
-            }
-          }
+        this.backgroundarray = [];
+        for (var a = 0; a < this.checkboxarray.length; a++) {
+          if (this.checkboxarray[a] == true) {
+            this.richtigeAntwort.push(this.CheckboxAntworten[a]);
+            this.backgroundarray.push('#00eb00');
+          } else {
+            this.backgroundarray.push('#FC0A1C');
+          }         
         }
-
-        this.hiderichtigeAntwort = false;   
+        this.hiderichtigeAntwort = false;
         for (var check = 0; check < this.checkboxarray.length; check++) {
-          if (this.checkboxarray[check] != tempinput[check]) {           
-             this.hiderichtigeAntwort = true;                           
+          if (this.checkboxarray[check] != tempinput[check]) {
+            this.hiderichtigeAntwort = true;
           }
         }
-
-        console.log(this.backgroundarray);
-        console.log(this.richtigeAntwort);
+        this.hiderichtigeAntwort = false;
         // #region hidecards
         this.hidetext = false;
         this.hideslider = false;
@@ -466,33 +432,30 @@ export class ÜbungsmodusPage {
       case "A_RB:T":
         {
           console.log("Radiobuttonvergleich");
-          console.log(this.InputRadioButtonChecked);
-          console.log(this.radioboolarray);
 
           for (var a = 0; a < this.radioboolarray.length; a++) {
             if (this.InputRadioButtonChecked == undefined) {
               this.backgroundarray.push('#FC0A1C');
             } else {
               if (this.InputRadioButtonChecked == this.RadiobuttonAntworten[a]) {
-                if (this.radioboolarray[a] == false) {                  
+                if (this.radioboolarray[a] == false) {
                   this.hiderichtigeAntwort = true;
-                  this.backgroundarray.push('#FC0A1C');                
-                } else {                          
+                  this.backgroundarray.push('#FC0A1C');
+                } else {
                   this.backgroundarray.push('#00eb00');
                   this.richtigeAntwort.push(this.RadiobuttonAntworten[a]);
-                }               
+                }
               } else {
                 if (this.radioboolarray[a] == true) {
                   this.backgroundarray.push('#00eb00');
                   this.richtigeAntwort.push(this.RadiobuttonAntworten[a]);
                 } else {
                   this.backgroundarray.push('#FC0A1C');
-                }    
+                }
               }
-            }          
-          }
-
-
+            }
+          }        
+          this.hiderichtigeAntwort = false;
           console.log(this.backgroundarray);
           console.log(this.richtigeAntwort);
 
@@ -585,15 +548,15 @@ export class ÜbungsmodusPage {
       console.log(this.indexbeende);
       if (this.indexbeende == 2) {
         this.indexbeende = this.indexbeende - 1;
-      } else if (this.indexbeende == 0) {       
+      } else if (this.indexbeende == 0) {
         this.indexbeende = this.indexbeende + 0.5;
         this.lastbuttonpressed = false;
         this.boolBeantwortet = false;
-      } else if (this.indexbeende==0.5){
+      } else if (this.indexbeende == 0.5) {
         //donothing
         this.boolBeantwortet = false;
         this.lastbuttonpressed = false;
-      }else{
+      } else {
         this.indexbeende = this.indexbeende - 0.5;
       }
 
@@ -602,9 +565,6 @@ export class ÜbungsmodusPage {
       if (this.indexbeende > 0) {
         this.indexbeende = this.indexbeende - 0.5;
       }
-      
-      //this.vergleicheAntwort(this.indexAufgabe);
-
     }
 
     this.indexAufgabe--;
@@ -620,8 +580,6 @@ export class ÜbungsmodusPage {
     }
     this.aktlAufgabeinfo = this.Aufgabedata[this.indexAufgabe].Zusatzinfo;
     let aktlFrage = aktlAufgabe.Frage;
-    console.log(aktlAufgabe.Frage);
-    console.log(aktlAufgabe.Station);
     let aktlstation = aktlAufgabe.Station;
 
     for (let i = 0; i < this.stations.length; i++) {
@@ -637,15 +595,13 @@ export class ÜbungsmodusPage {
         //this.Fragebild = this.Fragedata[a].FrageBild;
         this.Fragebild = "http://www.3.mitterhauser.org/images/" + this.Fragedata[a].FrageBild + ".png";
         if (this.Fragebild == "http://www.3.mitterhauser.org/images/undefined.png") {
-          this.Fragebild =false;
+          this.Fragebild = false;
         }
         this.Fragevideo = this.Fragedata[a].FrageVideo;
         console.log(this.Fragetext);
       }
     }
-
     this.setAntwort(this.indexAufgabe);
-
   }
 
   Antwort1: any;
@@ -666,7 +622,6 @@ export class ÜbungsmodusPage {
   datevalue: any;
 
   //checkbox
-
   checkboxarray = []; //true oder false (checked)
   CheckboxAntworten = [];
 
@@ -674,17 +629,14 @@ export class ÜbungsmodusPage {
   ImgArray = [];
 
   //radiobutton
-
   radioboolarray = []; //true oder false (checked)
   RadiobuttonAntworten = [];
   radiobuttonAntwort: string;
-
 
   setAntwort(aktindexNr: number) {
     this.Antwort1 = undefined;
     this.backgroundarray = [];
     console.log(aktindexNr);
-    console.log(this.Aufgabedata);
     this.aktlAufgabenAntwortID = this.Aufgabedata[aktindexNr].Antwort;
     console.log(this.aktlAufgabenAntwortID);
     let aktlAntwortIndex = 0;
@@ -702,14 +654,7 @@ export class ÜbungsmodusPage {
     this.aktlAufgabenTypendefinitionID = this.aktlAufgabenAntwort.FkTypendefinition;
     console.log(this.database.typendefinitionobject);
     this.aktlAufgabenTypendefinitionString = this.database.typendefinitionobject[this.aktlAufgabenTypendefinitionID - 1].TypName;
-
-    console.log(this.aktlAufgabenAntwort);
-    console.log(this.aktlAufgabenTypendefinitionID);
-    console.log(this.aktlAufgabenTypendefinitionString);
-    console.log(this.database.antwortobject);
     let AntwortContentID = this.database.antwortobject[aktlAntwortIndex].AntwortContentID;
-    console.log(AntwortContentID);
-
     switch (this.aktlAufgabenTypendefinitionString) {
       case "A_T":
         {
@@ -732,9 +677,6 @@ export class ÜbungsmodusPage {
         break;
       case "A_S":
         {
-          console.log(this.database.Antwort_Sliderobject.length);
-          console.log(this.database.Antwort_Sliderobject);
-
           for (var i = 0; i < this.database.Antwort_Sliderobject.length; i++) {
             if (AntwortContentID == this.database.Antwort_Sliderobject[i].AntwortContentID) {
               this.min = this.database.Antwort_Sliderobject[i].MinVal;
@@ -913,7 +855,6 @@ export class ÜbungsmodusPage {
               this.radiobuttonAntwort = this.RadiobuttonAntworten[ant];
             }
           }
-          //console.log(Erwartungswert[0]);
           // #region hidecards
           this.hidetext = false;
           this.hideslider = false;
@@ -995,5 +936,4 @@ export class ÜbungsmodusPage {
         break;
     }
   }
-
 }

@@ -11,7 +11,6 @@ import { GlobalVars } from '../providers/globals';
 import { Storage } from '@ionic/storage';
 import { database } from '../providers/database';
 import { HttpModule } from '@angular/http';
-import { storage } from '../providers/storage';
 import { ZusatzinfoPage } from '../pages/ModusLayouts/Modalzusatzinfo/zusatzinfo';
 
 export function provideStorage() {
@@ -44,7 +43,7 @@ export function provideStorage() {
     ZusatzinfoPage
   ],
   providers: [
-    { provide: ErrorHandler, useClass: IonicErrorHandler }, storage, GlobalVars, database,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }, GlobalVars, database,
     { provide: Storage, useFactory: provideStorage }
     
   ]

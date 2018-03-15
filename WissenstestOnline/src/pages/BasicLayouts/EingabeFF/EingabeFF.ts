@@ -17,7 +17,7 @@ export class EingabeFFPage implements OnInit {
   FFbezirk: any = [];
   standorte: any;
 
-  constructor(public navCtrl: NavController, private globalvar: GlobalVars, public storage: Storage, public alertController: AlertController, public database: database) {
+  constructor(public navCtrl: NavController, private globalvar: GlobalVars,public alertController: AlertController, public database: database) {
 
   }
   ngOnInit() {
@@ -58,12 +58,10 @@ export class EingabeFFPage implements OnInit {
     for (var i of this.standorte) {
       if (this.bezirke[this.count2] == this.currbezirk) {
         for (var j of i) {
-          //console.log(this.bezirke[this.count2]);
           this.FFbezirk[this.count] = j;
           this.count++;
         }
       }
-      //this.FFbezirk[this.count] = i;
       this.count2++;
     }
     this.count = 0;

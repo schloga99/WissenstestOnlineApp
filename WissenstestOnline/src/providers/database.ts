@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { storage } from '../providers/storage';
 import 'rxjs/add/operator/map';
-import { Aufgabe } from "../pages/ModusLayouts/Lernmodus/Aufgabe"
-import { GlobalVars } from "./globals"
+import { Aufgabe } from "../pages/ModusLayouts/Lernmodus/Aufgabe";
+import { GlobalVars } from "./globals";
 
 @Injectable()
 export class database {
@@ -44,7 +43,7 @@ export class database {
   ZusatzInfo = [];
   Antworten = [];
 
-  constructor(public http: Http, public ownstorage: storage, public globals: GlobalVars) {}
+  constructor(public http: Http,public globals: GlobalVars) {}
 
   county: number = 0;
   countx: number = 0;
@@ -64,18 +63,13 @@ export class database {
   setBezirk() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl + 'Bezirk').map(res => res.json()).subscribe(data => {
-        //console.log(JSON.stringify(data));
         console.log(data);
         this.bezirkobject = data;
-        //console.log(typeof (data));
-        //console.log(data[0].BezirkName);
         for (var x of data) {
           this.bezirke[this.countx] = data[this.countx].BezirkName;
           this.countx++;
-          //console.log(this.countx);
         }
         this.countx = 0;
-        //console.log(this.ownstorage.bezirke);
         resolve(this.bezirkobject);
       });
     });
@@ -92,11 +86,9 @@ export class database {
         this.county = 0;       
         console.log(this.bezirkobject);
         for (var a of this.bezirkobject) {
-          //console.log(a);
           if (!this.standortegeordnet[this.countx]) this.standortegeordnet[this.countx] = [];
           for (var b of data) {
             if (b.FkBezirk == a.BezirkID) {
-              //console.log(b.Bezirk + " == " + a.BezirkID + ", " + b.OrtsName);
               this.standortegeordnet[this.countx][this.county] = b.Ortsname;
               this.county++;
             }
@@ -294,28 +286,18 @@ export class database {
     console.log(this.Aufgaben.length+ "vorher");
     this.Aufgaben.length = 0;
     console.log(this.Aufgaben.length +"nachher");
-    //console.log(this.stationobject);
-    
     for (let i of this.stationobject) {
-      //console.log(this.globals.ausgewaeltestationen);
-      //console.log(i.Stationsname + " stationsname");
       if (this.globals.ausgewaeltestationen[count] == i.Stationsname) {
         stationid[count] = i.StationID;
         count++;
       }
     }
-    //console.log(stationid + " station id");
     count = 0;
     for (let a of this.aufgabeobject) {
-
       for (let b = 0; b < this.stationobject.length; b++) {
-
-        //console.log(this.globals.ausgewaeltestationen[b]);
         if (a.FkStation == stationid[b]) {
 
           if (a.FkStufe == this.globals.aktlstufe) {
-            //if (this.aufgabeobject[count].Ort == this.globals.aktlfeuerwehr) {
-
             this.Aufgaben.push({
               AufgabeID: a.AufgabeID,
               Station: a.FkStation,
@@ -328,14 +310,11 @@ export class database {
               Bezirk: a.FkBezirk,
               Standort: a.FkStandort,
             });
-            //}
           }
-
         }
       }
     }
     console.log(this.Aufgaben.length + "schluss");
     return this.Aufgaben;
   }
-
 }

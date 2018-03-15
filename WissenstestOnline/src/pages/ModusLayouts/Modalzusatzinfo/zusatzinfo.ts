@@ -29,7 +29,6 @@ export class ZusatzinfoPage implements OnInit {
     console.log(this.infocontentobject);
 
     for (var a of this.infocontentobject) {
-      //console.log(a);
       if (a.FkZusatzinfo == this.aktlInfo)
       {
         if (a.InfoContent.startsWith('http')) {
@@ -43,10 +42,6 @@ export class ZusatzinfoPage implements OnInit {
         }
       }
     }
-
-    //console.log(this.allanzeigendeinfo[0].Img);
-
-
   }
 
   onLink(url: string) {

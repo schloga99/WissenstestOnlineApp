@@ -38,33 +38,32 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  ffred:      #FC0A1C
+  ffred:      #FC0A1C,
+  hexwhite:    #ffffff,
+  hexblack:   #000000
 );
 
+//$radio-md-color-off:  #000000;
+//$radio-md-color-on: #000000;
+//$radio-ios-color-off: #000000;
+
+$radio-ios-color-on: #000000;
+$radio-md-color-on:#000000;
 
 
+//$checkbox-md-icon-checkmark-color:#000000;
+//$checkbox-ios-icon-checkmark-color:#000000;
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
-
-
-
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
 //$toolbar-background: map-get($colors, danger);
-
-
-
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
-
-
 // App Theme
 // --------------------------------------------------
 // Ionic apps can have different themes applied, which can

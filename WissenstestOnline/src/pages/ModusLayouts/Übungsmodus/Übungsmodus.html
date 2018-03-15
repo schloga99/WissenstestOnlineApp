@@ -42,9 +42,9 @@
   <ion-card text-wrap class="ion-cardradio" [hidden]="!hideradio">
     <ion-card-content>
       <ion-list radio-group [(ngModel)]="InputRadioButtonChecked">
-        <ion-item no-lines style="white-space:normal;" class="listitem" *ngFor="let antwort of RadiobuttonAntworten;let i=index">
-          <ion-label [style.backgroundColor]="backgroundarray[i]" style="opacity: 1 !important; white-space:normal;">{{antwort}}</ion-label>
-          <ion-radio [value]="antwort"></ion-radio>
+        <ion-item [style.backgroundColor]="backgroundarray[i]" style="white-space:normal;" class="listitem" *ngFor="let antwort of RadiobuttonAntworten;let i=index">
+          <ion-label  [color]="myColor"   style="opacity: 1 !important; white-space:normal;">{{antwort}}</ion-label>
+          <ion-radio  [value]="antwort"></ion-radio>
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -53,9 +53,9 @@
   <ion-card text-wrap class="ion-cardcheckbox" [hidden]="!hidecheckbox">
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let antwort of CheckboxAntworten;let i=index;">
-          <ion-label [style.backgroundColor]="backgroundarray[i]"  style="opacity: 1 !important;">{{antwort}}</ion-label>
-          <ion-checkbox  [(ngModel)]="InputCheckboxChecked[i]"></ion-checkbox>
+        <ion-item class="listitem" [style.backgroundColor]="backgroundarray[i]" *ngFor="let antwort of CheckboxAntworten;let i=index;">
+          <ion-label   style="opacity: 1 !important;">{{antwort}}</ion-label>
+          <ion-checkbox   [(ngModel)]="InputCheckboxChecked[i]"></ion-checkbox>
         </ion-item>
       </ion-list>
     </ion-card-content>

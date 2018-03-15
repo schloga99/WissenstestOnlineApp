@@ -73,12 +73,9 @@ export class LernmodusPage {
     }
 
     //bekomme hier alle benötigte Daten
-    //this.data = this.database.ALLDATA;
     this.Fragedata = this.database.frageobject;
     this.Aufgabedata = [];
     this.Aufgabedata = this.database.getausgewählteAufgaben();
-    //console.log(this.database.getausgewählteAufgaben());
-    //console.log(this.globalvar.aktlfeuerwehr);
     let Aufgabenbezirkindex;
     for (var b = 0; b < this.database.bezirkobject.length; b++) {
       if (this.database.bezirkobject[b].BezirkName == this.globalvar.aktlbezirk) {
@@ -102,14 +99,7 @@ export class LernmodusPage {
           console.log("Standort undefined und Bezirk gleich");
         } else {
           //herauslöschen 
-          //console.log(this.globalvar.aktlbezirk);
-          //console.log(Aufgabenbezirkindex);
           console.log("herauslöschen von Bezirk " + this.Aufgabedata[i].Bezirk);
-          //let index = filteredAufgabendata.indexOf(filteredAufgabendata[i],0);
-          //if (index > -1) {           
-          //  filteredAufgabendata.splice(index, 1);
-          //}
-
           filteredAufgabendata = filteredAufgabendata.filter(obj => obj != this.Aufgabedata[i]);
         }
       } else { //Standort steht drinnen
@@ -131,10 +121,6 @@ export class LernmodusPage {
           //herauslöschen
           console.log("herauslöschen der Aufgabe");
           console.log(this.Aufgabedata[i]);
-          //let index = filteredAufgabendata.indexOf(filteredAufgabendata[i],0);
-          //if (index > -1) {           
-          //  filteredAufgabendata.splice(index, 1);
-          //}
           filteredAufgabendata = filteredAufgabendata.filter(obj => obj != this.Aufgabedata[i]);
         }
       }
@@ -146,14 +132,6 @@ export class LernmodusPage {
     this.Aufgabedata.sort(function (a, b) {
       return a.Station - b.Station;
     });
-
-    //this.Aufgabedata.sort((s1, s2) =>
-    //  s1.AufgabeID < s2.AufgabeID ? -1 : s1.AufgabeID > s2.AufgabeID ? 1 : 0
-    //);
-
-    //this.Aufgabedata.sort((s1, s2) =>
-    //  s1.Station < s2.Station ? -1 : s1.Station > s2.Station ? 1 : 0
-    //);
     console.log(this.Aufgabedata);
     this.anzahlStationen = this.Aufgabedata.length;
     this.setAntwort(this.fragenr);
@@ -166,7 +144,6 @@ export class LernmodusPage {
     console.log(Aufgabe0.Frage);
 
     for (var a = 0; a < this.database.frageobject.length; a++) {
-      //console.log(this.database.frageobject[a].FrageID);
       if (Frage0 == this.database.frageobject[a].FrageID) {
         this.Fragetext = this.Fragedata[a].FrageText;
         console.log(this.Fragedata[a].FrageBild);
@@ -247,7 +224,6 @@ export class LernmodusPage {
     for (var a = 0; a < this.Fragedata.length; a++) {
       if (this.Fragedata[a].FrageID == aktlFrage) {
         this.Fragetext = this.Fragedata[a].FrageText;
-        //this.Fragebild = this.Fragedata[a].FrageBild;
         this.Fragebild = "http://www.3.mitterhauser.org/images/" + this.Fragedata[a].FrageBild + ".png";
         if (this.Fragebild == "http://www.3.mitterhauser.org/images/undefined.png") {
           this.Fragebild = false;
@@ -287,7 +263,6 @@ export class LernmodusPage {
     for (var a = 0; a < this.Fragedata.length; a++) {
       if (this.Fragedata[a].FrageID == aktlFrage) {
         this.Fragetext = this.Fragedata[a].FrageText;
-        //this.Fragebild = this.Fragedata[a].FrageBild;
         this.Fragebild = "http://www.3.mitterhauser.org/images/" + this.Fragedata[a].FrageBild + ".png";
         if (this.Fragebild == "http://www.3.mitterhauser.org/images/undefined.png") {
           this.Fragebild = false;
@@ -296,7 +271,6 @@ export class LernmodusPage {
         console.log(this.Fragetext);
       }
     }
-
     //Antwort
     this.setAntwort(this.indexAufgabe);
   }

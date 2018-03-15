@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen} from 'ionic-native';
-import { Storage } from '@ionic/storage';
 import { EingabeFFPage } from '../pages/BasicLayouts/EingabeFF/EingabeFF';
 import { AuswahlStationPage } from '../pages/BasicLayouts/AuswahlStation/AuswahlStation';
 import { AuswahlStufePage } from '../pages/BasicLayouts/AuswahlStufe/AuswahlStufe';
@@ -10,7 +9,6 @@ import { ÜbungsmodusPage } from '../pages/ModusLayouts/Übungsmodus/Übungsmodu
 import { StartLayoutPage } from '../pages/BasicLayouts/StartLayout/StartLayout';
 import { GlobalVars } from '../providers/globals';
 import { database } from '../providers/database';
-import { storage } from '../providers/storage';
 
 @Component({
     templateUrl: 'app.html',
@@ -19,14 +17,13 @@ import { storage } from '../providers/storage';
 export class MyApp {
   rootPage = StartLayoutPage; 
 
-    constructor(platform: Platform, public storage: Storage, public database: database, public ownstorage: storage) {        
+    constructor(platform: Platform, public database: database) {        
         platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.                      
             StatusBar.styleDefault();
             Splashscreen.hide();            
         });
-        //this.database.setAllData();
         
         this.database.setBezirk()
           .then(value => {
@@ -37,7 +34,6 @@ export class MyApp {
           });
 
         this.database.setStufe();
-        //this.database.setStandort();
         this.database.setStation();       
         this.database.setAufgabe();
         this.database.setInfoContent();
