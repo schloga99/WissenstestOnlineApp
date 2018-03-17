@@ -18,7 +18,6 @@ export class ZusatzinfoPage implements OnInit {
   aktlInfo: number;
   infocontentobject = [];
   allanzeigendeinfo: Info[] = [];
-  imgSrc: any = `http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=8000&mode=long`;
   constructor(public navParams: NavParams, public navCtrl: NavController, public viewCtrl: ViewController, private globalvar: GlobalVars, public database:database) {
   
   }

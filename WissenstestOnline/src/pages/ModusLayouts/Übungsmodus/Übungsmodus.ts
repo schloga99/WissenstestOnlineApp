@@ -33,7 +33,7 @@ export class ÜbungsmodusPage {
   stufeoutput: any;
   aktFF: any;
   fragenr: number;
-  anzahlStationen: number;
+  anzahlFragen: number;
 
   hidetext: boolean = false;
   hidecheckbox: boolean = false;
@@ -54,6 +54,7 @@ export class ÜbungsmodusPage {
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public globalvar: GlobalVars, public storage: Storage, public alertController: AlertController, public database: database) { }
 
   ngOnInit() {
+    this.anzahlrichtigbeantwortet = 0;
     this.indexAufgabe = 0;
     this.aktstation = "";
     this.slidervalue = 0;
@@ -128,7 +129,7 @@ export class ÜbungsmodusPage {
     });
 
     console.log(this.Aufgabedata);
-    this.anzahlStationen = this.Aufgabedata.length;
+    this.anzahlFragen = this.Aufgabedata.length;
     this.setAntwort(this.indexAufgabe);
     this.stations = this.database.stations;
     //setze hier erste Frage:
@@ -181,6 +182,7 @@ export class ÜbungsmodusPage {
   InputSliderValue: number = 0;
   InputDate: any;
   ersteFragebool = true;
+  anzahlrichtigbeantwortet: number = 0;
 
   nextbtn() {
     if (this.NextButtonText == this.NextButtonText1) {
@@ -237,8 +239,8 @@ export class ÜbungsmodusPage {
         this.fragenr--;
         this.globalvar.ausgewaeltestationen = [];
         let alert = this.alertController.create({
-          title: 'Geschafft!',
-          subTitle: 'Du hast die ausgewählten Fragen vollständig durchgearbeitet.',
+          title: 'Fertig!',
+          subTitle: 'Du hast ' + this.anzahlrichtigbeantwortet + ' von ' + this.anzahlFragen +' Fragen richtig beantwortet!',
           buttons: [
             {
               text: 'Zurück',
@@ -323,6 +325,7 @@ export class ÜbungsmodusPage {
           if (upperInput == upperantwort) {
             this.background = '#00eb00';
             console.log("richtig");
+            this.anzahlrichtigbeantwortet++;
           } else {
             this.background = '#FC0A1C';
             this.richtigeAntwort.push(this.Antwort1);
@@ -343,6 +346,7 @@ export class ÜbungsmodusPage {
           console.log("slidervergleich");
           if (this.InputSliderValue == this.slidervalue) {
             this.background = '#00eb00';
+            this.anzahlrichtigbeantwortet++;
           } else {
             this.background = '#FC0A1C';
             this.richtigeAntwort.push(this.slidervalue);
@@ -408,6 +412,9 @@ export class ÜbungsmodusPage {
             this.hiderichtigeAntwort = true;
           }
         }
+        if (this.hiderichtigeAntwort == false) {
+          this.anzahlrichtigbeantwortet++;
+        }
         this.hiderichtigeAntwort = false;
         // #region hidecards
         this.hidetext = false;
@@ -454,7 +461,10 @@ export class ÜbungsmodusPage {
                 }
               }
             }
-          }        
+          }
+          if (this.hiderichtigeAntwort == false) {
+            this.anzahlrichtigbeantwortet++;
+          }
           this.hiderichtigeAntwort = false;
           console.log(this.backgroundarray);
           console.log(this.richtigeAntwort);
